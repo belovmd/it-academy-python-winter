@@ -1,5 +1,6 @@
 # 8 lines: Command line arguments, exception handling
-# This program adds up integers that have been passed as arguments in the command line
+# This program adds up integers that have been passed
+# as arguments in the command line
 import sys
 
 try:
@@ -7,5 +8,3 @@ try:
     print('sum =', total)
 except ValueError:
     print('Please supply integer arguments')
-
-
