@@ -8,5 +8,3 @@ for file_name in sorted(python_files):
         for line in f:
             print('    ' + line.rstrip())
     print()
-
-    
