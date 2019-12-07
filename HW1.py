@@ -9,8 +9,8 @@ for i, name in enumerate(friends):
 
 parents, babies = (1, 1)
 while babies < 100:
-    print ('This generation has {0} babies'.format(babies))
-    parents, babies = (babies, parents + babies)
+    print('This generation has {0} babies'.format(babies))
+    parents, babies = [babies, parents + babies]
 
 def greet(name):
     print ('Hello', name)
@@ -44,7 +44,7 @@ except ValueError:
 import glob
 python_files = glob.glob('*.py')
 for file_name in sorted(python_files):
-    print ('    ------' + file_name)
+    print('    ------' + file_name)
 
     with open(file_name) as f:
         for line in f:
@@ -244,4 +244,4 @@ while guesses_made < 6:
 if guess == number:
     print ('Good job, {0}! You guessed my number in {1} guesses!'.format(name, guesses_made))
 else:
-    print ('Nope. The number I was thinking of was {0}'.format(number))
+    print('Nope. The number I was thinking of was {0}'.format(number))
