@@ -17,8 +17,8 @@ print('%d is a simple number!' % num)
 
 # 3 - Определить, является ли число палиндромом.
 num = input('Input a number:\n')
-num_length = len(num)//2
-for i in range(0,  num_length - 1):
+num_length = len(num) // 2
+for i in range(0, num_length - 1):
     if num[i] != num[len(num) - 1 - i]:
         print('%s is not a palindrome...' % num)
         exit()

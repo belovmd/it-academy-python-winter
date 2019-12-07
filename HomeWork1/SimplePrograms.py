@@ -1,13 +1,14 @@
+import csv
+import glob
+import itertools
+from itertools import groupby
+import random
 import re
 import sys
-import glob
 from time import localtime
 import unittest
-from itertools import groupby
-import csv
-import itertools
 import xml.etree.ElementTree as etree
-import random
+
 # 1
 print('Hello, world!')
 
@@ -55,7 +56,8 @@ grocery_bill = sum(prices[fruit] * my_purchase[fruit]
 print('I owe the grocer $%.2f' % grocery_bill)
 
 # 8
-# This program adds up integers that have been passed as arguments in the command line
+# This program adds up integers that have been
+# passed as arguments in the command line
 try:
     total = sum(int(arg) for arg in sys.argv[1:])
     print('sum =', total)
@@ -81,7 +83,7 @@ activities = {8: 'Sleeping',
               17: 'Working',
               18: 'Commuting',
               20: 'Eating',
-              22: 'Resting' }
+              22: 'Resting'}
 
 time_now = localtime()
 hour = time_now.tm_hour
@@ -242,7 +244,7 @@ pantry = {'olive oil', 'pesto'}
 for ingredient in tree.getiterator('tr'):
     amt, unit, item = ingredient
     if item.tag == "td" and item.text not in pantry:
-        print ("%s: %s %s" % (item.text, amt.text, unit.text))
+        print("%s: %s %s" % (item.text, amt.text, unit.text))
 
 # 28
 BOARD_SIZE = 8
@@ -255,7 +257,7 @@ class BailOut(Exception):
 def validate(queens):
     left = right = col = queens[-1]
     for r in reversed(queens[:-1]):
-        left, right = left-1, right+1
+        left, right = left - 1, right + 1
         if r in (left, col, right):
             raise BailOut
 
@@ -276,7 +278,7 @@ def add_queen(queens):
 
 queens = add_queen([])
 print(queens)
-print("\n".join(". "*q + "Q " + ". "*(BOARD_SIZE-q-1) for q in queens))
+print("\n".join(". "*q + "Q " + ". "*(BOARD_SIZE - q - 1) for q in queens))
 
 # 33
 guesses_made = 0
@@ -302,7 +304,8 @@ while guesses_made < 6:
         break
 
 if guess == number:
-    print('Good job, {0}! You guessed my number in {1} guesses!'.format(name, guesses_made))
+    print('Good job, {0}! You guessed my number in {1} '
+          'guesses!'.format(name, guesses_made))
 else:
     print('Nope. The number I was thinking of was {0}'.format(number))
 
@@ -315,7 +318,7 @@ def median(pool):
     if size % 2 == 1:
         return copy[int((size - 1) / 2)]
     else:
-        return (copy[int(size/2 - 1)] + copy[int(size/2)]) / 2
+        return (copy[int(size / 2 - 1)] + copy[int(size / 2)]) / 2
 
 
 class TestMedian(unittest.TestCase):
