@@ -1,3 +1,6 @@
+import re
+from time import localtime
+
 print('Hello world!')
 
 name = input('What is your name?\n')
@@ -17,8 +20,6 @@ greet('frea')
 greet('fred')
 
 # ---------------------------------------------------------
-
-import re
 
 for test_string in ['555-1212', 'ILL-EGAL']:
     if re.match(r'^\d{3}-\d{4}$', test_string):
@@ -43,8 +44,6 @@ except ValueError:
     print('Something wrong')
 
 # ----------------------------------------------------
-
-from time import localtime
 
 activities = {
     8: 'sleeping',
