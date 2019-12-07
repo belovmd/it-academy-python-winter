@@ -57,7 +57,7 @@ for file_name in sorted(python_files):
 
     print()
 
-from time import localtime
+import time
 
 activities = {8: 'Sleeping',
               9: 'Commuting',
@@ -66,7 +66,7 @@ activities = {8: 'Sleeping',
               20: 'Eating',
               22: 'Resting'}
 
-time_now = localtime()
+time_now = time.localtime()
 hour = time_now.tm_hour
 
 for activity_time in sorted(activities.keys()):
@@ -109,10 +109,11 @@ print(my_account.balance, my_account.overdrawn())
 
 
 def median(pool):
-    '''Statistical median to demonstrate doctest.
+    """Statistical median to demonstrate doctest.
     >>> median([2, 9, 9, 7, 9, 2, 4, 5, 8])
     6 #change to 7 in order to pass the test
-    '''
+    """
+
     copy = sorted(pool)
     size = len(copy)
     if size % 2 == 1:
