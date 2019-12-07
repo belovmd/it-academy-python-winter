@@ -34,14 +34,12 @@ grocery_bill = sum(prices[fruit] * my_purchase[fruit]
                    for fruit in my_purchase)
 print ('I owe the grocer $%.2f' % grocery_bill)
 
-
 import sys
 try:
     total = sum(int(arg) for arg in sys.argv[1:])
     print ('sum =', total)
 except ValueError:
     print ('Please supply integer arguments')
-
 
 import glob
 python_files = glob.glob('*.py')
@@ -194,7 +192,6 @@ dinner_recipe = '''<html><body><table>
 import xml.etree.ElementTree as etree
 tree = etree.fromstring(dinner_recipe)
 
-
 pantry = set(['olive oil', 'pesto'])
 for ingredient in tree.getiterator('tr'):
     amt, unit, item = ingredient
@@ -258,4 +255,3 @@ if guess == number:
     print ('Good job, {0}! You guessed my number in {1} guesses!'.format(name, guesses_made))
 else:
     print ('Nope. The number I was thinking of was {0}'.format(number))
-
