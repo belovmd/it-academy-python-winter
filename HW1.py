@@ -22,7 +22,6 @@ greet('Jill')
 greet('Bob')
 
 import re
-
 for test_string in ['555-1212', 'ILL-EGAL']:
     if re.match(r'^\d{3}-\d{4}$', test_string):
         print(test_string, 'is a valid US local phone number')
@@ -38,7 +37,6 @@ grocery_bill = sum(prices[fruit] * my_purchase[fruit]
 print('I owe the grocer $%.2f' % grocery_bill)
 
 import sys
-
 try:
     total = sum(int(arg) for arg in sys.argv[1:])
     print('sum =', total)
@@ -46,7 +44,6 @@ except ValueError:
     print('Please supply integer arguments')
 
 import glob
-
 python_files = glob.glob('*.py')
 for file_name in sorted(python_files):
     print('    ------' + file_name)
