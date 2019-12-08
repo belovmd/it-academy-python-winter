@@ -1,4 +1,4 @@
-userNum = int(input("введите число\n"))
+userNum = int(input("введите число"))
 
 for i in range(1, userNum + 1):
     print(i ** 3)
@@ -17,7 +17,7 @@ for u in range(userNum):
     fib1 = a
     print(fib1)
 
-leng=len(str(userNum))  # палиндром
+leng = len(str(userNum))  # палиндром
 if leng != 1:
     for j in range(leng):
         if str(userNum)[j] == str(userNum)[leng - 1 - j]:
