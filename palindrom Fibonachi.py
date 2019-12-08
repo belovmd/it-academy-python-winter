@@ -1,4 +1,4 @@
-userNum = int(input("введите число"))
+userNum = int(input("введите число\n"))
 
 for i in range(1, userNum + 1):
     print(i ** 3)
