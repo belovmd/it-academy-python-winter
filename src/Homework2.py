@@ -38,7 +38,7 @@ elif n == 2:
 else:
     print(fib1)
     print(fib2)
-    for i in range(n-2):
+    for i in range(n - 2):
         fib12 = fib1 + fib2
         fib1 = fib2
         fib2 = fib12
