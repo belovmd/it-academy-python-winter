@@ -8,4 +8,3 @@ else:
         print("нормально")
     else:
         print("маловато")
-
