@@ -1,4 +1,4 @@
-x = int(input())
+x = int(input('Введите число:'))
 # возведение в куб
 for i in range(1, x + 1):
     print('{0} в кубе равно {1}'.format(i, i**3))
@@ -18,12 +18,12 @@ else:
 lenn = len(str(x))
 x = int(x)
 iter = lenn // 2
-second, hlast = x, x
+se, hlast = x, x
 if iter >= 1:
     for j in range(1, iter + 1):
         # берем первую/вторую и тд. цифры с начала до середины
-        first = second // (10 ** (lenn - j))
-        second = int(((second / (10 ** (lenn - j))) - first) * (10 ** (lenn - j)))
+        first = se // (10 ** (lenn - j))
+        se = int(((se / (10 ** (lenn - j))) - first) * (10 ** (lenn - j)))
         # берем первую/вторую и тд. цифры с конца до середины
         prepredlast = ((hlast / (10 ** j)) - (hlast // (10 ** j))) * (10 ** j)
         predlast = round(prepredlast)
