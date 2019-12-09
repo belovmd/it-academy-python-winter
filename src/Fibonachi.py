@@ -13,3 +13,4 @@ for i in range(a + 1):
         c = c + b
         x = c - b
         print(c)
+
