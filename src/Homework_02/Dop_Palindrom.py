@@ -1,3 +1,4 @@
+# палиндром только числами
 num = int(input('Введите число\n'))
 num_length = 1
 num_division = num
