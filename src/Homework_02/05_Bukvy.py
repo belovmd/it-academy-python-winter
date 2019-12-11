@@ -1,0 +1,2 @@
+str.upper()
+str.lower()
