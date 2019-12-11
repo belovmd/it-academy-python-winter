@@ -1,9 +1,11 @@
 import re
 
+import extensions as extensions
+
 print('hello, World')
 
-##name1=input('what is youre name?\n')
-##print('hello, Faggot-' + name1)
+name1 = input('what is youre name?\n')
+print('hello, Faggot-' + name1)
 
 friends = ['john', 'pat', 'gary', 'michael']
 for i, name in enumerate(friends):
@@ -48,18 +50,18 @@ except ValueError:
     print('Please supply integer arguments')
 
 # indent your Python code to put into an email
-# import glob
+import glob
 
 # glob supports Unix style pathname extensions
-# python_files = glob.glob('*.py')
-# for file_name in sorted(python_files):
-#     print('    ------' + file_name)
-#
-#     with open(file_name) as f:
-#         for line in f:
-#             print('    ' + line.rstrip())
-#
-#     print()
+python_files = glob.glob('*.py')
+for file_name in sorted(python_files):
+    print('    ------' + file_name)
+
+    with open(file_name) as f:
+        for line in f:
+            print('    ' + line.rstrip())
+
+    print()
 
 from time import localtime
 
@@ -332,4 +334,3 @@ if guess == number:
     print('Good job, {0}! You guessed my number in {1} guesses!'.format(name, guesses_made))
 else:
     print('Nope. The number I was thinking of was {0}'.format(number))
-
