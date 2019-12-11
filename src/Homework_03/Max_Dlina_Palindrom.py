@@ -20,7 +20,7 @@ for i in range(0, len(my_split_string)):
 print('Максимально длинное слово -', my_split_string[max_len_index], 'длина -', max_len)
 
 # Палиндром
-print('==========')
+print('=' * 100)
 my_string2 = 'aaa bbbb aa bbb c bbbaa bb b b aaa'
 print(my_string2)
 my_rep_string = my_string2.replace(' ', '')
@@ -32,6 +32,6 @@ else:
     print('Не палиндром')
 
 # Заменить на точки без replace
-print('==========')
+print('=' * 100)
 print(my_string2)
 print('.'.join(my_string2.split()))
