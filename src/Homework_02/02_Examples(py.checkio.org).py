@@ -107,7 +107,6 @@ Your function should calculate the product of the digits excluding any zeroes.
 
 
 def checkio(number: int) -> int:
-    my_string = str(number)
     result = 1
     for i in str(number):
         n = int(i)
