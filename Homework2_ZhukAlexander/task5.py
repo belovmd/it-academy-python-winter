@@ -22,9 +22,9 @@ upLet = 0
 lowLet = 0
 for letter in enterString:
     if 'A' <= letter <= 'Z':
-        upLet +=1
+        upLet += 1
     elif 'a' <= letter <= 'z':
-        lowLet +=1
+        lowLet += 1
     else:
         continue
 print('Строчных букв: ', lowLet)
