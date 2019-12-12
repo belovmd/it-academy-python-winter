@@ -15,7 +15,15 @@ else:
     print(num, " - простое число")
 
 # Является ли палиндромом
-
+oldNum = num
+newNum = 0
+while oldNum > 0:
+    newNum = newNum * 10 + oldNum % 10
+    oldNum //= 10
+if num == newNum:
+    print(num, " - палиндром")
+else:
+    print(num, " - не палиндром")
 
 # Первые N чисел Фибоначчи
 earlyNum = nextNum = 1
