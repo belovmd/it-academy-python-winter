@@ -29,10 +29,6 @@ that introduces a person with the given parameter's attributes.
 # 2. the function should return the right answer, not print it.
 
 def say_hi(name: str, age: int) -> str:
-    """
-        Hi!
-    """
-
     return "Hi. My name is {} and I'm {} years old".format(name, age)
 
 
@@ -52,9 +48,6 @@ third and second to the last for the given array.
 
 
 def easy_unpack(elements: tuple) -> tuple:
-    """
-        returns a tuple with 3 elements - first, third and second to the last
-    """
     (a, b, c) = (elements[0], elements[2], elements[-2])
     return a, b, c
 
