@@ -7,7 +7,8 @@ my_string = 'aaa bbbb! aa, bbb! c bbbaa bb b. b? aaa'
 print(my_string, '\n')
 
 # не самый красивый вариант
-new_string = my_string.replace('!', '').replace('?', '').replace(',', '').replace('.', '')
+new_string = my_string.replace(
+    '!', '').replace('?', '').replace(',', '').replace('.', '')
 print(new_string)
 
 # вариант лучше
@@ -24,4 +25,4 @@ for i in range(len(my_split_string)):
     if cur_len > max_len:
         max_len = cur_len
         max_len_index = i
-print('Самое длинное слово -', my_split_string[max_len_index], 'длина -', max_len)
+print('Самое длинное -', my_split_string[max_len_index], 'длина -', max_len)

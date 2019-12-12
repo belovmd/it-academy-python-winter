@@ -37,9 +37,9 @@ def say_hi(name: str, age: int) -> str:
 
 
 if __name__ == '__main__':
-    # These "asserts" using only for self-checking and not necessary for auto-testing
-    assert say_hi("Alex", 32) == "Hi. My name is Alex and I'm 32 years old", "First"
-    assert say_hi("Frank", 68) == "Hi. My name is Frank and I'm 68 years old", "Second"
+    # These "asserts" using only for self-checking
+    assert say_hi("Alex", 32) == "Hi. My name is Alex and I'm 32 years old"
+    assert say_hi("Frank", 68) == "Hi. My name is Frank and I'm 68 years old"
     print('Done. Time to Check.')
 
 print('=' * 100)
@@ -63,7 +63,7 @@ if __name__ == '__main__':
     print('Examples:')
     print(easy_unpack((1, 2, 3, 4, 5, 6, 7, 9)))
 
-    # These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking
     assert easy_unpack((1, 2, 3, 4, 5, 6, 7, 9)) == (1, 3, 7)
     assert easy_unpack((1, 1, 1, 1)) == (1, 1, 1)
     assert easy_unpack((6, 3, 7)) == (6, 7, 3)
@@ -91,12 +91,12 @@ if __name__ == '__main__':
     print('Example:')
     print(index_power([1, 2, 3, 4], 2))
 
-    # These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking
     assert index_power([1, 2, 3, 4], 2) == 9, "Square"
     assert index_power([1, 3, 10, 100], 3) == 1000000, "Cube"
     assert index_power([0, 1], 0) == 1, "Zero power"
     assert index_power([1, 2], 3) == -1, "IndexError"
-    print("Coding complete? Click 'Check' to review your tests and earn cool rewards!")
+    print("Coding complete? Click 'Check' to review your tests!")
 
 print('=' * 100)
 
@@ -119,9 +119,9 @@ if __name__ == '__main__':
     print('Example:')
     print(checkio(123405))
 
-    # These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking
     assert checkio(123405) == 120
     assert checkio(999) == 729
     assert checkio(1000) == 1
     assert checkio(1111) == 1
-    print("Coding complete? Click 'Check' to review your tests and earn cool rewards!")
+    print("Coding complete? Click 'Check' to review your tests!")

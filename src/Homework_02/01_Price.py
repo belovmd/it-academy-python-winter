@@ -13,6 +13,6 @@ if pr_rub >= 0 and 0 <= pr_kop < 100:
     if full_pr_kop >= 100:
         full_pr_rub += full_pr_kop // 100
         full_pr_kop %= 100
-    print('Итоговая цена за', item_count, 'шт равна', full_pr_rub, 'руб', full_pr_kop, 'коп')
+    print('Итого', item_count, 'шт', full_pr_rub, 'руб', full_pr_kop, 'коп')
 else:
     print('Введите верные числа\n')
