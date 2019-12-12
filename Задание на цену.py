@@ -10,13 +10,14 @@ while cost2 >= 100:
     cost3 = cost2 // 100
     cost1 = cost1 + cost3
     cost2 = cost2 - (cost3 * 100)
-# Сделаем красивый вывод ответа, что бы не было ( "стоит 22 рублей" или "стоит 1 копеек")
+# Сделаем красивый вывод ответа,
+# что бы не было ( "стоит 22 рублей" или "стоит 1 копеек")
 # Для этого узнаем, на какую цифру заканчивается число рублей и копеек
 # для рублей:
 s = str(cost1)
 costrub = int(s[-1])
 # для копеек используем другой способ, без приведения к строке, но интереснее:
-costcop1, costcop2 = cost2/10, cost2//10
+costcop1, costcop2 = cost2 / 10, cost2 // 10
 costcop = int((costcop1 - costcop2) * 10)
 # делаем красивый output:
 # сначала рубли
@@ -33,7 +34,9 @@ elif costrub == 1:
 # теперь копейки
 if costcop == 2 or costcop == 3 or costcop == 4:
     print(' {0} копейки'.format(cost2))
-elif costcop == 5 or costcop == 6 or costcop == 7 or costcop == 8 or costcop == 9 or cost2 == 11:
+elif costcop == 5 or costcop == 6 or cost2 == 11:
+    print(' {0} копеек'.format(cost2))
+elif costcop == 7 or costcop == 8 or costcop == 9:
     print(' {0} копеек'.format(cost2))
 elif costcop == 1:
     print(' {0} копейку'.format(cost2))
