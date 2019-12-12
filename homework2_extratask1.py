@@ -10,4 +10,3 @@ print(f3, end=', ')
 for i in range(n):
     f2, f3 = f3, f2 + f3
     print(f3, end=', ')
-

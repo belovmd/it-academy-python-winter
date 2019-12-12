@@ -12,7 +12,7 @@ print(i)
 
 for j in range(1, i + 1):
     print(j)
-    m += (n % (10 ** j)) * (10 ** (i-j))
+    m += (n % (10 ** j)) * (10 ** (i - j))
     i -= 1
     n = n - (n % (10 ** j))
     m = int(m)
