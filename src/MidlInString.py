@@ -10,4 +10,4 @@ i = len(s) // 2
 if len(s) % 2 != 0:
     print(s[i])
 else:
-    print(s[i-1:i+1])
+    print(s[i - 1:i + 1])
