@@ -1,4 +1,4 @@
-my_string = '1 22 333 4444 55555 55555, 333. 666666..... 55555, 666666 4444 333 4444 4444 333'
+my_string = '1 22 333 4444 55555 55555, 333. 666666.....  333'
 my_string1 = my_string.replace(",", " ")
 my_string1 = my_string1.replace(".", " ")
 print(my_string1)
