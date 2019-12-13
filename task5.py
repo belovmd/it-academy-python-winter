@@ -8,9 +8,9 @@ word = input()
 small = 0
 big = 0
 for i in word:
-	if 'a' <= i <= 'z':
-		small += 1
-	elif 'A' <= i <= 'Z':
-		big += 1
+    if 'a' <= i <= 'z':
+        small += 1
+    elif 'A' <= i <= 'Z':
+        big += 1
 print(small)
 print(big)

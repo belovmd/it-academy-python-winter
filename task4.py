@@ -9,6 +9,7 @@ st = input('enter string: ')  # вводим строку
 # будем помещать символы для проверки повторяемости
 newSt = ''
 for i in st:
-	if i not in newSt and i != ' ':
-		newSt += i
-print(newSt)  # выводим новую строку отвечающую условиям
+    if i not in newSt and i != ' ':
+        newSt += i
+print(newSt)
+# выводим новую строку отвечающую условиям
