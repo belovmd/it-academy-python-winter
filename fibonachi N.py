@@ -14,4 +14,3 @@ elif userIn == 2:
     print("2-ое число Фибоначчи = 1")
 else:
     print("{0}-ое число Фибоначчи = {1}".format(userIn, fib1))
-    
