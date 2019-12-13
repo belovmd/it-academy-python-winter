@@ -5,8 +5,8 @@
 """
 word = input()
 
-small = 0  # счетчик маленьких букв
-big = 0  # счетчик больших букв
+small = 0
+big = 0
 for i in word:
 	if 'a' <= i <= 'z':
 		small += 1
