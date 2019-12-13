@@ -2,7 +2,7 @@ userIn = int(input("Введите номер числа Фибоначчи\n"))
 #
 fib0, fib1 = 0, 1
 # отнимаем 2, потому что первые 0 и 1 я не знаю как красиво задать
-for u in range(userIn-2):
+for u in range(userIn - 2):
     a = fib0 + fib1
     fib0 = fib1
     fib1 = a
@@ -14,3 +14,4 @@ elif userIn == 2:
     print("2-ое число Фибоначчи = 1")
 else:
     print("{0}-ое число Фибоначчи = {1}".format(userIn, fib1))
+    
