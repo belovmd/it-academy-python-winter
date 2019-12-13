@@ -7,7 +7,7 @@ max_string_count = 0
 max_string = ''
 print(my_string2)
 for i in my_string2:
-    if (max_string_count < len(i)):
+    if max_string_count < len(i):
         max_string_count = len(i)
         max_string = i
 print('маХ длинна - ', max_string_count, 'слово - ', max_string)

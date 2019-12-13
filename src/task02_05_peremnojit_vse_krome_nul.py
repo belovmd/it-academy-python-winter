@@ -1,13 +1,13 @@
 def checkio(number: int) -> int:
-    endNumber = 1
+    endnumber = 1
     while number > 1:
-        tempNumber = number // 10
+        tempnumber = number // 10
         if number % 10 != 0:
-            endNumber *= number % 10
-            number = tempNumber
+            endnumber *= number % 10
+            number = tempnumber
         else:
-            number = tempNumber
-    return endNumber
+            number = tempnumber
+    return endnumber
 
 
 if __name__ == '__main__':

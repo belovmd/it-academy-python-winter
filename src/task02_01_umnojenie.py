@@ -1,5 +1,7 @@
 # вернуть перемноженные
 def mult_two(a, b):
+
+
     # your code here
     return a * b
 
@@ -7,6 +9,7 @@ def mult_two(a, b):
 if __name__ == '__main__':
     print("Example:")
     print(mult_two(3, 2))
+
 
     # These "asserts" are used for self-checking and not for an auto-testing
     assert mult_two(3, 2) == 6

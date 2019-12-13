@@ -1,5 +1,7 @@
 stroka = str(input('введите строку:'))
-#stroka1 = stroka.replace(' ', '') - можно заменить наразделить/склеить
+
+
+# stroka1 = stroka.replace(' ', '') - можно заменить на разделить/склеить
 stroka1 = ''.join(stroka.split())
 stroka2 = stroka1[0]
 for i in stroka1:
