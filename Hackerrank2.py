@@ -4,10 +4,11 @@
 
 
 def print_full_name(a, b):
-    print("Hello {0} {1}! You just delved into python.".format(first_name, last_name))
+    print("Hello {0} {1}! "
+          "You just delved into python.".format(first_name, last_name))
 
-    
-    # блок ниже уже был в задаче
+
+# блок ниже уже был в задаче
 if __name__ == '__main__':
     first_name = input()
     last_name = input()
