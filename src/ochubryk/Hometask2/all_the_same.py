@@ -1,6 +1,7 @@
 # exercise from https://py.checkio.org/
 # In this mission you should check if all elements in the given list are equal.
-from typing import List, Any
+from typing import Any
+from typing import List
 
 
 def all_the_same(elements: List[Any]) -> bool:
