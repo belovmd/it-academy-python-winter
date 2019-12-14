@@ -1,4 +1,4 @@
-m = float(input("Enter a price of product: "))   # пользователь вводит ценн
-n = int(input("Enter a number of products: "))   # пользователь вводит кол-во прод
-main_sum = m * n   # умножаем m и n
+m = float(input("Enter a price of product: "))
+n = int(input("Enter a number of products: "))
+main_sum = m * n
 print(main_sum)
