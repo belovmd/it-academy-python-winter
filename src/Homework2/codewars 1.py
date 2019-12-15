@@ -10,8 +10,12 @@ Notes:
 
 All numbers are valid Int32, no need to validate them.
 There will always be at least one number in the input string.
-Output string must be two numbers separated by a single space, and highest number is first.l"""
-## Test.assert_equals(high_and_low("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"), "542 -214");
+Output string must be two numbers separated by a single space,
+and highest number is first.l"""
+"""Test.assert_equals(high_and_low
+("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6"), "542 -214");"""
+
+
 def high_and_low(numbers):
     a = c = ''
     i = b = t = 0
