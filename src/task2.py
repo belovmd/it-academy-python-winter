@@ -1,6 +1,7 @@
 from string import Template
 #  Зарегистрируйтесь на одном (или нескольких) из сайтов:
-# https://py.checkio.org/ , https://www.codewars.com,   https://www.hackerrank.com/, https://acmp.ru
+# https://py.checkio.org/ , https://www.codewars.com,
+#  https://www.hackerrank.com/, https://acmp.ru
 # И решите 1-5 задач уровня Elementary или любых других.
 
 # mission1 on py.checkio.org
@@ -30,7 +31,8 @@ if __name__ == '__main__':
     print('Examples:')
     print(easy_unpack((1, 2, 3, 4, 5, 6, 7, 9)))
 
-    # These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking
+    # and not necessary for auto-testing
     assert easy_unpack((1, 2, 3, 4, 5, 6, 7, 9)) == (1, 3, 7)
     assert easy_unpack((1, 1, 1, 1)) == (1, 1, 1)
     assert easy_unpack((6, 3, 7)) == (6, 7, 3)
@@ -40,15 +42,15 @@ if __name__ == '__main__':
 
 
 def say_hi(name, age):
-    """
-        Hi!
-    """
     t = Template("Hi. My name is $name and I'm $age years old")
     return t.substitute(name=name, age=age)
 
 
 if __name__ == '__main__':
-    # These "asserts" using only for self-checking and not necessary for auto-testing
-    assert say_hi("Alex", 32) == "Hi. My name is Alex and I'm 32 years old", "First"
-    assert say_hi("Frank", 68) == "Hi. My name is Frank and I'm 68 years old", "Second"
+    # These "asserts" using only for self-checking and not necessary
+    # for auto-testing
+    assert say_hi("Alex", 32) == "Hi. My name is Alex and" \
+                                 " I'm 32 years old", "First"
+    assert say_hi("Frank", 68) == "Hi. My name is Frank and " \
+                                  "I'm 68 years old", "Second"
     print('Done. Time to Check.')
