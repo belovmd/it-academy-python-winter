@@ -1,17 +1,22 @@
-a = int(input("Введите число более 0: \n"))
-b = int(0)
-c = int(1)
-while a == 0:
-    a = int(input("Введите число более 0: \n"))
-if a == 1:
-    print(b)
-elif a == 2:
-    print(b, c)
-else:
-    print(b, end=' ')
-    print(c, end=' ')
-    for i in range(2, a):
-        d = b + c
-        b = c
-        c = d
-        print(d, end=" ")
+"""
+Выведите первые n чисел Фибоначчи, (используйте временные переменные для
+хранения прошлых значений и цикл for)
+"""
+
+qun = int(input("Введите число более 0: \n"))  # количество элементов ряда
+number1 = int(0)  # 1 элемент ряда
+number2 = int(1)  # 2 элемент ряда
+while qun == 0:  # решение нулевого количества ряда
+    qun = int(input("Введите число более 0: \n"))
+if qun == 1:  # один элемент в ряде
+    print(number1)
+elif qun == 2:  # два элемент в ряде
+    print(number1, number2)
+else:  # более двух
+    print(number1, end=' ')
+    print(number2, end=' ')
+    for i in range(2, qun):
+        time = number1 + number2
+        number1 = number2
+        number2 = time
+        print(time, end=" ")
