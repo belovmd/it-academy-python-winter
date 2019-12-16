@@ -11,8 +11,8 @@ for i in a:
     if len(a) == 1:
         print(a[0])
         break
-    if index == len(a)-1:
+    if index == len(a) - 1:
         print(a[0] + a[-2])
     elif i == a[index]:
-        print(a[index - 1]+a[index + 1], end=' ')
+        print(a[index - 1] + a[index + 1], end=' ')
         index = index + 1
