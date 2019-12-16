@@ -1,12 +1,12 @@
 #  Вводится строка. Требуется удалить из нее
 #  повторяющиеся символы и все пробелы.
-inputString = str(input('Введите строку: '))
-newLine = []
+input_string = str(input('Введите строку: '))
+new_line = []
 
-for char in inputString:
-    if char not in newLine:
-        newLine.append(char)
+for char in input_string:
+    if char not in new_line:
+        new_line.append(char)
 
-result = ''.join(newLine)
+result = ''.join(new_line)
 result = result.replace(' ', '')
 print(result)

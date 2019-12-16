@@ -6,7 +6,7 @@
 
 def checkio(number: int) -> int:
     numbers = str(number)
-    numbers = [int(number) for number in str(numbers) if int(number) != 0]
+    numbers = [int(number) for number in numbers if int(number) != 0]
 
     if len(numbers) >= 2:
         for number in range(len(numbers) - 1):
@@ -15,6 +15,7 @@ def checkio(number: int) -> int:
             numbers[number + 1] = result
     if len(numbers) == 1:
         result = numbers[0]
+
     return int(result)
 
 

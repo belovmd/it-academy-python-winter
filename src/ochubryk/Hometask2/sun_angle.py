@@ -13,8 +13,9 @@
 
 def sun_angle(time):
     hours, minutes = [int(i) for i in time.split(':')]
-    degreeInMinute = 0.25
-    degrees = (hours * 60 + minutes) * degreeInMinute - 90
+    degree_in_6_hour = 90
+    degree_in_minute = 0.25
+    degrees = (hours * 60 + minutes) * degree_in_minute - degree_in_6_hour
     if 0 <= degrees <= 180:
         time = degrees
     else:

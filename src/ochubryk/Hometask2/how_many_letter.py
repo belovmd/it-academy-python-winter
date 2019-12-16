@@ -2,12 +2,12 @@
 # и прописных (больших) букв в введенной строке.
 import re
 
-inputString = str(input('Введите строку: ')).replace(' ', '')
-inputString = re.sub(r'[^a-z]', '', inputString, flags=re.I)
+input_string = str(input('Введите строку: ')).replace(' ', '')
+input_string = re.sub(r'[^a-z]', '', input_string, flags=re.I)
 upper = 0
 lower = 0
 
-for char in inputString:
+for char in input_string:
     if char.islower():
         lower += 1
     else:

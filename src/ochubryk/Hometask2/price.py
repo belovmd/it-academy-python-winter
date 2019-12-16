@@ -1,18 +1,15 @@
 # Напишите программу, которая считает общую цену.
-M_rubles = int(input('Введите рубли: '))
-N_pennies = int(input('Введите копейки: '))
-L_count = int(input('Введите количество товара: '))
+# Вводится M рублей и N копеек цена, а также количество L товара
+# Посчитайте общую цену в рублях и копейках за L товаров.
+rubles = int(input('Введите рубли: '))
+pennies = int(input('Введите копейки: '))
+count = int(input('Введите количество товара: '))
 
-All_N_pennies = N_pennies * L_count
-if All_N_pennies > 99:
-    Rubles_from_pennies = All_N_pennies // 100
-    Remaining_pennies = All_N_pennies % 100
-    Result_rubles = (M_rubles * L_count) + Rubles_from_pennies
-else:
-    Remaining_pennies = All_N_pennies
-    Result_rubles = M_rubles * L_count
+total_pennies = (pennies * count) + (rubles * 100 * count)
+total_rubles = total_pennies // 100
+remaining_pennies = total_pennies % 100
 
-n, p = Remaining_pennies % 100, Result_rubles % 100
+n, p = remaining_pennies % 100, total_rubles % 100
 n1, p1 = n % 10, p % 10
 if 10 < n < 20:
     word_pennies = 'копеек'
@@ -32,5 +29,5 @@ elif p1 == 1:
 else:
     word_rubles = 'рублей'
 
-print('Общая цена: ', Result_rubles, word_rubles,
-      Remaining_pennies, word_pennies)
+print('Общая цена: ', total_rubles, word_rubles,
+      remaining_pennies, word_pennies)

@@ -1,17 +1,16 @@
 n = int(input('Введите порядковый номер числа Фибоначчи: '))
-f1 = f2 = f3 = 1
+fib1 = fib2 = 1
 
 if n < 2:
     print('Первый элемент ряда Фибоначчи: 1')
 else:
     print('Числа ряда Фибоначчи до искомого элемента(включительно): ')
-    print(f1, end=' ')
-    print(f2, end=' ')
+    print(fib1, end=' ')
+    print(fib2, end=' ')
 
     for i in range(2, n):
-        f3 = f1 + f2
-        f1 = f2
-        f2 = f3
-        print(f3, end=' ')
+        fib1, fib2 = fib2, fib1 + fib2
 
-    print('\nЧисло Фибоначчи ' + str(n) + ' ' + ' это: ' + str(f3))
+        print(fib2, end=' ')
+
+    print('\nЧисло Фибоначчи ' + str(n) + ' ' + ' это: ' + str(fib2))

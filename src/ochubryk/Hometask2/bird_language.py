@@ -23,18 +23,18 @@
 def translate(phrase):
     vowels = "aeiouy"
 
-    phrase = list(phrase)
+    phrase = iter(phrase)
     result = []
-    for i, char in enumerate(phrase):
+    for char in phrase:
         if char == ' ':
             result.append(char)
         elif char not in vowels:
             result.append(char)
-            phrase.pop(i + 1)
+            next(phrase)
         else:
             result.append(char)
-            phrase.pop(i + 1)
-            phrase.pop(i + 1)
+            next(phrase)
+            next(phrase)
 
     return ''.join(result)
 

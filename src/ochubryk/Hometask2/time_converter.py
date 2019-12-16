@@ -9,18 +9,16 @@
 
 def time_converter(time):
     hours, minutes = [int(i) for i in time.split(':')]
-    period = ''
+
+    if hours >= 12:
+        period = 'p.m.'
+    else:
+        period = 'a.m.'
 
     if hours == 0:
         hours = 12
-        period = 'a.m.'
-    elif hours == 12:
-        period = 'p.m.'
-    elif hours < 12:
-        period = 'a.m.'
     elif hours > 12:
         hours = hours - 12
-        period = 'p.m.'
 
     return "{}:{:02d} {}".format(hours, minutes, period)
 
