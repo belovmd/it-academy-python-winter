@@ -1,5 +1,14 @@
-# 1. on CheckiO your solution should be a function
-# 2. the function should return the right answer, not print it.
+"""
+https://py.checkio.org/ru/mission/say-history/
+написать функцию, которая представит человека
+по переданным параметрам.
+Входные данные: Два аргумента строка(str)
+и положительное число(int)
+Output: Строка(str).
+Example:
+say_hi('Alex', 32) == "Hi. My name is Alex and I'm 32 years old"
+say_hi("Frank", 68) == "Hi. My name is Frank and I'm 68 years old
+"""
 
 
 def say_hi(name: str, age: int) -> str:
