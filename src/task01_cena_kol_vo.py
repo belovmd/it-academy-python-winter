@@ -23,13 +23,13 @@ znach = []
 # проверяем является ли слово числом
 # и добавляем числа в список
 for i in razdel:
-      if i.isdigit():
-            znach.append(int(i))
+    if i.isdigit():
+        znach.append(int(i))
 # по условию должно быть 3 числовых значения
 # считаем рубли и копейки
 if len(znach) == 3:
-      rub = znach[0]*znach[2]+znach[1]*znach[2]//100
-      kop = znach[1] * znach[2] % 100
-      print("Общая цена", rub, "рублей", kop, "копеек")
+    rub = znach[0] * znach[2] + znach[1] * znach[2] // 100
+    kop = znach[1] * znach[2] % 100
+    print("Общая цена", rub, "рублей", kop, "копеек")
 else:
-      print("Неправильно заданы входные параметры")
+    print("Неправильно заданы входные параметры")
