@@ -20,15 +20,15 @@ vhod = vhod.replace(",", " ")
 vhod = vhod.replace(".", " ")
 razdel = vhod.split()
 znach = []
+# проверяем является ли слово числом
+# и добавляем числа в список
 for i in razdel:
-      # проверяем является ли слово числом
       if i.isdigit():
             znach.append(int(i))
 # по условию должно быть 3 числовых значения
+# считаем рубли и копейки
 if len(znach) == 3:
-      # считаем рубли
       rub = znach[0]*znach[2]+znach[1]*znach[2]//100
-      # считаем копейки
       kop = znach[1] * znach[2] % 100
       print("Общая цена", rub, "рублей", kop, "копеек")
 else:
