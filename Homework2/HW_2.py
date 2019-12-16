@@ -61,8 +61,8 @@ for i in range(0, len(string)):
     if string[i] == stringUp[i]:
         count += 1
 print('There are {up} capital letters and {low} '
-        'lowercase letters in the proverb'
-        .format(up=count, low=(len(string) - count)))
+      'lowercase letters in the proverb'
+      .format(up=count, low=(len(string) - count)))
 
 # 6 Выведите n-ое число Фибоначчи, используя только временные переменные,
 # циклические операторы и условные операторы. n - вводится.
