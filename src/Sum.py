@@ -31,7 +31,7 @@ endrub = (sumrub - (sumrub // 1000) * 1000)
 end1 = ""
 if endrub % 10 == 0:
     end1 = str("ей")
-elif endrub % 100 in range(4, 10):
+elif endrub % 100 in range(5, 10):
     end1 = str("ей")
 elif endrub % 100 in range(9, 20):
     end1 = str("ей")
@@ -47,10 +47,10 @@ elif kop % 10 in range(5, 10):
     end2 = str("ек")
 elif kop % 100 in range(9, 20):
     end2 = str("ек")
-elif kop % 10 in range(2, 5):
-    end2 = str("йки")
 elif kop % 10 == 1:
     end2 = str("йка")
+elif kop % 10 in range(1, 5):
+    end2 = str("йки")
 sumkop = int(round((price * qun % 1), 2) * 100)  # sum pennies
 print("Сумма покупки:", sumrub, "рубл" + end1, end=" ")
 print(sumkop, "копе" + end2)
