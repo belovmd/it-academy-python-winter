@@ -1,6 +1,10 @@
 # Codewars.com
 # Create a method each_cons that accepts a list and a number n,
 # and returns cascading subsets of the list of size n, like so:
+# each_cons([1,2,3,4], 2)
+# => [[1,2], [2,3], [3,4]]
+# each_cons([1,2,3,4], 3)
+# => [[1,2,3],[2,3,4]]
 
 # пока длина piece_list не сравняется с n, сохраняем в него все значения i,
 # и когда заполнится до n, очищаем список.
