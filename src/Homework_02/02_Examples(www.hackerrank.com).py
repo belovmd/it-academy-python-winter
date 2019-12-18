@@ -25,7 +25,7 @@ The third line contains the product of the two numbers.
 if __name__ == '__main__':
     a = int(input())
     b = int(input())
-    if (1 <= a <= 10 ** 10) and (1 <= b <= 10 ** 10):
+    if (1 <= a <= 10 ** 10) and (1 <= b <= 10 ** 10):  # Task condition
         print(a + b)
         print(a - b)
         print(a * b)
@@ -40,12 +40,12 @@ and vice versa.
 
 def swap_case(s):
     s_new = ''
-    if 1 < len(s) <= 1000:
-        for i in range(len(s)):
-            if s[i] == s[i].lower():
-                s_new += s[i].upper()
+    if 0 < len(s) <= 1000:  # Task condition
+        for elem in s:
+            if elem.islower():
+                s_new += elem.upper()
             else:
-                s_new += s[i].lower()
+                s_new += elem.lower()
     return s_new
 
 
@@ -66,10 +66,8 @@ not from right to left.
 
 def count_substring(string, sub_string):
     num_count = 0
-    if 1 <= len(string) <= 200:
-        for i in range(len(string)):
-            if string[i:i + len(sub_string)] == sub_string:
-                num_count += 1
+    if 1 <= len(string) <= 200:  # Task condition
+        num_count = string.count(sub_string)
     return num_count
 
 
@@ -90,13 +88,9 @@ For example, alison heck should be capitalised correctly as Alison Heck.
 
 def solve(s):
     s_new = ''
-    s_new += s[0].upper()
-    if 0 < len(s) < 1000:
-        for i in range(1, len(s)):
-            if s[i] == ' ':
-                s_new += ' '
-            elif s[i - 1] == ' ':
-                s_new += s[i].upper()
-            else:
-                s_new += s[i]
+    if 0 < len(s) < 1000:  # Task condition
+        for word in s.split():
+            s_new += word.capitalize() + ' '
+            # or we can just use str.title() method :)
+        s_new = s_new.rstrip()
     return s_new
