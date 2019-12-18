@@ -6,10 +6,9 @@
 
 # my_string = input('Введите строку символов через пробел\n')
 my_string = 'abc cdde edeff'
-my_rep_string = my_string.replace(' ', '')
-print(my_rep_string)
+print(my_string)
 my_new_string = ''
-for i in range(len(my_rep_string)):
-    if my_new_string.find(my_rep_string[i]) == -1:
-        my_new_string += my_rep_string[i]
+for character in my_string.replace(' ', ''):
+    if character not in my_new_string:
+        my_new_string += character
 print(my_new_string)
