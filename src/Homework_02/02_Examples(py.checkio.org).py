@@ -1,5 +1,6 @@
 """
 1. First task
+Multiply two numbers
 """
 
 
@@ -103,7 +104,7 @@ def checkio(number: int) -> int:
     result = 1
     for i in str(number):
         n = int(i)
-        if n != 0:
+        if n:
             result *= n
     return result
 
