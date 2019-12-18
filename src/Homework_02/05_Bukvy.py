@@ -7,11 +7,9 @@ my_string = 'aAaZ BBbb aa bbb C bbbAqAz bb b b Aaa ББ вв ггОО Q ЖGж'
 print(my_string)
 num_big = 0
 num_small = 0
-for i in range(len(my_string)):
-    cur_letter = my_string[i]
-    cur_ind = ord(cur_letter)
-    if (65 <= cur_ind <= 90) or (97 <= cur_ind <= 122):
-        if cur_letter == my_string[i].lower():
+for cur_letter in my_string:
+    if ('a' <= cur_letter <= 'z') or ('A' <= cur_letter <= 'Z'):
+        if cur_letter.islower():
             num_small += 1
         else:
             num_big += 1
