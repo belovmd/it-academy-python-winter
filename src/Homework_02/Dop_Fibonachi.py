@@ -21,6 +21,6 @@ print('\nЧисло Фибоначчи номер', n, 'равно', n_2)
 print('\nВариант 2')
 print(num_1, num_2, end=' ')
 for i in range(2, n):
-    (num_1, num_2) = (num_2, num_1 + num_2)  # более простой вариант
+    num_1, num_2 = num_2, num_1 + num_2  # более простой вариант
     print(num_2, end=' ')
 print('\nЧисло Фибоначчи номер', n, 'равно', num_2)
