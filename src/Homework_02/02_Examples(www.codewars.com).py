@@ -45,9 +45,9 @@ Assume the empty string is an isogram. Ignore letter case.
 def is_isogram(string):
     my_low_string = string.lower()
     my_new_string = ''
-    for i in range(len(my_low_string)):
-        if my_new_string.find(my_low_string[i]) == -1:
-            my_new_string += my_low_string[i]
+    for element in my_low_string:
+        if my_new_string.find(element) == -1:
+            my_new_string += element
     if my_low_string == my_new_string:
         return True
     else:
