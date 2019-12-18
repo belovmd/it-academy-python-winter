@@ -8,11 +8,10 @@
 
 
 def checkio(data: list) -> list:
-    d = []
+    count_numbers = {}
     for i in data:
-        if data.count(i) > 1:
-            d.append(i)
-    return d
+        count_numbers[i] = count_numbers.get(i, 0) + 1
+    return [i for i in data if count_numbers[i] > 1]
 
 
 if __name__ == "__main__":
@@ -20,3 +19,4 @@ if __name__ == "__main__":
     assert list(checkio([1, 2, 3, 4, 5])) == [], "2nd example"
     assert list(checkio([5, 5, 5, 5, 5])) == [5, 5, 5, 5, 5], "3rd example"
     assert list(checkio([10, 9, 10, 10, 9, 8])) == [10, 9, 10, 10, 9], "4th"
+    print("It is all good. Let's check it now")
