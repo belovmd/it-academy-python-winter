@@ -4,25 +4,19 @@
 """
 
 my_string = 'aaa bbbb! aa, bbb! c bbbaa bb b. b? aaa'
-print(my_string, '\n')
+print(my_string)
 
-# не самый красивый вариант
-new_string = my_string.replace(
-    '!', '').replace('?', '').replace(',', '').replace('.', '')
-print(new_string)
+punct_string = '!?,.'
+for char in my_string:
+    if char in punct_string:
+        my_string = my_string.replace(char, '')
+print(my_string)
 
-# вариант лучше
-table = str.maketrans("", "", "!?,.")
-new_string2 = my_string.translate(table)
-print(new_string2, '\n')
-
-my_split_string = new_string2.split()
 max_len = 0
-max_len_index = 0
-for i in range(len(my_split_string)):
-    cur_len = len(my_split_string[i])
-    print(my_split_string[i], 'длина -', cur_len)
+max_word = ''
+for cur_word in my_string.split():
+    cur_len = len(cur_word)
     if cur_len > max_len:
-        max_len = cur_len
-        max_len_index = i
-print('Самое длинное -', my_split_string[max_len_index], 'длина -', max_len)
+        max_len, max_word = cur_len, cur_word
+
+print('Самое длинное слово - {} длина - {}'.format(max_word, max_len))
