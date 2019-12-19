@@ -15,8 +15,7 @@ if __name__ == '__main__':
 # 2. the function should return the right answer, not print it.
 
 def say_hi(name: str, age: int) -> str:
-
-
+    
     return "Hi. My name is {} and I'm {} years old".format(name, age)
 
 
@@ -29,7 +28,6 @@ if __name__ == '__main__':
 def easy_unpack(elements: tuple) -> tuple:
     
     return (elements[0], elements[2], elements[-2])
-
 
 if __name__ == '__main__':
     print('Examples:')
