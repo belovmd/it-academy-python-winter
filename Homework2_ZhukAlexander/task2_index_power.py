@@ -5,9 +5,7 @@
 
 
 def index_power(array: list, n: int):
-
     """Find Nth power of the element with index N."""
-
     if n > len(array) - 1:
         result = -1
     else:

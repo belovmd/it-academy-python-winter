@@ -5,10 +5,7 @@
 
 
 def easy_unpack(elements: tuple) -> tuple:
-    """
-        returns a tuple with 3 elements - first, third and second to the last
-    """
-
+    """returns a tuple with 3 elements - first, third and second to the last"""
     first_elem = elements[0]
     second_elem = elements[2]
     pre_last = elements[-2]
