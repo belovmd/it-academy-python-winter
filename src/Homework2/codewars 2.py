@@ -32,11 +32,9 @@ Test.assert_equals(find_next_square(342786627),
 
 
 def find_next_square(sq):
-    a = sq ** 0.5
-    b = a % 1
-    if b == 0:
-        a += 1
-        sq = a ** 2
-        return sq
+    root = sq ** 0.5
+    check_root = root % 1
+    if check_root == 0:
+        return (root + 1) ** 2
     else:
         return -1

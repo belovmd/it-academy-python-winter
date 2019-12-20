@@ -4,18 +4,18 @@
 my_string.split([chars]) возвращает список строк.
 len(list) - количество элементов в списке
 """
-a = input('Введи предложение: ')
-w = 0
-W = ''
+words = input('Введи предложение: ')
+symbols = 0
 # Знаки препинания которые ищем и исключаем, можно допольнить в любой момент.
-signs = ',.?!:;'
-for s in signs:
-    a = a.replace((s), '')
-a = a.split()
-for i in a:
-    if len(i) > w:
-        w = len(i)
-        W = i
+signs = ',.?!:;][}{)("'
+signs2 = "'"
+for s in signs and signs2:
+    words = words.replace((s), '')
+words = words.split()
+for i in words:
+    if len(i) > symbols:
+        symbols = len(i)
+        longer_word = i
     else:
         continue
-print('Самое длинное слово в предложении -', W)
+print('Самое длинное слово в предложении -', longer_word)

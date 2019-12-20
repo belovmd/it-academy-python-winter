@@ -7,5 +7,5 @@ while (n <= 0):
     n = int(input("Введите длинну последовательности: "))
 a, b, = 0, 1,
 for i in range(n - 1):
-    a, b = b, (a + b)
+    a, b = b, a + b
 print(a)

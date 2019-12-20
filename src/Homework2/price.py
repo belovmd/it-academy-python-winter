@@ -1,3 +1,4 @@
+
 """1. Напишите программу, которая считает общую цену.
 Вводится M рублей и N копеек цена,
 а также количество L товара Посчитайте общую цену в
@@ -7,41 +8,29 @@ Input: Цена одной вещи 3 рубля 20 копеек, посчита
 Output: Общая цена 9 рублей 60 копеек"""
 # Порядок ввода числовых данных в строке - рубли, копейки, кол-во.
 # Разделитель какой угодно, числа целые, положительные.
-a = (input("Цена одной вещи 3 рубля 20 копеек, посчитать 3 предмета. :"))
+data = (input("Ведите данные: "))
 i = 0
-t = N = M = L = ''
+temp = rubles = coins = quantity = ''
 # Находим численные значения в строке
-while i < len(a):
-    if '0' <= a[i] <= '9':
-        while i < len(a):
-            if '0' <= a[i] <= '9':
-                t += a[i]
+while i < len(data):
+    if '0' <= data[i] <= '9':
+        while i < len(data):
+            if '0' <= data[i] <= '9':
+                temp += data[i]
                 i += 1
             else:
                 i += 1
                 break
-        if N == '' and t != '':
-            N = t
-        elif M == '' and t != '':
-            M = t
-        elif L == '' and t != '':
-            L = t
+        if rubles == '' and temp != '':
+            rubles = temp
+        elif coins == '' and temp != '':
+            coins = temp
+        elif quantity == '' and temp != '':
+            quantity = temp
         else:
             break
-        t = ''
+        temp = ''
     else:
         i += 1
-# Найденные числа делаем численными =)
-N = int(N)
-M = int(M)
-L = int(L)
-# Копейки переводим в сотые и складываем с рублями,
-# умножаем на кол-во
-S = (N + (M * 0.01)) * L
-S = str(S)
-# Результат переводим в строку, и цепляясь за точку
-# получаем численные даннные.
-s = S.find('.')
-Ns = int(S[:s])
-Ms = int(S[s + 1:(s + 3)])
-print('Общая цена %d рублей %d копеек' % (Ns, Ms))
+sum_price = float(int(rubles) + (int(coins) * 0.01)) * int(quantity)
+print('Общая цена %d рублей %d копеек' % (int(sum_price), int((float(sum_price) - int(sum_price)) * 100)))

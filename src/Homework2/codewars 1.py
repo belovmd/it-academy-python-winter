@@ -17,31 +17,5 @@ and highest number is first.l"""
 
 
 def high_and_low(numbers):
-    a = c = ''
-    i = b = t = 0
-    while i < len(numbers):
-        if '0' <= numbers[i] <= '9' or numbers[i] == '-':
-            while i < len(numbers):
-                if '0' <= numbers[i] <= '9' or numbers[i] == '-':
-                    a += numbers[i]
-                    i += 1
-                else:
-                    break
-        else:
-            None
-        t = int(a)
-        if t > b and c == '':
-            b = t
-            c = t
-        elif t > b:
-            b = t
-        elif t < c:
-            c = t
-        else:
-            None
-        i += 1
-        a = ''
-    b = str(b)
-    c = str(c)
-    numbers = b + ' ' + c
-    return numbers
+    list_numbers_int = [int(el) for el in (numbers.split())]
+    return str(max(list_numbers_int)) + ' ' + str(min(list_numbers_int))
