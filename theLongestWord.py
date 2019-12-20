@@ -1,5 +1,5 @@
 user = str(input())
-trash = (".,!?:;'[]()-}{ /\ … – «»")
+trash = (".,!?:;'[]()-}{ / … – «»")
 # заменяем знаки препинания на пробелы
 for el in trash:
     user = user.replace(el, " ")
