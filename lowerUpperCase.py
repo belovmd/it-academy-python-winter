@@ -3,17 +3,13 @@
 # Создадим по аналогии ещё 1 список со строчными буквами и посчитаем их
 
 userIn = input("Введите своё предложение\n")
-# уберём пробелы, чтобы не мешали считать
 userIn = userIn.replace(" ", "")
-# список из прописных англ. букв
-cap = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 countCap = 0
-# проверяем есть ли буква из списка и если есть, то считаем сколько раз есть
-for el in cap:
-    if el in userIn:
-        a = userIn.count(el)
-        countCap += a
-# посчитаем кол-во строчных букв вычетанием из длинны строки
+
+for el in userIn:
+    if el.isupper():
+        countCap += 1
+
 countLow = len(userIn) - countCap
 print("Количество прописных букв - {0}, "
       "количество строчных букв - {1}".format(countCap, countLow))
