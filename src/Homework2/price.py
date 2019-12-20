@@ -1,4 +1,3 @@
-
 """1. Напишите программу, которая считает общую цену.
 Вводится M рублей и N копеек цена,
 а также количество L товара Посчитайте общую цену в
@@ -32,5 +31,6 @@ while i < len(data):
         temp = ''
     else:
         i += 1
-sum_price = float(int(rubles) + (int(coins) * 0.01)) * int(quantity)
-print('Общая цена %d рублей %d копеек' % (int(sum_price), int((float(sum_price) - int(sum_price)) * 100)))
+print('Общая цена %d рублей %d копеек' %
+      ((int(rubles) + (int(coins) // 100)) * int(quantity),
+       (int(coins) % 100) * int(quantity)))
