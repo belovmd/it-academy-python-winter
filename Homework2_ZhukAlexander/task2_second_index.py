@@ -5,7 +5,7 @@
 def second_index(text: str, symbol: str) -> [int, None]:
     if text.count(symbol) >= 2:
         first = text.find(symbol)
-        second = text.find(symbol, first+1)
+        second = text.find(symbol, first + 1)
         return second
     else:
         return None

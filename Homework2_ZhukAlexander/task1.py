@@ -6,7 +6,7 @@ N = int(input("Введите цену в копейках: "))
 L = int(input("Количество предметов: "))
 rub = M * L
 cent = N * L
-if cent > 100:                      # если больше 100 копеек
+if cent > 100:
     rub = rub + (cent // 100)
     cent = cent % 100
 print("Общая цена: ", rub, "рублей", cent, "копеек")

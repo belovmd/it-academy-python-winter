@@ -2,12 +2,12 @@
 # палиндромом
 
 num = int(input("Введите N: "))
-oldNum = num
-newNum = 0
-while oldNum > 0:
-    newNum = newNum * 10 + oldNum % 10
-    oldNum //= 10
-if num == newNum:
+old_num = num
+new_num = 0
+while old_num > 0:
+    newNum = new_num * 10 + old_num % 10
+    old_num //= 10
+if num == new_num:
     print(num, " - палиндром")
 else:
     print(num, " - не палиндром")
