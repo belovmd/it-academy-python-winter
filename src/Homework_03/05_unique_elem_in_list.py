@@ -3,3 +3,10 @@
 которые встречаются в списке только один раз.
 Элементы нужно выводить в том порядке, в котором они встречаются в списке.
 """
+
+my_list = ['1', 1, [1, 2], 'abc', 0, 5, '1', 'zxc', 5, [1, 2], ('abc', 1)]
+my_new_list = []
+for elem in my_list:
+    if my_list.count(elem) == 1:
+        my_new_list.append(elem)
+print(my_new_list)
