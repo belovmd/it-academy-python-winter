@@ -1,14 +1,12 @@
 # Посчитать количество строчных (маленьких) и прописных (больших) букв в
 # введенной строке. Учитывать только английские буквы.
 s = str(input('Введите строку: '))
-b = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-c = 'abcdefghijklmnopqrstuvwxyz'
 n = ''
 m = ''
 for i in s:
-    if i in b:
+    if i.isupper() and 'A' <= i <= 'Z':
         n += i
-    elif i in c:
+    elif i.islower() and 'a' <= i <= 'z':
         m += i
 o = len(n)
 p = len(m)

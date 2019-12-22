@@ -11,11 +11,14 @@
 
 
 def breakchocolate(n, m):
-    s = n * m
-    q = 0
-    if s > 1:
-        for i in range(1, s):
-            q += 1
-        return q
+    square = n * m
+    count = 0
+    if square > 1:
+        for bar in range(1, square):
+            count += 1
+        return count
     else:
         return 0
+
+
+print(breakchocolate(3, 3))

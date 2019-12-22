@@ -3,14 +3,13 @@
 # Подсказки:
 # my_string.split([chars]) возвращает список строк.
 # len(list) - количество элементов в списке
-
-s = " Найти самое, длинное, слово в введенном: предложении."
-n = s.split()
-for i in range(len(n)):
-    n[i] = n[i].strip(".,!?:")
-m = ""
-for i in n:
-    if len(i) > len(m):
-        m = i
-
-print(m)
+import string
+sentence = str(input(" Введите предложение: "))
+lst = sentence.split()
+for i in range(len(lst)):
+    lst[i] = lst[i].strip(string.punctuation)
+word = ""
+for i in lst:
+    if len(i) > len(word):
+        word = i
+print(word)

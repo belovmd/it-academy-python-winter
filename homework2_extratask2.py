@@ -2,23 +2,16 @@
 # налево одинаково).  Число положительное целое, произвольной длины. Задача
 # требует работать только с числами (без конвертации числа в строку)
 
-s = int(input('Введите число: '))
-n = s
-m = 0
-i = 0
-while n // 10 ** i:
-    i += 1
-print(i)
+number = int(input('Введите число: '))
+user_number = number
+rev_number = 0
+while number:
+    low = number % 10
+    number //= 10
+    rev_number = rev_number * 10 + low
+print(rev_number)
 
-for j in range(1, i + 1):
-    print(j)
-    m += (n % (10 ** j)) * (10 ** (i - j))
-    i -= 1
-    n = n - (n % (10 ** j))
-    m = int(m)
-if m == s:
+if rev_number == user_number:
     print('Число палиндром! ')
 else:
     print('Число не палиндром! ')
-
-print(m)
