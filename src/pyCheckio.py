@@ -15,9 +15,6 @@ if __name__ == '__main__':
 # 2. the function should return the right answer, not print it.
 
 def say_hi(name: str, age: int) -> str:
-    """
-        Hi!
-    """
 
     return "Hi. My name is {} and I'm {} years old".format(name, age)
 
@@ -29,11 +26,7 @@ if __name__ == '__main__':
 
 
 def easy_unpack(elements: tuple) -> tuple:
-    """
-        returns a tuple with 3 elements - first, third and second to the last
-    """
-
-
+    
     return (elements[0], elements[2], elements[-2])
 
 
@@ -63,7 +56,7 @@ if __name__ == '__main__':
     assert index_power([1, 3, 10, 100], 3) == 1000000, "Cube"
     assert index_power([0, 1], 0) == 1, "Zero power"
     assert index_power([1, 2], 3) == -1, "IndexError"
-    print("Coding complete? Click 'Check' to review your tests and earn cool rewards!")
+    print("Click 'Check' to review your tests!")
 
 
 def checkio(number: int) -> int:
