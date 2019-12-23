@@ -10,7 +10,6 @@
 чтобы в исходном списке этого элемента не было.
 """
 
-
 my_first_list = [a + b for a in 'ab' for b in 'bcd']
 print(my_first_list)
 print(my_first_list[::2])
