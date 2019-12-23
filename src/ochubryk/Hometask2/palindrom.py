@@ -7,7 +7,7 @@ temp = number
 result = 0
 i = 0
 
-while temp != 0:
+while temp:
     n = int(temp % (10 ** (i + 1)))
     num = int(n / (10 ** i))
     temp = temp - n
