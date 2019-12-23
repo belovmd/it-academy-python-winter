@@ -10,7 +10,7 @@
 pal = int(input('Введите число '))
 spare_pal = pal
 pal_1 = 0
-while pal > 0:
+while pal:
     last_pal = pal % 10
     pal //= 10
     pal_1 *= 10

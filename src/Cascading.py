@@ -16,7 +16,7 @@
 
 
 def each_cons(my_list, n):
-    clone_list = my_list[0::]
+    clone_list = my_list[::]
     piece_list = []
     end_list = []
     for i in my_list:
@@ -24,7 +24,7 @@ def each_cons(my_list, n):
             if len(piece_list) < n:
                 piece_list.append(j)
             else:
-                end_list.append(piece_list[0::])
+                end_list.append(piece_list[::])
                 piece_list.clear()
                 clone_list.remove(i)
                 break
