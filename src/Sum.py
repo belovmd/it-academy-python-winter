@@ -16,13 +16,13 @@ Output: Общая цена 9 рублей 60 копеек
 rub = int(input("Введите количество рублей: "))  # rubles
 kop = int(input("Введите количество копеек: "))  # pennies
 if len(str(kop)) >= 3:  # if len pennies > 2 symbols
-    newrub = rub + kop // (10 ** (len(str(kop)) - 1))
-    newkop = kop % 10 ** (len(str(kop)) - 1)
-    price = float(newrub + newkop / 100)
+    newrub = (rub * 100 + kop) // 100
+    newkop = kop % 100
+    price = newrub + newkop / 100
 else:
     newrub = rub
     newkop = kop
-    price = float(newrub + newkop / 100)
+    price = newrub + newkop / 100
 # quntaty of purchase
 qun = int(input("Введите количество, чтобы расчитать сумму покупки: "))
 sumrub = int(price * qun // 1)  # summ in rubles
