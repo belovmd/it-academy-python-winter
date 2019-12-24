@@ -1,14 +1,11 @@
 # Выведите n-ое число Фибоначчи, используя только временные переменные,
 # циклические операторы и условные операторы. n - вводится
 
-n = int(input('сколько первых чисел Фибоначчи вы хотите увидеть: '))
+number = int(input('сколько первых чисел Фибоначчи вы хотите увидеть: '))
 
-a1 = 0
-a2 = 1
-c = 0
+first = 0
+second = 1
 
-for i in range(n):
-    print(a1)
-    c = a1 + a2
-    a2 = a1
-    a1 = c
+for i in range(number):
+    print(first)
+    first, second = second, first + second

@@ -1,10 +1,16 @@
 from string import Template
-#  Зарегистрируйтесь на одном (или нескольких) из сайтов:
-# https://py.checkio.org/ , https://www.codewars.com,
-#  https://www.hackerrank.com/, https://acmp.ru
-# И решите 1-5 задач уровня Elementary или любых других.
+'''
+#Зарегистрируйтесь на одном (или нескольких) из сайтов:
+https://py.checkio.org/ , https://www.codewars.com,
+https://www.hackerrank.com/, https://acmp.ru
+И решите 1-5 задач уровня Elementary или любых других.
 
 # mission1 on py.checkio.org
+Write a function that will receive 2 numbers as input 
+and it should return the multiplication of these 2 numbers.
+Input: Two arguments. Both are int
+Output: Int.
+'''
 
 
 def mult_two(a, b):
@@ -20,7 +26,13 @@ if __name__ == '__main__':
     assert mult_two(1, 0) == 0
     print("Coding complete? Click 'Check' to earn cool rewards!")
 
-# mission2 on py.checkio.org
+'''
+mission2 on py.checkio.org
+In this mission you should write a function that introduces
+a person with the given parameter's attributes.
+Input: Two arguments. String and positive integer.
+Output: String.
+'''
 
 
 def easy_unpack(elements):
@@ -38,7 +50,14 @@ if __name__ == '__main__':
     assert easy_unpack((6, 3, 7)) == (6, 7, 3)
     print('Done! Go Check!')
 
-# mission3 on py.checkio.org
+'''
+mission3 on py.checkio.org
+Your mission here is to create a function that gets a tuple 
+and returns a tuple with 3 elements:
+the first, third and second to the last for the given array.
+Input: A tuple, at least 3 elements long.
+Output: A tuple.
+'''
 
 
 def say_hi(name, age):

@@ -1,29 +1,27 @@
 # Найти самое длинное слово в введенном предложении.
 # Учтите что в предложении есть знаки препинания.
 
-s1 = str(input('введите предложение: '))
-b = s1.split()  # делим предложение на 'массив' слов
-# (к концу слов всё еще прикреплены знаки препинания)
+new_str = str(input('введите предложение: '))
+str_with_punct = new_str.split()
 
-for i in range(len(b)):  # удаляем у каждого слова
-    # 'прилепленные' знаки препинания
-    b[i] = b[i].strip(",.!*?='")
+for word in range(len(str_with_punct)):
+    str_with_punct[word] = str_with_punct[word].strip("()[],.!*?=-'/{}")
 
-max = b[0]  # временная переменная хранит самое длинное слово на этот момент
-lst = []
+longest_word = str_with_punct[0]  # временная переменная хранит самое длинное слово на этот момент
+list_of_longest_words = []
 
-for i in range(len(b)):  # сравниваем все слова начиная с первого
+for word in range(len(str_with_punct)):  # сравниваем все слова начиная с первого
     #  с 'временно самым длинным'(max)
-    if len(b[i]) > len(max):  # если длиннее,
+    if len(str_with_punct[word]) > len(longest_word):  # если длиннее,
         # то 'временно самое длинное(max)' становится им же
         # и записываем его в наш список самых длинных,
         # предварительно очистив его
-        max = b[i]
-        lst.clear()
-        lst.append(b[i])
-    elif len(b[i]) == len(max):  # если же слова равны, то добавляем в список
-        lst.append(b[i])
+        longest_word = str_with_punct[word]
+        list_of_longest_words.clear()
+        list_of_longest_words.append(str_with_punct[word])
+    elif len(str_with_punct[word]) == len(longest_word):  # если же слова равны, то добавляем в список
+        list_of_longest_words.append(str_with_punct[word])
 
 print('самое длинное(ые) слово(а) в строке: ')
-for i in range(len(lst)):
-    print(lst[i])
+for word in range(len(list_of_longest_words)):
+    print(list_of_longest_words[word])
