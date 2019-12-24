@@ -4,10 +4,7 @@
 
 
 def mutate_string(string, position, character):
-    spis = list(s)
-    spis[int(i)] = c
-    spis = "".join(spis)
-    return(spis)
+    return string[:position] + character + string[position+(len(character)):]
 
 
 # блок ниже был уже в задаче
