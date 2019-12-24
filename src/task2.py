@@ -6,7 +6,7 @@ https://www.hackerrank.com/, https://acmp.ru
 И решите 1-5 задач уровня Elementary или любых других.
 
 # mission1 on py.checkio.org
-Write a function that will receive 2 numbers as input 
+Write a function that will receive 2 numbers as input
 and it should return the multiplication of these 2 numbers.
 Input: Two arguments. Both are int
 Output: Int.
@@ -52,7 +52,7 @@ if __name__ == '__main__':
 
 '''
 mission3 on py.checkio.org
-Your mission here is to create a function that gets a tuple 
+Your mission here is to create a function that gets a tuple
 and returns a tuple with 3 elements:
 the first, third and second to the last for the given array.
 Input: A tuple, at least 3 elements long.

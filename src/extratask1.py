@@ -8,7 +8,8 @@ number = int(input('введите число: '))
 copy_number = number
 new_number = 0
 
-while copy_number > 0:  # раскладываем число по разрядам и собираем в обратном порядке
+while copy_number > 0:  # раскладываем число по разрядам
+    # и собираем в обратном порядке
     new_number = new_number * 10 + (copy_number % 10)
     copy_number = copy_number // 10
 
