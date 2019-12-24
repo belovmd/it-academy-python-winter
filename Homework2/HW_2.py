@@ -1,12 +1,12 @@
 # 1 Напишите программу, которая считает общую цену.
 # Вводится M рублей и N копеек цена, а также количество L товара
 # Посчитайте общую цену в рублях и копейках за L товаров.
-
+import string
 request = 'Цена одной вещи 3 рубля 20 копеек, посчитать 3 предмета.'
-findTheNumbers = request.split(' ')
+find_the_numbers = request.split(' ')
 index = 0
 res = 0
-for substr in findTheNumbers:
+for substr in find_the_numbers:
     if substr.strip('0123456789') == '':
         if index == 0:
             res = int(substr) * 100
@@ -31,7 +31,7 @@ proverb = 'Good, things: come; to those, who wait!'
 words = proverb.split(' ')
 maxWord = ''
 for word in words:
-    word = word.strip(',.?!:;')
+    word = word.strip(string.punctuation)
     if len(maxWord) < len(word):
         maxWord = word
 print("\n%s - is a max word" % maxWord)
@@ -44,7 +44,7 @@ print("\n%s - is a max word" % maxWord)
 string = 'abc cde def'
 res = ''
 for letter in string:
-    if res.find(letter) < 0 and letter != ' ':
+    if letter not in res and letter != ' ':
         res += letter
 print("\n%s" % res)
 
@@ -52,25 +52,24 @@ print("\n%s" % res)
 # и прописных (больших) букв в введенной строке. Учитывать только
 # английские буквы.
 
-string = "\nA BaD wOrKmaN aLwaYs BlaMeS hIs tOOlS"
-print(string)
-string = string.replace(' ', '')
-stringUp = string.upper()
+proverb = "\nA BaD wOrKmaN aLwaYs BlaMeS hIs tOOlS"
+print(proverb)
+proverb = proverb.replace(' ', '')
 count = 0
-for i in range(0, len(string)):
-    if string[i] == stringUp[i]:
+for i in proverb:
+    if i.isupper():
         count += 1
 print('There are {up} capital letters and {low} '
       'lowercase letters in the proverb'
-      .format(up=count, low=(len(string) - count)))
+      .format(up=count, low=(len(proverb) - count)))
 
 # 6 Выведите n-ое число Фибоначчи, используя только временные переменные,
 # циклические операторы и условные операторы. n - вводится.
 
 num = int(input("\nInput a number: "))
-(prev, cur) = (0, 1)
+prev, cur = 0, 1
 for i in range(0, num - 1):
-    (prev, cur) = (cur, prev + cur)
+    prev, cur = cur, prev + cur
 print(cur)
 
 # 7 Определите, является ли число палиндромом (читается слева направо и
@@ -79,19 +78,19 @@ print(cur)
 # Вариант 1
 
 num = int(input("\nInput a number:\n"))
-currentNum = num
+current_num = num
 capacity = 0
-while currentNum % 10:
+while current_num % 10:
     capacity += 1
-    currentNum //= 10
-currentNum = num
+    current_num //= 10
+current_num = num
 for i in range(0, capacity // 2):
-    firstNumber = currentNum // 10 ** (capacity - 1)
-    lastNumber = currentNum % 10
-    currentNum = (currentNum - firstNumber * 10 ** (capacity - 1)) // 10
+    first_number = current_num // 10 ** (capacity - 1)
+    last_number = current_num % 10
+    current_num = (current_num - first_number * 10 ** (capacity - 1)) // 10
     capacity -= 2
 
-    if firstNumber != lastNumber:
+    if first_number != last_number:
         print("%d is not a palindrome." % num)
         break
 else:
