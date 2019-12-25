@@ -17,5 +17,5 @@ def divisors(integer):
 
 class TestDivisors(TestCase):
     def test_divisors(self):
-        Test.assert_equals(divisors(15), [3, 5])
-        Test.assert_equals(divisors(12), [2, 3, 4, 6])
+        assert_equals(divisors(15), [3, 5])
+        assert_equals(divisors(12), [2, 3, 4, 6])
