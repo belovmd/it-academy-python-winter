@@ -1,16 +1,9 @@
-a = input()
-# удаление повторных символов
-# создадим массив с одним элементом - пробелом далее будет ясно, зачем
-words = [' ']
-# проверим каждую буква в веденном предложении
-for i in a:
-    # если такая буква уже есть в массиве, то переходим к началу
-    if i in words:
-        continue
-    # если такой буквы нет, добавляем ее
-    else:
-        words.append(i)
-# т.к. пробел у нас был изначально первым символом,
-# пишем все слово, начиная с индекса 1
-for i in words[1:]:
-    print(i, end='')
+# Вводится строка. Требуется удалить из нее повторяющиеся символы
+# и все пробелы.
+user_input = input('Введите текст: ')
+user_input.lower()
+string = user_input[0]
+for i in range(1, len(user_input)):
+    if user_input[i] not in string and user_input[i] != ' ':
+        string += user_input[i]
+print(string)
