@@ -12,7 +12,8 @@ for num in range(len(lst)):
     elif int(lst[num]) % 5 == 0:
         lst[num] = 'Buzz'
 
-for num_string in range(1, 5):                               # Вывод результата по 25 элементов
-    print(' '.join([lst[num]                                 # в строке
-                    for num in range((num_string - 1) * 25,  # чтобы поместить на экран
+# Вывод результата по 25 элементов в строке чтобы поместить на экран.
+for num_string in range(1, 5):
+    print(' '.join([lst[num]
+                    for num in range((num_string - 1) * 25,
                                      num_string * 25)]))
