@@ -7,7 +7,7 @@ lenn = len(user_input)
 for i in range(lenn):
     if int(user_input[i]) == 0:
         zero += 1
-for i in range (zero):
+for i in range(zero):
     user_input.remove('0')
     user_input.append('0')
 print(user_input)
