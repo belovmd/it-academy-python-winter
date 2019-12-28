@@ -5,7 +5,8 @@
 # Выходные данные - количество пар.
 # Важно: 1 1 1 - это 3 пары, 1 1 1 1 - это 6 пар.
 
-initial_string = [int(number) for number in input('Введите строку из чисел: ').split()]
+initial_string = [int(number) for number
+                  in input('Введите строку из чисел: ').split()]
 summary = 0
 
 for number in initial_string:
