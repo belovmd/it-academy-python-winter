@@ -17,7 +17,7 @@ print(list1)
 list2 = list1[::2]
 print(list2)
 
-list3 = [str(el+1) + 'a' for el in range(4)]
+list3 = [str(el + 1) + 'a' for el in range(4)]
 print(list3)
 
 print(list3.pop(1))
