@@ -13,4 +13,4 @@ list1 = [1, 2, 1, 7, 1, 2, 1, 7, 1, 1, 3,
 for el in set(list1):
     print('Для значения {el} количество пар в списке равно {result}'
           .format(el=el,
-          result=(list1.count(el) * (list1.count(el)-1)) // 2))
+                  result=(list1.count(el) * (list1.count(el) - 1)) // 2))

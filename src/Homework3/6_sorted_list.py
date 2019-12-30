@@ -6,7 +6,7 @@
 
 """
 
-list1 = [2, 3, 7, 0, 0, 2, 5, 0, 0, 4, 6, 0, 2, 0, 8, 4,]
+list1 = [2, 3, 7, 0, 0, 2, 5, 0, 0, 4, 6, 0, 2, 0, 8, 4, ]
 for i in range(list1.count(0)):
     list1.remove(0)
     list1.append(0)
