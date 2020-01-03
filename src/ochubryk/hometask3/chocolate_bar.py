@@ -6,8 +6,23 @@
 # одиночных долек с помощью t разломов
 
 
-def chocolate(n: int, m: int, k: int) -> bool:
-    return (n % k == 0 or m % k == 0) and k < (n * m)
+def chocolate(n: int, m: int, k: int) -> int:
+    if k < (n * m):
+        if n == 1:
+            if k < m - 1:
+                return k
+        elif m == 1:
+            if k < n - 1:
+                return k
+        else:
+            if k % n == 0:
+                return k
+            elif k % n != n - 1:
+                return k + 1
+    elif k == (n * m):
+        return k - 1
+
+    return 0
 
 
 """
@@ -19,36 +34,32 @@ def chocolate(n: int, m: int, k: int) -> bool:
 # Количество долек k равно стороне m и равно стороне n
 # (k== m == n), общее количество долек(m*n) больше количества долек k
 
-assert chocolate(7, 7, 7), "True"
+assert chocolate(7, 7, 7) > 0, "True"
 
 # Количество долек k равно стороне n (k== n),
 # общее количество долек(m*n) больше количества долек k
 
-assert chocolate(6, 12, 6), "True"
+assert chocolate(6, 12, 6) > 0, "True"
 
 # Количество долек k не кратно ни стороне n, ни стороне m,
 # общее количество долек(m*n) больше количества долек k
 
-assert not chocolate(5, 15, 4), "False"
+assert not chocolate(5, 15, 4) > 0, "False"
 
 # Количество долек k не кратно ни стороне n, ни стороне m,
 # общее количество долек(m*n) меньше количества долек k
 
-assert not chocolate(8, 8, 70), "False"
+assert not chocolate(8, 8, 70) > 0, "False"
 """
 При условии, что мы можем разломить шоколадку сколько угодно раз,
 мы получим k одиночных долек, если k < m*n -1
 """
 
 
-def chocolate2(n: int, m: int, k: int) -> bool:
-    return k < m * n - 1
-
-
-assert chocolate2(3, 2, 4), "True"
-assert chocolate2(5, 4, 18), "True"
-assert not chocolate2(2, 2, 3), "False"
-assert not chocolate2(3, 2, 5), "False"
+assert chocolate(3, 2, 4) > 0, "True"
+assert chocolate(5, 4, 18) > 0, "True"
+assert not chocolate(2, 2, 3) > 0, "False"
+assert not chocolate(3, 2, 5) > 0, "False"
 """
 При новом условии, мы можем сделать t разломов и
 должны получить ровно k одиночных долек.
@@ -73,84 +84,65 @@ k % n != n - 1 -> t == k + 1;
 """
 
 
-def chocolate3(n: int, m: int, k: int) -> int:
-    if k < (n * m):
-        if n == 1:
-            if k < m - 1:
-                return k
-        elif m == 1:
-            if k < n - 1:
-                return k
-        else:
-            if k % n == 0:
-                return k
-            elif k % n != n - 1:
-                return k + 1
-    elif k == (n * m):
-        return k - 1
-
-    return 0
-
-
 # Одна из сторон шоколадки четная, вторая сторона четная,
 # количество долек делится нацело на размер стороны
 
-assert chocolate3(6, 6, 12) == 12
+assert chocolate(6, 6, 12) == 12
 
 # Одна из сторон шоколадки нечетная, вторая сторона нечетная,
 # количество долек делится нацело на размер стороны
 
-assert chocolate3(7, 7, 14) == 14
+assert chocolate(7, 7, 14) == 14
 
 # Одна из сторон шоколадки четная, вторая сторона нечетная,
 # количество долек делится нацело на размер стороны
 
-assert chocolate3(5, 7, 10) == 10
+assert chocolate(5, 7, 10) == 10
 
 # Одна из сторон шоколадки четная, вторая сторона четная,
 # количество долек делится на размер стороны с остатком,
 # не равным n - 1
 
-assert chocolate3(6, 4, 9) == 10
+assert chocolate(6, 4, 9) == 10
 
 # Одна из сторон шоколадки нечетная, вторая сторона нечетная,
 # количество долек делится на размер стороны с остатком,
 # не равным n - 1
 
-assert chocolate3(7, 9, 16) == 17
+assert chocolate(7, 9, 16) == 17
 
 # Одна из сторон шоколадки четная, вторая сторона нечетная,
 # количество долек делится на размер стороны с остатком,
 # не равным n - 1
 
-assert chocolate3(7, 8, 19) == 20
+assert chocolate(7, 8, 19) == 20
 
 # Количество одиночных долек, которое мы хотим получить,
 # равно количеству всех долек в шоколадке
 
-assert chocolate3(5, 5, 25) == 24
+assert chocolate(5, 5, 25) == 24
 
 # Количество одиночных долек, которое мы хотим
 # получить, делится на сторону n с остатком 1
 
-assert chocolate3(6, 5, 11) == 0
-assert chocolate3(2, 7, 3) == 0
+assert chocolate(6, 5, 11) == 0
+assert chocolate(2, 7, 3) == 0
 
 # Шоколадка 1*1, разломов не требуется
 
-assert chocolate3(1, 1, 1) == 0
+assert chocolate(1, 1, 1) == 0
 
 # Условия, при которых шоколадка имеет сторону n == 1
 
-assert chocolate3(1, 6, 6) == 5, chocolate3(1, 6, 6)
-assert chocolate3(1, 6, 5) == 0, chocolate3(1, 6, 5)
-assert chocolate3(1, 6, 4) == 4, chocolate3(1, 6, 4)
-assert chocolate3(1, 6, 1) == 1, chocolate3(1, 6, 1)
+assert chocolate(1, 6, 6) == 5, chocolate(1, 6, 6)
+assert chocolate(1, 6, 5) == 0, chocolate(1, 6, 5)
+assert chocolate(1, 6, 4) == 4, chocolate(1, 6, 4)
+assert chocolate(1, 6, 1) == 1, chocolate(1, 6, 1)
 
 # Условия, при которых шоколадка имеет сторону m == 1
 
-assert chocolate3(6, 1, 6) == 5, chocolate3(6, 1, 6)
-assert chocolate3(6, 1, 5) == 0, chocolate3(6, 1, 5)
-assert chocolate3(6, 1, 4) == 4, chocolate3(6, 1, 4)
-assert chocolate3(6, 1, 3) == 3, chocolate3(6, 1, 3)
-assert chocolate3(6, 1, 1) == 1, chocolate3(6, 1, 1)
+assert chocolate(6, 1, 6) == 5, chocolate(6, 1, 6)
+assert chocolate(6, 1, 5) == 0, chocolate(6, 1, 5)
+assert chocolate(6, 1, 4) == 4, chocolate(6, 1, 4)
+assert chocolate(6, 1, 3) == 3, chocolate(6, 1, 3)
+assert chocolate(6, 1, 1) == 1, chocolate(6, 1, 1)
