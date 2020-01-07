@@ -7,7 +7,7 @@ FizzBuzz
 """
 
 for num in range(1, 101):
-    print('Fizz'*(not num % 3)+'Buzz'*(not num % 5) or num)
+    print('Fizz' * (not num % 3) + 'Buzz' * (not num % 5) or num)
 
 # List practice
 """
@@ -15,7 +15,7 @@ for num in range(1, 101):
 ['ab', 'ac', 'ad', 'bb', 'bc', 'bd']
 """
 
-lst1 = [char1+char2 for char1 in 'ab'for char2 in 'bcd']
+lst1 = [char1 + char2 for char1 in 'ab'for char2 in 'bcd']
 print(lst1)
 
 """
@@ -31,7 +31,7 @@ print(lst2)
 ['1a', '2a', '3a', '4a'].
 """
 
-lst3 = [str(index+1)+'a' for index in range(4)]
+lst3 = [str(index+1) + 'a' for index in range(4)]
 print(lst3)
 
 """
@@ -88,10 +88,10 @@ print(len(tuple3))
 
 """
 Дан список чисел. Посчитайте, сколько в нем пар элементов, равных друг другу.
-Считается, что любые два элемента, равные друг другу образуют одну пару, 
+Считается, что любые два элемента, равные друг другу образуют одну пару,
 которую необходимо посчитать.
-Входные данные - строка из чисел, разделенная пробелами. 
-Выходные данные - количество пар. 
+Входные данные - строка из чисел, разделенная пробелами.
+Выходные данные - количество пар.
 Важно: 1 1 1 - это 3 пары, 1 1 1 1 - это 6 пар
 """
 # формула для рассчета количества k одинаковых элементов в массиве n
@@ -102,7 +102,7 @@ str1 = '1 1 2 2 2 3 3 3 3 3 3 3 3 10 5 2 1 10 8'
 dct = {}
 for el in list(str1.split()):
     dct[el] = dct.get(el, 0) + 1
-print(sum(num*(num-1)//2 for num in list(dct.values())))
+print(sum(num * (num-1) // 2 for num in list(dct.values())))
 
 """
 Дан список. Выведите те его элементы, которые встречаются в списке только один
@@ -122,9 +122,9 @@ print([el for el in lst if lst.count(el) == 1])
 
 lst6 = [0, 1, 0, 0, 0, 2, 4, 5, 7, 3, 4, 2, 0, 0, 2, 0, 6, 0]
 ind1 = 0
-while ind1 < len(lst6)-lst6.count(0):
+while ind1 < len(lst6) - lst6.count(0):
     if lst6[ind1] == 0:
-        lst6.insert(len(lst6)-1, lst6.pop(ind1))
+        lst6.insert(len(lst6) - 1, lst6.pop(ind1))
         print(ind1, lst6[ind1])
         continue
     else:
