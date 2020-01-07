@@ -6,7 +6,7 @@ import copy
 а вместо чисел одновременно кратных и 3 и 5 - FizzBuzz
 """
 
-for num in range(100):
+for num in range(1, 101):
     if num % 3 == 0 and num % 5 == 0:
         num = 'FizzBuzz'
     else:
@@ -30,18 +30,18 @@ for num in range(100):
 списке этого элемента не было.
 """
 
-lst_1 = [a + b for a in "ab" for b in ['b', 'c', 'd']]
+lst_1 = [a + b for a in "ab" for b in 'bcd']
 print(lst_1)
 
 lst_2 = lst_1[::2]
 print(lst_2)
 
-lst_3 = [a + b for a in '1234' for b in ['a']]
+lst_3 = [a + 'a' for a in '1234']
 print(lst_3)
 
 print(lst_3.pop(1))
 
-lst_4 = copy.deepcopy(lst_3)
+lst_4 = copy.copy(lst_3)
 lst_4.insert(1, '2a')
 print(lst_4)
 
@@ -65,8 +65,8 @@ print(lst_1, type(lst_1))
 a, b, c = ('a', 2, 'python')
 print(a, b, c)
 
-tu_1 = (123,)
-for el in str(tu_1)[1:4]:
+tu_1 = ((1, 2, 3),)
+for el in tu_1:
     print(el)
 
 # ----------------------------------------------------------
@@ -112,8 +112,4 @@ for el in lst_gen:
 """
 
 lst_ = [1, 2, 0, 5, 0, 7, 8, 9, 0]
-for el in lst_:
-    if el == 0:
-        lst_.remove(el)
-        lst_.append(el)
-print(lst_)
+print([el for el in lst_ if el] + [0] * lst_.count(0))
