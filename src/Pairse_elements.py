@@ -32,5 +32,5 @@ total_sum = 0
 for i in dct:
     sum_pairs = (dct[i] * (dct[i] - 1)) // 2
     total_sum = total_sum + sum_pairs
-    print('для ', i, ' вхождений ', dct[i], ' пар ', sum_pairs)
-print('Всего пар ', total_sum)
+    print('для {} вхождений {} пар {}'.format(i, dct[i], sum_pairs))
+print('Всего пар {}:'.format(total_sum))
