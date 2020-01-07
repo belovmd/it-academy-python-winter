@@ -18,6 +18,7 @@ if pieces > choc_sum:
     sys.exit(0)
 
 #  кратность кол-ва долек длине или ширине
+#  Определите, можно ли таким образом отломить от шоколадки ровно k долек
 if pieces != choc_sum and (pieces % length == 0 or pieces % width == 0):
     print('Можно отломить {pieces} долек одним разломом'.
           format(pieces=pieces))
@@ -25,6 +26,7 @@ else:
     print('Нельзя отломить {pieces} долек одним разломом'.
           format(pieces=pieces))
 
+#  Определите, можно ли отломить от шоколадки ровно k одиночных долек
 if pieces <= choc_sum:
     print('Можно отломить {pieces} одиночных долек'.format(pieces=pieces))
 
@@ -37,6 +39,7 @@ cuts = int(input('Введите количество разломов\n'))
 в остальных случаях кол-во разломов на 1 больше кол-ва кусков
 """
 
+#  Можно ли отломить от шоколадки ровно k одиночных долек с помощью m разломов
 if pieces == choc_sum and cuts >= pieces - 1:
     print('Можно отломить {pieces} долек за {cuts} разломов'.
           format(pieces=pieces, cuts=cuts))

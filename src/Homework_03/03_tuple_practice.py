@@ -7,11 +7,11 @@
 Убедитесь что len() исходного кортежа возвращает 1.
 """
 
-my_first_list = [a for a in 'abc']
+my_first_list = [list_elem for list_elem in 'abc']
 print(my_first_list)
 my_first_tuple = tuple(my_first_list)
 print(my_first_tuple)
-my_second_tuple = tuple(b for b in 'abc')
+my_second_tuple = tuple(tuple_elem for tuple_elem in 'abc')
 print(my_second_tuple)
 my_second_list = list(my_second_tuple)
 print(my_second_list)

@@ -13,7 +13,5 @@ num_pair = 0
 check_list = num_list[:]
 for elem in num_list:
     check_list.remove(elem)
-    for item in check_list:
-        if item == elem:
-            num_pair += 1
+    num_pair += check_list.count(elem)
 print(num_pair)

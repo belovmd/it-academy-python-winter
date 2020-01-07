@@ -13,7 +13,7 @@
 my_first_list = [a + b for a in 'ab' for b in 'bcd']
 print(my_first_list)
 print(my_first_list[::2])
-my_second_list = [str(num) + symb for num in range(1, 5) for symb in 'a']
+my_second_list = [str(num) + 'a' for num in range(1, 5)]
 print(my_second_list)
 print(my_second_list.pop(1))
 print(my_second_list)
