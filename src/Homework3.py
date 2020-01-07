@@ -15,7 +15,7 @@ for num in range(1, 101):
 ['ab', 'ac', 'ad', 'bb', 'bc', 'bd']
 """
 
-lst1 = [char1 + char2 for char1 in 'ab'for char2 in 'bcd']
+lst1 = [char1 + char2 for char1 in 'ab' for char2 in 'bcd']
 print(lst1)
 
 """
@@ -31,7 +31,7 @@ print(lst2)
 ['1a', '2a', '3a', '4a'].
 """
 
-lst3 = [str(index+1) + 'a' for index in range(4)]
+lst3 = [str(index + 1) + 'a' for index in range(4)]
 print(lst3)
 
 """
@@ -102,7 +102,7 @@ str1 = '1 1 2 2 2 3 3 3 3 3 3 3 3 10 5 2 1 10 8'
 dct = {}
 for el in list(str1.split()):
     dct[el] = dct.get(el, 0) + 1
-print(sum(num * (num-1) // 2 for num in list(dct.values())))
+print(sum(num * (num - 1) // 2 for num in list(dct.values())))
 
 """
 Дан список. Выведите те его элементы, которые встречаются в списке только один
