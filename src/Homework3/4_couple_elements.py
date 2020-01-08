@@ -10,7 +10,11 @@
 list1 = [1, 2, 1, 7, 1, 2, 1, 7, 1, 1, 3,
          4, 3, 5, 3, 7, 3, 4, 4, 5, 4, 3,
          ]
-for el in set(list1):
-    print('Для значения {el} количество пар в списке равно {result}'
+dct = {}
+for el in list1:
+    dct.setdefault(el, 0)
+    dct[el] += 1
+for el in dct:
+    print('Для значения {el} количество пар в списке равно {res}'
           .format(el=el,
-                  result=(list1.count(el) * (list1.count(el) - 1)) // 2))
+                  res=(dct[el] * (dct[el] - 1)) // 2))

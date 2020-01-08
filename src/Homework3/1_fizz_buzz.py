@@ -1,4 +1,4 @@
-for num in range(1, 100):
+for num in range(1, 101):
     fizzbuzz = ''
     if num % 3 == 0:
         fizzbuzz += "Fizz"
