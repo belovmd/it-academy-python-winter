@@ -30,7 +30,7 @@
 students = {}
 count_students = int(input('Введите количество школьников: '))
 
-for i in range(1, count_students + 1):
+for i in range(count_students):
     count_languages = int(input('Введите количество'
                                 ' языков школьника: '))
     students[i] = []
@@ -42,8 +42,8 @@ all_know_that = list(set.intersection(*[set(value) for value
 if not all_know_that:
     print('Языков, которые знают все школьники, нет')
 else:
-    print('Количество языков, которые знают все школьники: ' +
-          str(len(all_know_that)))
+    print('Количество языков, которые'
+          ' знают все школьники: ' + str(len(all_know_that)))
     print('Эти языки знают все школьники: ')
     print("\n".join(all_know_that))
 
