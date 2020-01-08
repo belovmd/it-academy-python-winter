@@ -8,4 +8,5 @@ result_list = []
 for elem in lst:
     if lst.count(elem) == 1:
         result_list.append(elem)
-print(' '.join([str(num) for num in result_list]))
+for num in result_list:
+    print(num, end=' ')
