@@ -5,11 +5,32 @@
 # Выходные данные - количество пар.
 # Важно: 1 1 1 - это 3 пары, 1 1 1 1 - это 6 пар.
 
-initial_string = [int(number) for number
-                  in input('Введите строку из чисел: ').split()]
-summary = 0
 
-for number in initial_string:
-    summary += initial_string.count(number) - 1
+def count_couples(lst):
+    couples = 0
 
-print(int(summary / 2))
+    for number in set(lst):
+        couples += sum(range(lst.count(number)))
+
+    return couples
+
+
+def count_couples2(lst):
+    couples = 0
+    tmp = lst[:]
+
+    while tmp:
+        couples += tmp.count(tmp.pop())
+
+    return couples
+
+
+print(count_couples([1, 1, 1]))
+print(count_couples([1, 1, 1, 1]))
+print(count_couples([1, 1, 1, 1, 2, 2, 2, 3]))
+print(count_couples([7, 1, 1, 1, 7]))
+
+print(count_couples2([1, 1, 1]))
+print(count_couples2([1, 1, 1, 1]))
+print(count_couples2([1, 1, 1, 1, 2, 2, 2, 3]))
+print(count_couples2([7, 1, 1, 1, 7]))
