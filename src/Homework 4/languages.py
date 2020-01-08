@@ -59,7 +59,8 @@ disciples = int(input('Сколько учеников? '))
 lang = {}
 lang_fnc(disciples)
 # Перепаковываем словарь в словарь с вложеными списками
-lang_max = {qlt: [] for lng, qlt in lang.items()}
+lang_max = {}
 for lng, qlt in lang.items():
+    lang_max.setdefault(qlt, [])
     lang_max[qlt].append(lng)
 print_lang(disciples, 1)
