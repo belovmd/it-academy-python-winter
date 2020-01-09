@@ -7,7 +7,7 @@
 list1 = list("abc")
 tup1 = tuple(list1)
 tup2 = tuple("abc")
-list2 = tup2
+list2 = list(tup2)
 a, b, c = 'a', 2, 'python'
 tup3 = ("123",)
 for el in tup3[0]:
