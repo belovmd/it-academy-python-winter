@@ -7,7 +7,7 @@
 # так чтобы в исходном списке этого элемента не было.
 list1 = [a + b for a in "ab" for b in "bcd"]
 list2 = list1[::2]
-list3 = [str(a) + "a" for a in range(1, 5)]
+list3 = [str(a) + "a" for a in "1234"]
 list4 = list3.copy()
 list4.append("2a")
 print(list1)  # пункт 1 задания
