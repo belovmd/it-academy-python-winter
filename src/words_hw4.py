@@ -27,7 +27,7 @@ print(solo_words)
 
 # 2) если надо вывести количество всех различных слов
 
-import re
+
 text = input()
 text = set(re.findall(r'\b(\w+)\b', text))
 print(text)
