@@ -110,7 +110,10 @@ print(sum(num * (num - 1) // 2 for num in list(dct.values())))
 """
 
 lst = [1, 'd', 3, 'c', 4, 'd', 5, 3, 3, 4, 9, 10]
-print([el for el in lst if lst.count(el) == 1])
+dct = {}
+for el in lst:
+    dct[el] = dct.get(el, 0) + 1
+print([el for el in lst if dct.get(el) == 1])
 
 """
 Дан список целых чисел. Требуется переместить все ненулевые элементы в левую
@@ -125,7 +128,6 @@ ind1 = 0
 while ind1 < len(lst6) - lst6.count(0):
     if lst6[ind1] == 0:
         lst6.insert(len(lst6) - 1, lst6.pop(ind1))
-        print(ind1, lst6[ind1])
         continue
     else:
         ind1 += 1
