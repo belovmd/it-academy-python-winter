@@ -32,10 +32,11 @@ count_schoolboys = int(input('Введите количество школьни
 lst_languages = {}
 for i in range(1, count_schoolboys + 1):
     languages = set(input('Введите язык для {} школьника: '
-                          .format(i)) for j in range(int(input('Введите количество языков: '))))
+                    .format(i)) for j in
+                    range(int(input('Введите количество языков: '))))
     lst_languages[i] = languages
 copy_lst_languages = copy.deepcopy(lst_languages)
-i = 1
+i
 while i != len(lst_languages):
     lst_languages[1].intersection_update(lst_languages[i + 1])
     copy_lst_languages[1].update(copy_lst_languages[i + 1])
