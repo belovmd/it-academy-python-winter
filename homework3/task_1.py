@@ -4,7 +4,7 @@
 # одновременно кратных и 3 и 5 - FizzBuzz
 
 lst = []
-for element in range(1, 100):
+for element in range(1, 101):
     if element % 3 == 0 and element % 5 != 0:
         element = 'Fizz'
         lst.append(element)
@@ -16,4 +16,5 @@ for element in range(1, 100):
         lst.append(element)
     else:
         lst.append(element)
-print(lst)
+for i in lst:
+    print(i)
