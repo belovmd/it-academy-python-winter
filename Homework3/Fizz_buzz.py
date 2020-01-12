@@ -12,7 +12,7 @@ for i in range(1, 101):
     if i % 5 == 0:
         current += 'Buzz'
     if current == '':
-        current = str(i)
+        current = i
     print(current, end=' ')
     line_count += 1
     if line_count == 20:

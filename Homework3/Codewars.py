@@ -7,14 +7,12 @@
 # "("               =>  false
 # "(())((()())())"  =>  true
 
-string = '(())((()())())'
-count = 0
+string = '(({)){}((}()[[]()])())'
+parentheses = list('(){}[]')
+dct = {}
 for char in string:
-    if char == '(':
-        count += 1
-    if char == ')':
-        count -= 1
-    if count < 0:
-        print('False')
-        exit()
-print('True' if count == 0 else 'False')
+    if char in parentheses:
+        index = parentheses.index(char)
+        ch = parentheses[index - 1] if index % 2 else char
+        dct[ch] = dct.get(ch, 0) + (1 if not index % 2 else -1)
+print('True' if sum(el for el in dct.values()) == 0 else 'False')
