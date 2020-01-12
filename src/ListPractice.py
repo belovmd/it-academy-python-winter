@@ -11,12 +11,12 @@ List practice
 списке этого элемента не было.
 """
 
-lst_1 = [str(el_1 + el_2) for el_1 in "ab" for el_2 in "bcd"]
+lst_1 = [el_1 + el_2 for el_1 in "ab" for el_2 in "bcd"]
 print(lst_1)
 
 print(lst_1[::2])
 
-lst_2 = [str(el_1 + el_2) for el_1 in "1234" for el_2 in "a"]
+lst_2 = [el_1 + el_2 for el_1 in "1234" for el_2 in "a"]
 print(lst_2)
 
 print(lst_2.pop(1))

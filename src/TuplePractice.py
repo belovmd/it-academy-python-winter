@@ -13,11 +13,6 @@ print(tpl_1, type(tpl_1))
 
 a, b, c = "a", 2, "python"
 
-tpl_2 = int(input("Введите количество элементов: ")),
-for i in range(tpl_2[0]):
-    print(i + 1, end="")
-    if i + 1 in range(tpl_2[0]):
-        print(", ", end="")
-    else:
-        print("\n")
-print("Длина кортежа равна ", len(tpl_2))
+tpl_2 = ([1, 2, 3]),
+for i in tpl_2[0]:
+    print(i, "Длина кортежа равна ", len(tpl_2))
