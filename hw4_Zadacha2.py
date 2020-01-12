@@ -9,6 +9,6 @@ num_req = int(input())
 list_request = []
 
 for i in range(num_req):
-    list2.append(input())
+    list_request.append(input())
 for element in list_request:
     print(catalog1.get(element))
