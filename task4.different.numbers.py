@@ -7,6 +7,6 @@ b = set(input().split())
 count = 0
 d = []
 for i in a:
-	if i not in b:
-		d.append(i)
+    if i not in b:
+        d.append(i)
 print(len(d))
