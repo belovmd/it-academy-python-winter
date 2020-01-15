@@ -5,7 +5,7 @@
 # а вместо чисел одновременно кратных и 3 и 5 - FizzBuzz
 
 for number in range(1, 101):
-    if number % 3 == 0 and number % 5 == 0:
+    if number % 15 == 0:
         print('Fizzbuzz')
     elif number % 3 == 0:
         print('Fizz')
