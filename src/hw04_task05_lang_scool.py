@@ -22,9 +22,12 @@ Italian
 French
 
 ---Выходные данные
-В первой строке выведите количество языков, которые знают все школьники.
-Начиная со второй строки - список таких языков. Затем - количество языков,
-которые знает хотя бы один школьник, на следующих строках - список таких языков.
+В первой строке выведите количество языков,
+которые знают все школьники.
+Начиная со второй строки - список таких языков.
+Затем - количество языков,
+которые знает хотя бы один школьник,
+на следующих строках - список таких языков.
 """
 
 
@@ -35,18 +38,20 @@ for numm in range(count_schoolchilds):
     schoolchilds[numm] = []
     for numm2 in range(count_languages):
         schoolchilds[numm].append(input('язык школьника: '))
-
 for sets in schoolchilds.values():
-    for_all_schoolchilds = set.intersection(*[set(leng) for leng in schoolchilds.values()])
-    for_any_schoolchilds = set.union(*[set(leng) for leng in schoolchilds.values()])
-
+    for_all_schoolchilds = set.intersection(*[set(leng) for leng
+                                              in schoolchilds.values()])
+    for_any_schoolchilds = set.union(*[set(leng) for leng
+                                       in schoolchilds.values()])
 if not for_all_schoolchilds:
     print('Нет общих языков')
 else:
-    print('Количество языков, которые знают все школьники:', len(for_all_schoolchilds))
+    print('Количество языков, которые знают '
+          'все школьники:', len(for_all_schoolchilds))
     for leng01 in for_all_schoolchilds:
         print(leng01)
 if for_any_schoolchilds:
-    print('Количество языков, которые знает хотя бы один школьник:', len(for_any_schoolchilds))
+    print('Количество языков, которые знает хотя '
+          'бы один школьник:', len(for_any_schoolchilds))
     for leng02 in for_any_schoolchilds:
         print(leng02)
