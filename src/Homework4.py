@@ -46,12 +46,13 @@ print(len(inp_str), inp_str)
 городов этой страны. В следующей строке записано число M,
 далее идут M запросов — названия каких-то M городов, перечисленных выше.
 Выходные данные
-Для каждого из запроса выведите название страны, в котором находится данный город.
+Для каждого из запроса выведите название страны, в котором находится
+данный город.
 Примеры
 Входные данные
 2
 Russia Moscow Petersburg Novgorod Kaluga
-Ukraine Kiev Donetsk Odessa    
+Ukraine Kiev Donetsk Odessa
 3
 Odessa
 Moscow
@@ -98,12 +99,12 @@ French
 Выходные данные
 В первой строке выведите количество языков, которые знают все школьники.
 Начиная со второй строки - список таких языков. Затем - количество языков,
-которые знает хотя бы один школьник, на следующих строках - список таких языков.
+которые знает хотя бы один школьник, на следующих строках -
+список таких языков.
 """
-students = [{input('lang: ') for j in range(int(input('count lang: ')))}
-            for i in range(int(input('students: ')))]
-known_everyone, known_someone = set.intersection(*students), \
-                                set.union(*students)
+stud = [{input('lang: ') for j in range(int(input('count lang: ')))}
+            for i in range(int(input('stud: ')))]
+known_everyone, known_someone = set.intersection(*stud), set.union(*stud)
 print(len(known_everyone), *sorted(known_everyone), sep='\n')
 print(len(known_someone), *sorted(known_someone), sep='\n')
 
