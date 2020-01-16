@@ -17,7 +17,7 @@ def alphabet_position(text):
     return ch[0:len(ch) - 1]
 
 
-class TestAlphabetPosition(TestCase):
+"""class TestAlphabetPosition(TestCase):
     def test_alphabet_position(self):
         from random import randint
         assert_equals(alphabet_position("The sunset sets at twelve"
@@ -33,3 +33,4 @@ class TestAlphabetPosition(TestCase):
         for item in range(10):
             number_test += str(randint(1, 9))
         assert_equals(alphabet_position(number_test), "")
+"""
