@@ -102,8 +102,10 @@ French
 которые знает хотя бы один школьник, на следующих строках -
 список таких языков.
 """
-stud = [{input('lang: ') for j in range(int(input('count lang: ')))}
-            for i in range(int(input('stud: ')))]
+stud = [
+        {input('lang: ')
+        for j in range(int(input('count lang: ')))}
+        for i in range(int(input('stud: ')))]
 known_everyone, known_someone = set.intersection(*stud), set.union(*stud)
 print(len(known_everyone), *sorted(known_everyone), sep='\n')
 print(len(known_someone), *sorted(known_someone), sep='\n')
