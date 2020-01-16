@@ -5,7 +5,7 @@ If anything in the text isn't a letter, ignore it and don't return it.
 
 "a" = 1, "b" = 2, etc.
 """
-from unittest import TestCase
+# from unittest import TestCase
 
 
 def alphabet_position(text):
