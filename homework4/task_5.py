@@ -33,8 +33,8 @@ o = set()
 
 n = int(input("Enter quantity of pupils: "))
 for pupil in range(1, n + 1):
-    quantity_languages = int(input('Enter, how much languages knows  '
-                                   + str(pupil) + ' pupil: '))
+    quantity_languages = int(input('Enter, how much languages '
+                                   'knows ' + str(pupil) + ' pupil: '))
     for i in range(1, quantity_languages + 1):
         i = str(input('His ' + str(i) + ' language is : '))
         languges.append(i)

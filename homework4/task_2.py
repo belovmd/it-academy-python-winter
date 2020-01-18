@@ -25,7 +25,7 @@ n = int(input("Enter quantity of countries: "))
 list_countries = {}
 list_cities = []
 
-for i in range(1, n+1):
+for i in range(1, n + 1):
     i = str(input('Enter ' + str(i) + ' list of country and cities: '))
     i = i.split()
     list_countries[i[0]] = {a for a in i[1:]}
@@ -33,7 +33,7 @@ for i in range(1, n+1):
     # print(list_countries)
 
 m = int(input("Enter how many cities do you want find ? "))
-for i in range(1, m+1):
+for i in range(1, m + 1):
     i = str(input('Enter ' + str(i) + '  city: '))
     list_cities.append(i)
 # print(list_cities)
