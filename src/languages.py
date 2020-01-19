@@ -9,13 +9,12 @@ child_languages = {}
 # итерация по каждому школьнику
 for child in range(school_child_count):
     child_languages[child] = []
-    language_count = int(input("Enter the number languages for " +
-                               str(child + 1) + " schoolchild:"))
+    language_count = int(input(
+        "Enter the number languages for " + str(child + 1) + " schoolchild:"))
     # создание списка языков, которые знает школьник
     for language in range(language_count):
-        child_languages[child].append(input("Enter the " +
-                                            str(language + 1) +
-                                            " language:"))
+        child_languages[child].append(
+            input("Enter the " + str(language + 1) + " language:"))
 # создаем список языков, которые знают все школьники
 common_languages = set()
 # по аганлогии, создаем список языков, которые знает хотя бы один школьник
