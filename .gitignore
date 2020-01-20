@@ -107,3 +107,6 @@ venv.bak/
 .idea/
 .tox/
 .gitignore/
+
+#for home_work_05
+*.list
