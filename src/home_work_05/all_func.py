@@ -2,6 +2,7 @@
 Module contains functions for homework 5
 """
 
+
 def euklid(first_num=None, second_num=None):
     """ Function that finds the greatest common divisor (GCD) of two numbers
 
