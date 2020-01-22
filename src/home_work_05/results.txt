@@ -11,10 +11,10 @@ Function name: diff_words
 Result: 7
 
 Function name: languages
-Result: ({'rus'}, {'eng', 'rus', 'jap', 'ger', 'ital'})
+Result: ({'rus'}, {'ger', 'eng', 'jap', 'ital', 'rus'})
 
 Function name: languages
-Result: ({'eng', 'rus'}, {'eng', 'fra', 'ger', 'jap', 'rus'})
+Result: ({'eng', 'rus'}, {'ger', 'eng', 'jap', 'fra', 'rus'})
 
 Function name: pair_elem
 Result: 9

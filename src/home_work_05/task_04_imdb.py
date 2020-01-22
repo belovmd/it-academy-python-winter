@@ -50,11 +50,11 @@ def make_ratings_file(source_string):
 
 def make_years_file(source_string):
     line_list = []
+    for line in source_string.split('\n'):
+        line_list.append(line[line.find('(') + 1:line.find(')')])
+    line_list.sort()
+    years_dct = {elem: line_list.count(elem) for elem in line_list}
     with open(os.path.join('data5', 'years.txt'), 'w+') as years:
-        for line in source_string.split('\n'):
-            line_list.append(line[line.find('(') + 1:line.find(')')])
-        line_list.sort()
-        years_dct = {elem: line_list.count(elem) for elem in line_list}
         for elem in years_dct:
             years.write(elem + '\t' + '|' * years_dct[elem] + '\n')
     return
