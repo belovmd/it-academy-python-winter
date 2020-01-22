@@ -40,4 +40,4 @@ lst_2 = []
 for i in range(number_cities):
     lst_2.append(input())
 for el in range(len(lst_2)):
-    print(dct_1.get(lst_2[el]))
+    print(dct_1.get(lst_2[el], "Такого города нет в списке"))
