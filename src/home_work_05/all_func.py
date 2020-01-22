@@ -1,17 +1,4 @@
-"""
-Module contains functions for homework 5
-"""
-
-
 def euklid(first_num=None, second_num=None):
-    """ Function that finds the greatest common divisor (GCD) of two numbers
-
-        Args:
-            first_num, second_num: integers
-
-        Returns:
-            greatest common divisor
-    """
     if first_num is None:
         first_num = int(input('Введите число\n'))
     if second_num is None:
@@ -25,14 +12,6 @@ def euklid(first_num=None, second_num=None):
 
 
 def pair_elem(num_string=None):
-    """ Function that finds count of pairs of identical numbers
-
-            Args:
-                num_string: string with numbers separated by spaces
-
-            Returns:
-                pairs count
-    """
     if num_string is None:
         num_string = input('Введите строку чисел через пробел\n')
     num_list = num_string.split()
@@ -45,15 +24,6 @@ def pair_elem(num_string=None):
 
 
 def diff_words(input_string=None):
-    """Function finds different words in input string
-
-        Args:
-            input_string: string with words separated by
-                          spaces and end of line symbols
-
-        Returns:
-            different words count
-    """
     if input_string is None:
         input_string = input('Введите строку\n')
     while input_string.find('  ') != -1 or input_string.find('\n') != -1:
@@ -63,14 +33,6 @@ def diff_words(input_string=None):
 
 
 def languages(*lang_list):
-    """Function finds what languages known to all students and at least to one
-
-            Args:
-                *lang_list: strings with languages
-
-            Returns:
-                sets of languages
-    """
     if lang_list == ():
         langs = [{input('Введите язык\n') for _ in
                   range(int(input('Введите кол-во языков\n')))}
