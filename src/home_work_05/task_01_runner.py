@@ -11,7 +11,7 @@ import all_func
 
 def runner(*args):
     if args is ():
-        func_list = [elem for elem in dir(all_func) if not elem.startswith('__')]
+        func_list = [el for el in dir(all_func) if not el.startswith('__')]
     else:
         func_list = [*args]
 
