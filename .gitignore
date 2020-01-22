@@ -109,4 +109,4 @@ venv.bak/
 .gitignore/
 
 #for home_work_05
-*.list
+ratings.list

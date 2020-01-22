@@ -1,0 +1,24 @@
+Function name: euklid
+Result: 6
+
+Function name: euklid
+Result: 18
+
+Function name: diff_words
+Result: 5
+
+Function name: diff_words
+Result: 7
+
+Function name: languages
+Result: ({'rus'}, {'eng', 'rus', 'jap', 'ger', 'ital'})
+
+Function name: languages
+Result: ({'eng', 'rus'}, {'eng', 'fra', 'ger', 'jap', 'rus'})
+
+Function name: pair_elem
+Result: 9
+
+Function name: pair_elem
+Result: 4
+

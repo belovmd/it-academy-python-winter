@@ -8,19 +8,19 @@ import all_func
 
 def result_decorator(some_func):
     def wrapper(*args, **kwargs):
-        result = some_func(*args, **kwargs)
         with open('results.txt', 'a') as res_file:
+            res = some_func(*args, **kwargs)
             res_file.write('Function name: {}\n'.format(some_func.__name__))
-            res_file.write('Result: {}\n\n'.format(some_func(*args, **kwargs)))
-        return result
+            res_file.write('Result: {}\n\n'.format(res))
+        return res
     return wrapper
 
 
 euklid = result_decorator(all_func.euklid)
 diff_words = result_decorator(all_func.diff_words)
-cities = result_decorator(all_func.cities)
-what_country = result_decorator(all_func.what_country)
 languages = result_decorator(all_func.languages)
+pair_elem = result_decorator(all_func.pair_elem)
+
 
 euklid(30, 18)
 euklid(360, 126)
@@ -28,10 +28,8 @@ euklid(360, 126)
 diff_words('aaa \n\nbbb\n aaa   cc  vvv\nbbb      ddd')
 diff_words('ff a \n\nb b\n aaa vvv  ed  vvv\n \n  \nbbb      aaa')
 
-dct = cities('Russia Moscow Petersburg Novgorod Kaluga', 'Ukraine Kiev Donetsk Odessa')
-what_country(dct, 'Odessa', 'Moscow', 'Minsk')
-dct = cities('Belarus Minsk Brest Gomel Grodno')
-what_country(dct, 'Odessa', 'Moscow', 'Minsk')
-
 languages('rus, eng', 'rus, ger', 'rus, jap, ital')
 languages('rus, eng, fra', 'rus, ger, eng', 'rus, jap, eng')
+
+pair_elem('1 1 1 2 2 2 1')
+pair_elem('5 5 5 7 7')

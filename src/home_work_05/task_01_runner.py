@@ -10,11 +10,21 @@ import all_func
 
 
 def runner(*args):
-    func_list = ['all_func.' + elem for elem in dir(all_func) if '__' not in elem]
-    print(func_list)
+    if args is ():
+        func_list = [elem for elem in dir(all_func) if not elem.startswith('__')]
+    else:
+        func_list = [*args]
+
     for func in func_list:
-        print(func)
+        try:
+            func = getattr(all_func, func)
+            print(func())
+        except AttributeError:
+            print('No such func', func)
     return
 
 
 runner()
+runner('euklid')
+runner('pair_elem')
+runner('languages', 'diff_words')

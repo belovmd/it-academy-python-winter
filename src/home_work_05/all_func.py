@@ -19,7 +19,27 @@ def euklid(first_num=None, second_num=None):
     return first_num + second_num
 
 
-def diff_words(input_string):
+def pair_elem(num_string=None):
+    """ Function that finds count of pairs of identical numbers
+
+            Args:
+                num_string: string with numbers separated by spaces
+
+            Returns:
+                pairs count
+    """
+    if num_string is None:
+        num_string = input('Введите строку чисел через пробел\n')
+    num_list = num_string.split()
+    num_pair = 0
+    check_list = num_list[:]
+    for elem in num_list:
+        check_list.remove(elem)
+        num_pair += check_list.count(elem)
+    return num_pair
+
+
+def diff_words(input_string=None):
     """Function finds different words in input string
 
         Args:
@@ -29,48 +49,36 @@ def diff_words(input_string):
         Returns:
             different words count
     """
+    if input_string is None:
+        input_string = input('Введите строку\n')
     while input_string.find('  ') != -1 or input_string.find('\n') != -1:
         input_string = input_string.replace('\n', ' ')
         input_string = input_string.replace('  ', ' ')
     return len(set(input_string.split()))
 
 
-"""
-Дан список стран и городов каждой страны.
-Затем даны названия городов.
-Для каждого города укажите, в какой стране он находится.
-Russia Moscow Petersburg Novgorod Kaluga
-Ukraine Kiev Donetsk Odessa
-"""
-
-
-def cities(*country_cities_list):
-    cities_dct = {}
-    for lst in country_cities_list:
-        country, *city_list = lst.split()
-        cities_dct.update({city: country for city in city_list})
-    return cities_dct
-
-
-def what_country(cities_dct, *cities_list):
-    return tuple(cities_dct.get(city, 'Города нет в списке') for city in cities_list)
-
-
-"""
-Каждый из N школьников некоторой школы знает Mi языков.
-Определите, какие языки знают все школьники и языки,
-которые знает хотя бы один из школьников.
-"""
-
-
 def languages(*lang_list):
-    langs = []
-    language = set()
-    for lang in lang_list:
-        lang_list = lang.split(', ')
-        language.update(lang_list)
-        langs.append(language.copy())
-        language.clear()
+    """Function finds what languages known to all students and at least to one
+
+            Args:
+                *lang_list: strings with languages
+
+            Returns:
+                sets of languages
+    """
+    if lang_list == ():
+        langs = [{input('Введите язык\n') for _ in
+                  range(int(input('Введите кол-во языков\n')))}
+                 for _ in range(int(input('Введите кол-во школьников\n')))]
+    else:
+        langs = []
+        language = set()
+        for lang in lang_list:
+            lang_list = lang.split(', ')
+            language.update(lang_list)
+            langs.append(language.copy())
+            language.clear()
+
     lang_all = set.intersection(*langs)
     lang_one = set.union(*langs)
-    return 'Known to all: {}'.format(lang_all), 'Known to any: {}'.format(lang_one)
+    return lang_all, lang_one

@@ -42,7 +42,7 @@ def max_divisor(number):
             divisor = curr_divisor
         else:
             break
-    return 'Max divisor: {}'.format(divisor)
+    return 'Max divisor for number {} is {}'.format(number, divisor)
 
 
 print(max_divisor(10))
