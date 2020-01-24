@@ -10,4 +10,3 @@ import re
 # Это регулярное срезает пробельные символы и знаки препинания.
 data = set(re.findall(r"\w+", input("Введи строку: ").lower()))
 print(len(data))
-print(data)
