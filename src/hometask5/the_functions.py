@@ -29,7 +29,7 @@ def count_countries():
 def look_back():
     n = int(input('Введите n: '))
     m = int(input('Введите m: '))
-    
+
     while n != m and n != 0 and m != 0:
         if n > m:
             n = n - m

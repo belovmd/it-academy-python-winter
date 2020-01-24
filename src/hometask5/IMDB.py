@@ -47,7 +47,7 @@ def get_movie_names(movies):
     names = []
 
     for line in movies:
-        line = re.sub('\s+', ' ', line)
+        line = re.sub(r'\s+', ' ', line)
         name = line.split(' ', 3)[-1]
         name = name[:name.rfind('(') - 1]
 
@@ -60,7 +60,7 @@ def get_bar_chart_by_rating(movies):
     chart = {}
 
     for line in movies:
-        line = re.sub('\s+', ' ', line)
+        line = re.sub(r'\s+', ' ', line)
         rating = line.split(' ')[2]
         chart[rating] = chart.get(rating, 0) + 1
 
