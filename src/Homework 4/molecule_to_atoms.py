@@ -28,7 +28,7 @@ https://www.codewars.com/kata/52f831fa9d332c6591000511/train/python
 import re
 
 
-def parse_molecule (formula):
+def parse_molecule(formula):
     print(formula)
     # Меняем все скобки на круглые
     formula = re.sub(r'([[{])', r'(', formula)
