@@ -31,7 +31,7 @@ def longest(s):
     return s[start:end]
 
 
-# tests
+"""
 Test.describe('Basic Tests')
 
 Test.it('Sample Cases')
@@ -44,7 +44,7 @@ Test.assert_equals(longest('z'), 'z')
 Test.assert_equals(longest('zyba'), 'z')
 
 
-"""def rand_tests():
+def rand_tests():
     import re
     from random import randint, choice
 
