@@ -71,7 +71,7 @@ def languages(*lang_list):
         Returns:
             sets of languages
     """
-    if lang_list == ():
+    if not lang_list:
         langs = [{input('Введите язык\n') for _ in
                   range(int(input('Введите кол-во языков\n')))}
                  for _ in range(int(input('Введите кол-во школьников\n')))]

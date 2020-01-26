@@ -27,36 +27,34 @@ def imdb():
     return
 
 
-def make_top250_file(source_string):
+def make_top250_file(source_data):
     with open(os.path.join('data5', 'top250_movies.txt'), 'w+') as top250:
-        for line in source_string.split('\n'):
-            clear_line = line[31:(line.find('(') - 1)]
-            clear_line = clear_line.lstrip(' ')
+        for line in source_data.split('\n'):
+            clear_line = line[31:line.find('(') - 1].lstrip(' ')
             top250.write(clear_line + '\n')
     return
 
 
-def make_ratings_file(source_string):
-    line_list = []
-    for line in source_string.split('\n'):
-        line_list.append(line[26:31].strip(' '))
+def make_ratings_file(source_data):
+    line_list = [line[26:31].strip(' ') for line in source_data.split('\n')]
     line_list.sort(reverse=True)
-    ratings_dct = {elem: line_list.count(elem) for elem in line_list}
+    rat_dct = {elem: line_list.count(elem) for elem in line_list}
     with open(os.path.join('data5', 'ratings.txt'), 'w+') as rate:
-        for elem in ratings_dct:
-            rate.write(elem + '\t' + '|' * ratings_dct[elem] + '\n')
+        for elem in rat_dct:
+            rate.write('{}\t{} {}\n'.format(elem, '|' * rat_dct[elem],
+                                            str(rat_dct[elem])))
     return
 
 
-def make_years_file(source_string):
-    line_list = []
-    for line in source_string.split('\n'):
-        line_list.append(line[line.find('(') + 1:line.find(')')])
+def make_years_file(source_data):
+    line_list = [line[line.find('(') + 1:line.find(')')]
+                 for line in source_data.split('\n')]
     line_list.sort()
     years_dct = {elem: line_list.count(elem) for elem in line_list}
     with open(os.path.join('data5', 'years.txt'), 'w+') as years:
         for elem in years_dct:
-            years.write(elem + '\t' + '|' * years_dct[elem] + '\n')
+            years.write('{}\t{} {}\n'.format(elem, '|' * years_dct[elem],
+                                             str(years_dct[elem])))
     return
 
 

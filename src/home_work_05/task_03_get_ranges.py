@@ -23,8 +23,7 @@ def get_ranges(int_list):
             elem.insert(1, '-')
         sub_list.append(''.join(str(el) for el in elem))
 
-    range_str = ','.join(sub_list)
-    return range_str
+    return ','.join(sub_list)
 
 
 print(get_ranges([0, 1, 2, 3, 4, 7, 8, 10]))

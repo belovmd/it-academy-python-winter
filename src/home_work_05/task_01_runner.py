@@ -10,7 +10,7 @@ import all_func
 
 
 def runner(*args):
-    if args is ():
+    if not args:
         func_list = [el for el in dir(all_func) if not el.startswith('__')]
     else:
         func_list = [*args]
