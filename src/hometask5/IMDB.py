@@ -19,7 +19,8 @@ def top_movies(count):
                 if found_top_n_header:
                     if not count:
                         break
-                    movies.append(line.strip())
+                    line = re.sub(r'\s+', ' ', line.strip())
+                    movies.append(line)
                     count -= 1
 
                 if line.strip() == 'New  Distribution  Votes  Rank  Title':
@@ -39,15 +40,14 @@ def list_saver(filename, lst):
 
 def bar_chart_saver(filename, chart):
     with open(filename, 'w') as file:
-        for rating, value in chart.items():
-            file.write(rating + '\t\t' + '*' * value + '\n')
+        for key, value in chart.items():
+            file.write(key + '\t\t' + '*' * value + '\n')
 
 
 def get_movie_names(movies):
     names = []
 
     for line in movies:
-        line = re.sub(r'\s+', ' ', line)
         name = line.split(' ', 3)[-1]
         name = name[:name.rfind('(') - 1]
 
@@ -60,7 +60,6 @@ def get_bar_chart_by_rating(movies):
     chart = {}
 
     for line in movies:
-        line = re.sub(r'\s+', ' ', line)
         rating = line.split(' ')[2]
         chart[rating] = chart.get(rating, 0) + 1
 

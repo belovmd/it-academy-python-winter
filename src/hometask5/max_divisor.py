@@ -15,8 +15,8 @@ def max_divisor(num):
             power -= 1
             max_div = 2 ** power
             continue
-    else:
-        return max_div
+
+    return max_div
 
 
 assert max_divisor(10) == 2
