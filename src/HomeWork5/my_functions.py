@@ -44,5 +44,3 @@ def words():
     text = input('Введите предложение: ')
     text = set(re.findall(r'\b(\w+)\b', text))
     return len(text)
-
-
