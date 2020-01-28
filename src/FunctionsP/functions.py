@@ -7,16 +7,23 @@ runner(‘func’, ‘func1’...) - вызывает все переданны�
 """
 
 
-def FizzBuzz(a=int(input()), b=int(input())):
+def FizzBuzz(a=1, b=21):
+    total = ""
     for i in range(a, b):
-        if i % 15 == 0:
-            print("FizzBuzz", end=" ")
-        elif i % 3 == 0:
-            print("Fizz", end=" ")
+        if i == b - 1:
+            total = total + str(i)
+        elif i % 15 == 0:
+            i = "FizzBuzz"
+            total = total + str(i) + " "
         elif i % 5 == 0:
-            print("Buzz", end=" ")
+            i = "Buzz"
+            total = total + str(i) + " "
+        elif i % 3 == 0:
+            i = "Fizz"
+            total = total + str(i) + " "
         else:
-            print(i, end=" ")
+            total = total + str(i) + " "
+    return total
 
 
 """
@@ -25,11 +32,11 @@ def FizzBuzz(a=int(input()), b=int(input())):
 """
 
 
-def InCommon(lst_1=[int(el) for el in input().split()],
-             lst_2=[int(el) for el in input().split()]):
+def InCommon(lst_1=[1, 2, 3], lst_2=[2, 3, 4]):
     set_1 = set(lst_1)
     set_2 = set(lst_2)
-    print(len(set_1 & set_2))
+    output = len(set_1 & set_2)
+    return output
 
 
 """
@@ -38,7 +45,10 @@ def InCommon(lst_1=[int(el) for el in input().split()],
 """
 
 
-def Unique(a=str(input()).replace(" ", "")):
-    while a:
-        print(a[0], end="")
-        a = a.replace(a[0], "")
+def Unique(str_1="qwe qwe rty"):
+    str_1 = str_1.replace(" ", "")
+    new_str = ""
+    while str_1:
+        new_str = new_str + str_1[0]
+        str_1 = str_1.replace(str_1[0], "")
+    return new_str
