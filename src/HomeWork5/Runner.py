@@ -22,6 +22,6 @@ def runner(*functions):
 
 
 runner()
-runner('see_back')
+runner('see_back', 'words')
 runner('words')
 runner('order_list')
