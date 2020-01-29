@@ -6,6 +6,7 @@ runner(‘func_name’) – вызывается только функцию fun
 runner(‘func’, ‘func1’...) - вызывает все переданные функции
 """
 
+import inspect
 import all_func
 
 
@@ -18,7 +19,9 @@ def runner(*args):
     for func in func_list:
         try:
             func = getattr(all_func, func)
-            print(func())
+            if inspect.isfunction(func):
+                print('Running function:', func.__name__)
+                print('Result', func())
         except AttributeError:
             print('No such func', func)
     return

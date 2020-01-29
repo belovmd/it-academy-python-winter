@@ -77,12 +77,8 @@ def languages(*lang_list):
                  for _ in range(int(input('Введите кол-во школьников\n')))]
     else:
         langs = []
-        language = set()
         for lang in lang_list:
-            lang_list = lang.split(', ')
-            language.update(lang_list)
-            langs.append(language.copy())
-            language.clear()
+            langs.append(set(lang.split(', ')))
 
     lang_all = set.intersection(*langs)
     lang_one = set.union(*langs)

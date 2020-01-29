@@ -8,8 +8,8 @@ import all_func
 
 def result_decorator(some_func):
     def wrapper(*args, **kwargs):
+        res = some_func(*args, **kwargs)
         with open('results.txt', 'a') as res_file:
-            res = some_func(*args, **kwargs)
             res_file.write('Function name: {}\n'.format(some_func.__name__))
             res_file.write('Result: {}\n\n'.format(res))
         return res
