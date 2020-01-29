@@ -6,8 +6,8 @@ runner(‘func_name’) – вызывается только функцию fun
 runner(‘func’, ‘func1’...) - вызывает все переданные функции
 """
 
-import inspect
 import all_func
+import inspect
 
 
 def runner(*args):
