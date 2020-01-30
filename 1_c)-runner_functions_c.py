@@ -83,7 +83,9 @@ def function3():
 
 
 def runner(*args):
-    functions = {'function1': function1, 'function2': function2, 'function3': function3}
+    functions = {'function1': function1,
+                 'function2': function2,
+                 'function3': function3}
     for arg in args:
         functions[arg]()
 

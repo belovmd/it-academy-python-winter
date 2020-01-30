@@ -19,7 +19,8 @@ def function1():
 
 def function2():
     lst1 = [a + b for a in "ab" for b in ['b', 'c', 'd']]
-    print(lst1)  # ['ab', 'ac', 'ad', 'bb', 'bc', 'bd']lst2 = lst1[::2]
+    print(lst1)  # ['ab', 'ac', 'ad', 'bb', 'bc', 'bd']
+    lst2 = lst1[::2]
     print(lst2)  # ['ab', 'ad', 'bc']
     lst3 = [a + b for a in '1234' for b in ['a']]
     print(lst3)  # ['1a', '2a', '3a', '4a']

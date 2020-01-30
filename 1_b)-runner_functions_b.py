@@ -1,5 +1,6 @@
 import copy
 
+
 # """Оформите решение задач из прошлых домашних работ в функции.
 # Напишите функцию runner.
 # runner(‘func_name’) – вызывается только функцию func_name
@@ -7,7 +8,6 @@ import copy
 
 
 def function1():
-
     # """ 1.FizzBuzz
     # Напишите программу, которая печатает цифры от 1 до 100,
     # о вместо чисел, кратных 3 пишет Fizz, вместо чисел
@@ -26,7 +26,6 @@ def function1():
 
 
 def function2():
-
     # """ 2. List practice
     # Используйте генератор списков чтобы получить следующий:
     #  ['ab', 'ac', 'ad', 'bb', 'bc', 'bd'].
@@ -55,7 +54,6 @@ def function2():
 
 
 def function3():
-
     # """ 3 Tuple practice
     # Создайте список ['a', 'b', 'c'] и сделайте из него кортеж.
     # Создайте кортеж ('a', 'b', 'c'), И сделайте из него список
@@ -83,7 +81,10 @@ def function3():
 
 
 def runner(fun):
-    functions = {'function1': function1, 'function2': function2, 'function3': function3}
+    functions = {'function1': function1,
+                 'function2': function2,
+                 'function3': function3}
+
     functions[fun]()
 
 
