@@ -5,14 +5,14 @@
 Программа создает 3 файла  top250_movies.txt – названия файлов,
 ratings.txt – гистограмма рейтингов, years.txt – гистограмма годов.
 """
-x = {} # Словарь рейтинг :  название (год)
-line_count = 0  #  Созданим счетчик, чтобы пропустить первые 20 строк
-keys = []   #  Создадим список ключей словаря Х (рейтинг фильмов)
-years_list = []   #  Создадим список годов фильмов
-ratingsdct = {}   #  Создаим словарь где посчитаем
-                  #  количество фильмов определнного рейтинга
-yearsdct = {}     #  Создаим словарь где посчитаем
-                  #  количество фильмов определнного года
+x = {}  # Словарь рейтинг :  название (год)
+line_count = 0  # Созданим счетчик, чтобы пропустить первые 20 строк
+keys = []  # Создадим список ключей словаря Х (рейтинг фильмов)
+years_list = []  # Создадим список годов фильмов
+ratingsdct = {}  # Создаим словарь где посчитаем
+#  количество фильмов определнного рейтинга
+yearsdct = {}  # Создаим словарь где посчитаем
+#  количество фильмов определнного года
 with open('ratings.list') as my_file:
     for line in my_file:
         if 28 <= line_count < 278:
@@ -34,7 +34,8 @@ with open('ratings.list') as my_file:
 #  Создадим гистограмму рейтинга
 with open('ratings.txt', 'a') as ratings:
     for element in ratingsdct:
-        ratings.write('{}\t{} {}\n'.format(element, '|' * ratingsdct[element], ratingsdct[element]))
+        ratings.write('{}\t{} {}\n'.format(element, '|' * ratingsdct[element],
+                                           ratingsdct[element]))
 #  Создадим гистограмму годов
 with open('yers.txt', 'a') as yers:
     for el in yearsdct:
