@@ -22,7 +22,7 @@ try:
             years[data[-1]] = '+'
         else:
             years[data[-1]] += '+'
-        title = ' '.join(i for i in data[3:-1]) + '\n'
+        title = ' '.join(data[3:-1]) + '\n'
         with open('top250_movies.txt', 'a+') as f:
             f.seek(0)
             if title not in f:
