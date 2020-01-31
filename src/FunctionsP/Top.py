@@ -43,8 +43,7 @@ def Filer(a="ratings.list"):
     for el in lst_rate:
         dct_1[el] = dct_1.get(el, 0) + 1
     for el in dct_1.keys():
-        text_1 = str(str(el)) + " " + "*" * dct_1.get(el) + " "\
-                 + str(dct_1[el])
+        text_1 = str(str(el)) + " " + "*" * dct_1.get(el) + str(dct_1[el])
         ratings.write(text_1 + "\n")
     ratings.close()
     site.close()
@@ -65,8 +64,7 @@ def Filer(a="ratings.list"):
         dct_2[el] = dct_2.get(el, 0) + 1
     print(dct_2)
     for el in dct_2.keys():
-        text_2 = str(str(el) + " " + "*" * dct_2.get(el) + " "
-                     + str(dct_2[el]))
+        text_2 = str(str(el) + " " + "*" * dct_2.get(el) + str(dct_2[el]))
         years.write(text_2 + "\n")
 
     years.close()
