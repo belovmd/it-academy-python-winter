@@ -17,7 +17,6 @@ def get_ranges(my_list):
         else:
             result.append(' '.join((str(order_list[0]), 
                                     '-', str(order_list[-1]))))
-
     for elem in my_list:
         if len(order_list) == 0:
             order_list.append(elem)
