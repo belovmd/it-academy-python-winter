@@ -19,6 +19,8 @@ def DegreeFour(a=None):
         return print(a_1)
     elif a_2 - a < a - a_1:
         return print(a_2)
+    elif a_2 - a == a - a_1:
+        return print(a_1, a_2)
     else:
         return print(a_1)
 
