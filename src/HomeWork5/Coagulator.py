@@ -9,17 +9,13 @@
 
 def get_ranges(my_list):
     order_list = []
-    str_order_list = ''
     result = []
 
-    def len_order_list():
-        # создает итоовый вид последовательности(1-4, 2-5)
-        nonlocal str_order_list
+    def len_order_list():  # сворачивает order_list и добавляет в result
         if len(order_list) == 1:
-            str_order_list = str(order_list[0])
+            result.append(str(order_list[0]))
         else:
-            str_order_list = str(order_list[0]), '-', str(order_list[-1])
-        str_order_list = ''.join(list(str_order_list))
+            result.append(' '.join((str(order_list[0]), '-', str(order_list[-1]))))
 
     for elem in my_list:
         if len(order_list) == 0:
@@ -28,15 +24,13 @@ def get_ranges(my_list):
             order_list.append(elem)
         else:
             len_order_list()
-            order_list.clear()
-            order_list.append(elem)
-            result.append(str_order_list)
+            order_list = [elem]
     len_order_list()
-    result.append(str_order_list)
-    result = ', '.join(result)
-    return result
+
+    return ', '.join(result)
 
 
-print(get_ranges([1, 2, 3, 4, 5, 1, 2, 3, 4, 1, 3]))
+print(get_ranges([0, 1, 2, 3, 4, 7, 8, 10, 11, 12]))
+print(get_ranges([1, 2, 3, 4, 5, 1, 2, 3, 4, 1, 3, 4, 5, 9]))
 print(get_ranges([4, 7, 10]))
 print(get_ranges([2, 3, 8, 9]))
