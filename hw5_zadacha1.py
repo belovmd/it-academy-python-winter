@@ -6,6 +6,8 @@ runner(‘func_name’) – вызывается только функцию fun
 runner(‘func’, ‘func1’...) - вызывает все переданные функции
 """
 import hw5_func as hw5
+
+
 def runner(*call_func):
     for el in call_func:
         a = getattr(hw5, el)
