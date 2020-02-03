@@ -32,6 +32,7 @@ def dec(a):
             return a()
     return wrapper
 
+
 @dec
 def func():
     print("asdadsasd")
