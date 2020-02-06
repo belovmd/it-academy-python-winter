@@ -21,7 +21,7 @@ def get_ranges(in_list):
     def upakovka(ordering_list):
         if len(ordering_list) > 1:
             elementi_v_upakovke = str(ordering_list[0]) + \
-                                  '-' + str(ordering_list[-1])
+                                   '-' + str(ordering_list[-1])
         else:
             elementi_v_upakovke = str(ordering_list[0])
         return elementi_v_upakovke

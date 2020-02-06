@@ -70,7 +70,7 @@ def reiting(filename, line_list, kolum):
     keys = dict_graph.keys()
     for key in sorted(keys):
         temp_str = key + '+' * dict_graph[key] + \
-                   '(' + str(dict_graph[key]) + ')' + '\n'
+                    '(' + str(dict_graph[key]) + ')' + '\n'
         myfile.write(temp_str)
     myfile.close()
     return 'OK ' + filename + ' - файл создан'
