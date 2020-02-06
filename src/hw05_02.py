@@ -6,8 +6,8 @@
 """
 
 
-import mymodule
 from datetime import datetime
+import mymodule
 
 
 def log_dec(function):

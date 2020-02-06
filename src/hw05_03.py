@@ -15,6 +15,9 @@ list_end - конечный список
 
 
 def get_ranges(in_list):
+    list_ordering = []
+    list_end = []
+
     def upakovka(ordering_list):
         if len(ordering_list) > 1:
             elementi_v_upakovke = str(ordering_list[0]) \
@@ -22,18 +25,15 @@ def get_ranges(in_list):
         else:
             elementi_v_upakovke = str(ordering_list[0])
         return elementi_v_upakovke
-    list_ordering = []
-    list_end = []
+
     for element in in_list:
         if len(list_ordering) == 0:
             list_ordering.append(element)
         elif list_ordering[-1] == element - 1:
             list_ordering.append(element)
         else:
-            # отправляем на упаковку и очищаем список
             list_end.append(upakovka(list_ordering))
             list_ordering.clear()
-            # запоминаем элемент на котором споткнулись
             list_ordering.append(element)
     list_end.append(upakovka(list_ordering))
     return ','.join(list_end)
