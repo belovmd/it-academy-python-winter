@@ -28,9 +28,11 @@ def open_file(filename):
         print('Файла не существует')
         return None
 
+
 """ 
 список названий фильмов
 """
+
 
 def film_names(filename, line_list):
     myfile = open(filename, 'w')

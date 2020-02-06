@@ -19,6 +19,8 @@ def runner(*args):
         run_func = getattr(mymodule, attr)
         run_func()
         print('------------------')
+
+
 print('-----------------------ВСЕ')
 runner()
 print('----------------------ОДНА')
