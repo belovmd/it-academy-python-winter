@@ -24,6 +24,13 @@ def euklid(first_num=None, second_num=None):
     return first_num + second_num
 
 
+def fibonacci(fib_num):
+    num_prev, num_curr = 0, 1
+    for i in range(2, fib_num):
+        num_prev, num_curr = num_curr, num_prev + num_curr
+    return num_curr
+
+
 def pair_elem(num_string=None):
     """Function that finds count of pairs of identical numbers
 
