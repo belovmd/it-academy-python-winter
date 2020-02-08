@@ -4,9 +4,11 @@
 """
 
 import all_func
+from functools import wraps
 
 
 def result_decorator(some_func):
+    @wraps(some_func)
     def wrapper(*args, **kwargs):
         res = some_func(*args, **kwargs)
         with open('results.txt', 'a') as res_file:
