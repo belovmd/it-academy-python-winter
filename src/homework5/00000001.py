@@ -13,4 +13,5 @@ def fnd_div(i):
         div = div >> 1
     print(div)
 
+
 fnd_div(12)
