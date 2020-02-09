@@ -4,6 +4,7 @@
 
 def dec(func):
     s = []
+
     def wrapper(*args):
         nonlocal s
         s.append(func(*args))
@@ -11,9 +12,11 @@ def dec(func):
         return func
     return wrapper
 
+
 @dec
 def summator(a, b):
     return a + b
+
 
 summator(1, 2)
 summator(2, 2)
