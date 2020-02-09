@@ -10,7 +10,7 @@
 """
 
 
-class Hotel:
+class Hotel(object):
     def __init__(self, name):
         self.name = name
         self.rooms = []
@@ -97,11 +97,11 @@ class Penthouse(Room):
         Penthouse.room_id += 1
 
 
-class Employee:
+class Employee(object):
     pass
 
 
-class Customer:
+class Customer(object):
     customer_id = 0
     room_id = None
 
