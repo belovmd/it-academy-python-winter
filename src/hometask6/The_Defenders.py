@@ -5,7 +5,6 @@ continue my job. Previous parts called "The_Warriors" and
 "Army_Battles" are in Hometask4 and Hometask5 respectively
 """
 
-
 # In the previous mission - Army battles, you've learned
 # how to make a battle between 2 armies. But we have only
 # 2 types of units - the Warriors and Knights. Let's add
@@ -21,6 +20,17 @@ continue my job. Previous parts called "The_Warriors" and
 # attack = 3
 # defense = 2
 
+"""Version The_Vampires: new class Vampire was added.
+This class is the subclass of the Warrior class and
+have the additional vampirism parameter, which helps him
+to heal himself. When the Vampire hits the other unit,
+he restores his health by +50% of the dealt damage (enemy
+defense makes the dealt damage value lower). The basic
+parameters of the Vampire:
+health = 40
+attack = 4
+vampirism = 50%"""
+
 
 class Warrior(object):
     health = 50
@@ -30,6 +40,10 @@ class Warrior(object):
 
     def alive(self) -> bool:
         return self.health > 0
+
+    # New function damage_to was created
+    def damage_to(self, target: 'Warrior'):
+        return self.attack - target.defense
 
     def fight(self, target: 'Warrior'):
         if self.attack > target.defense:
@@ -47,6 +61,20 @@ class Defender(Warrior):
     health = 60
     attack = 3
     defense = 2
+
+
+"""New class Vampire"""
+
+
+class Vampire(Warrior):
+    health = 40
+    attack = 4
+    vampirism = 0.5
+
+    def fight(self, target: 'Warrior'):
+        super(Vampire, self).fight(target)
+
+        self.health = self.health + self.damage_to(target) * self.vampirism
 
 
 class Army(object):
@@ -117,6 +145,10 @@ if __name__ == '__main__':
     mike = Knight()
     rog = Warrior()
     lancelot = Defender()
+    eric = Vampire()
+    adam = Vampire()
+    richard = Defender()
+    ogre = Warrior()
 
     assert fight(chuck, bruce), 'True'
     assert chuck.alive(), 'True'
@@ -128,22 +160,29 @@ if __name__ == '__main__':
     assert not carl.alive(), 'False'
     assert not fight(bob, mike), 'False'
     assert fight(lancelot, rog), 'True'
+    assert not fight(eric, richard), "False"
+    assert fight(ogre, adam), 'True'
 
     # battle tests
     my_army = Army()
-    my_army.add_units(Defender, 1)
+    my_army.add_units(Defender, 2)
+    my_army.add_units(Vampire, 2)
+    my_army.add_units(Warrior, 1)
 
     enemy_army = Army()
     enemy_army.add_units(Warrior, 2)
+    enemy_army.add_units(Defender, 2)
+    enemy_army.add_units(Vampire, 3)
 
     army_3 = Army()
     army_3.add_units(Warrior, 1)
-    army_3.add_units(Defender, 1)
+    army_3.add_units(Defender, 4)
 
     army_4 = Army()
+    army_4.add_units(Vampire, 3)
     army_4.add_units(Warrior, 2)
 
     battle = Battle()
 
     assert not battle.fight(my_army, enemy_army), 'False'
-    assert battle.fight(army_3, army_4), "True"
+    assert battle.fight(army_3, army_4), 'True'
