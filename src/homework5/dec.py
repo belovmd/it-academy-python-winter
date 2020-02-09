@@ -13,7 +13,6 @@ def save_res(fnct):
     return wrapper
 
 
-
 @save_res
 def fib():
     rng = int(input('Введи длинну цепочки: '))
