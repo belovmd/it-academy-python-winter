@@ -14,27 +14,17 @@ class Hotel(object):
     def __init__(self, name):
         self.name = name
         self.rooms = []
-        self.service_orders = []
         self.customers_list = []
-
-    def add_room(self, new_room):
-        self.rooms.append(new_room)
+        self.service_orders = []
+        self.total_income = 0
 
     def all_rooms(self):
-        all_rooms_nums = []
-        for room in self.rooms:
-            all_rooms_nums.append(room.id)
+        all_rooms_nums = [el.id for el in self.rooms]
         print('All rooms: \t', *all_rooms_nums)
 
     def vacant_rooms(self):
-        vacant_rooms_nums = []
-        for room in self.rooms:
-            if not room.is_occupied:
-                vacant_rooms_nums.append(room.id)
+        vacant_rooms_nums = [el.id for el in self.rooms if not el.is_occupied]
         print('Vacant rooms: \t', *vacant_rooms_nums)
-
-    def add_costumer(self, new_customer):
-        self.customers_list.append(new_customer)
 
     def all_customers(self):
         if self.customers_list:
@@ -43,58 +33,45 @@ class Hotel(object):
                 print(customer.__dict__)
 
     def hotel_status(self):
+        print('-' * 50)
+        print('Total income: {}'.format(self.total_income))
         self.all_rooms()
         self.vacant_rooms()
         self.all_customers()
+        print('-' * 50)
 
 
 class Room(object):
-    room_id = 100
+    type_id = 100
     cost = 50
     is_occupied = False
     cleaning_is_ordered = False
 
-    def __init__(self):
-        self.id = self.room_id + 1
-        Room.room_id += 1
-
-    def book(self, customer):
-        if not self.is_occupied:
-            self.is_occupied = True
-            customer.room_id = self.id
-            print('Room number {} is yours mr {}'
-                  .format(self.id, customer.second_name))
-        else:
-            print('Sorry mr {} room {} is already occupied'
-                  .format(customer.second_name, self.id))
-
-    def leave_room(self, customer):
-        self.is_occupied = False
-        delattr(customer, 'room_id')
-
-    def order_cleaning(self):
-        self.cleaning_is_ordered = True
-        print('Order confirmed. Thank you!')
+    def __init__(self, some_hotel):
+        self.id = self.type_id + 1
+        Room.type_id += 1
+        self.hotel = some_hotel
+        self.hotel.rooms.append(self)
 
 
 class Lux(Room):
-    room_id = 200
+    type_id = 200
     cost = 100
 
-    def __init__(self):
-        super().__init__()
-        self.id = self.room_id + 1
-        Lux.room_id += 1
+    def __init__(self, some_hotel):
+        super().__init__(some_hotel)
+        self.id = self.type_id + 1
+        Lux.type_id += 1
 
 
 class Penthouse(Room):
-    room_id = 300
+    type_id = 300
     cost = 200
 
-    def __init__(self):
-        super().__init__()
-        self.id = self.room_id + 1
-        Penthouse.room_id += 1
+    def __init__(self, some_hotel):
+        super().__init__(some_hotel)
+        self.id = self.type_id + 1
+        Penthouse.type_id += 1
 
 
 class Employee(object):
@@ -104,59 +81,73 @@ class Employee(object):
 class Customer(object):
     customer_id = 0
     room_id = None
+    room = None
 
-    def __init__(self, name=None, second_name=None):
-        if not name:
-            self.name = input('Enter your name\n')
-        else:
-            self.name = name
-        if not second_name:
-            self.second_name = input('Enter your second name\n')
-        else:
-            self.second_name = second_name
-
+    def __init__(self, name, second_name, some_hotel):
+        self.name = name
+        self.second_name = second_name
+        self.hotel = some_hotel
+        self.hotel.customers_list.append(self)
         self.id = self.customer_id + 1
         Customer.customer_id += 1
 
     def make_reservation(self, room):
-        room.book(self)
+        if self.room:
+            print("Mr {} you can't reserve another room. "
+                  "You need to checkout first."
+                  .format(self.second_name))
+        else:
+            if room.is_occupied:
+                print('Sorry mr {}, room {} is already occupied.'
+                      .format(self.second_name, room.id))
+            else:
+                self.room_id = room.id
+                self.room = room
+                room.is_occupied = True
+                room.hotel.total_income += room.cost
+                print('Room number {} is yours mr {}.'
+                      .format(room.id, self.second_name))
 
-    def check_out(self, room):
-        room.leave_room(self)
+    def check_out(self):
+        self.room.is_occupied = False
+        self.__delattr__('room')
+        self.__delattr__('room_id')
+        print('Thank you mr {}. We hope to see you again.'
+              .format(self.second_name))
 
 
 my_hotel = Hotel('Ghost Hotel')
 
-print('Welcome to the', my_hotel.name)
+print('Welcome to the {}!'.format(my_hotel.name))
 
-room_101 = Room()
-room_102 = Room()
-room_103 = Room()
-room_201 = Lux()
-room_301 = Penthouse()
-
-my_hotel.add_room(room_101)
-my_hotel.add_room(room_102)
-my_hotel.add_room(room_103)
-my_hotel.add_room(room_201)
-my_hotel.add_room(room_301)
+room_101 = Room(my_hotel)
+room_102 = Room(my_hotel)
+room_103 = Room(my_hotel)
+room_104 = Room(my_hotel)
+room_105 = Room(my_hotel)
+room_201 = Lux(my_hotel)
+room_202 = Lux(my_hotel)
+room_301 = Penthouse(my_hotel)
 
 my_hotel.hotel_status()
 
-customer_1 = Customer('Peter', 'Venkman')
-my_hotel.add_costumer(customer_1)
-customer_2 = Customer('Egon', 'Spengler')
-my_hotel.add_costumer(customer_2)
-customer_3 = Customer('Raymond', 'Stantz')
-my_hotel.add_costumer(customer_3)
+customer_1 = Customer('Peter', 'Venkman', my_hotel)
+customer_2 = Customer('Egon', 'Spengler', my_hotel)
+customer_3 = Customer('Raymond', 'Stantz', my_hotel)
+customer_4 = Customer('Winston', 'Zeddemore', my_hotel)
 
 customer_1.make_reservation(room_101)
+customer_1.make_reservation(room_201)
 customer_2.make_reservation(room_102)
 customer_3.make_reservation(room_102)
+customer_3.make_reservation(room_201)
+customer_4.make_reservation(room_301)
 
 my_hotel.hotel_status()
 
-customer_2.check_out(room_102)
+customer_2.check_out()
+customer_3.check_out()
 customer_3.make_reservation(room_102)
+customer_4.check_out()
 
 my_hotel.hotel_status()
