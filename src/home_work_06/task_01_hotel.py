@@ -14,17 +14,22 @@ class Hotel(object):
     def __init__(self, name):
         self.name = name
         self.rooms = []
+        self.employee_list = []
         self.customers_list = []
-        self.service_orders = []
         self.total_income = 0
 
     def all_rooms(self):
-        all_rooms_nums = [el.id for el in self.rooms]
-        print('All rooms: \t', *all_rooms_nums)
+        print('All rooms: \t', *[el.id for el in self.rooms])
 
     def vacant_rooms(self):
-        vacant_rooms_nums = [el.id for el in self.rooms if not el.is_occupied]
-        print('Vacant rooms: \t', *vacant_rooms_nums)
+        print('Vacant rooms: \t', *[el.id for el in self.rooms if not el.is_occupied])
+
+    def all_employee(self):
+        print('All employee: \t', *self.employee_list)
+
+    def service_list(self):
+        s_list = [el.id for el in self.rooms if el.cleaning_is_ordered]
+        print('Rooms need cleaning: \t', *s_list)
 
     def all_customers(self):
         if self.customers_list:
@@ -37,6 +42,8 @@ class Hotel(object):
         print('Total income: {}'.format(self.total_income))
         self.all_rooms()
         self.vacant_rooms()
+        self.all_employee()
+        self.service_list()
         self.all_customers()
         print('-' * 50)
 
@@ -75,7 +82,29 @@ class Penthouse(Room):
 
 
 class Employee(object):
+    employee_id = 1
+    salary = 250
+
+    def __init__(self, name, second_name, some_hotel):
+        self.name = name
+        self.second_name = second_name
+        self.hotel = some_hotel
+        self.hotel.employee_list.append(self)
+        self.id = self.employee_id
+        Employee.employee_id += 1
+
+
+class Manager(Employee):
+    salary = 1000
     pass
+
+
+class Maid(Employee):
+    def cleaning(self):
+        for dirty_room in self.hotel.rooms:
+            if dirty_room.cleaning_is_ordered:
+                print('Cleaning room', dirty_room.id)
+                dirty_room.cleaning_is_ordered = False
 
 
 class Customer(object):
@@ -110,10 +139,14 @@ class Customer(object):
 
     def check_out(self):
         self.room.is_occupied = False
+        # self.room.cleaning_is_ordered = True
         self.__delattr__('room')
         self.__delattr__('room_id')
         print('Thank you mr {}. We hope to see you again.'
               .format(self.second_name))
+
+    def order_cleaning(self):
+        self.room.cleaning_is_ordered = True
 
 
 my_hotel = Hotel('Ghost Hotel')
@@ -136,14 +169,20 @@ customer_2 = Customer('Egon', 'Spengler', my_hotel)
 customer_3 = Customer('Raymond', 'Stantz', my_hotel)
 customer_4 = Customer('Winston', 'Zeddemore', my_hotel)
 
+maid_1 = Maid('Anna', 'Maria', my_hotel)
+
 customer_1.make_reservation(room_101)
 customer_1.make_reservation(room_201)
+customer_1.order_cleaning()
 customer_2.make_reservation(room_102)
 customer_3.make_reservation(room_102)
 customer_3.make_reservation(room_201)
+customer_3.order_cleaning()
 customer_4.make_reservation(room_301)
 
 my_hotel.hotel_status()
+
+maid_1.cleaning()
 
 customer_2.check_out()
 customer_3.check_out()
