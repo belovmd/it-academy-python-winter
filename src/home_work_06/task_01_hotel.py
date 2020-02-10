@@ -30,7 +30,7 @@ class Hotel(object):
         if self.customers_list:
             print('Total number of customers:', len(self.customers_list))
             for customer in self.customers_list:
-                print(customer.__dict__)
+                print(customer.id, customer.name, customer.second_name, customer.room_id)
 
     def hotel_status(self):
         print('-' * 50)
