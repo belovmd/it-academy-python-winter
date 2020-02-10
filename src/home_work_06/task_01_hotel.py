@@ -15,7 +15,8 @@ class Hotel(object):
         self.name = name
         self.rooms = []
         self.employee_list = []
-        self.customers_list = []
+        self.all_customers_list = []
+        self.current_customers_list = []
         self.total_income = 0
 
     def all_rooms(self):
@@ -29,12 +30,24 @@ class Hotel(object):
 
     def service_list(self):
         s_list = [el.id for el in self.rooms if el.cleaning_is_ordered]
-        print('Rooms need cleaning: \t', *s_list)
+        if s_list:
+            print('Rooms need cleaning: \t', *s_list)
 
     def all_customers(self):
-        if self.customers_list:
-            print('Total number of customers:', len(self.customers_list))
-            for customer in self.customers_list:
+        if self.all_customers_list:
+            print('Total number of customers:', len(self.all_customers_list))
+            for customer in self.all_customers_list:
+                if customer.room_id:
+                    room_id = customer.room_id
+                else:
+                    room_id = 'Not in hotel'
+                print(customer.id, customer.name, customer.second_name, room_id)
+
+    def current_customers(self):
+        if self.current_customers_list:
+            print('Number of customers now in hotel:', len(self.current_customers_list))
+            print('Id Name S.Name Room')
+            for customer in self.current_customers_list:
                 print(customer.id, customer.name, customer.second_name, customer.room_id)
 
     def hotel_status(self):
@@ -44,7 +57,7 @@ class Hotel(object):
         self.vacant_rooms()
         self.all_employee()
         self.service_list()
-        self.all_customers()
+        self.current_customers()
         print('-' * 50)
 
 
@@ -116,9 +129,10 @@ class Customer(object):
         self.name = name
         self.second_name = second_name
         self.hotel = some_hotel
-        self.hotel.customers_list.append(self)
+        self.hotel.all_customers_list.append(self)
         self.id = self.customer_id + 1
         Customer.customer_id += 1
+        print('Welcome to the {} mr {}!'.format(self.hotel.name, self.second_name))
 
     def make_reservation(self, room):
         if self.room:
@@ -130,6 +144,7 @@ class Customer(object):
                 print('Sorry mr {}, room {} is already occupied.'
                       .format(self.second_name, room.id))
             else:
+                self.hotel.current_customers_list.append(self)
                 self.room_id = room.id
                 self.room = room
                 room.is_occupied = True
@@ -139,6 +154,7 @@ class Customer(object):
 
     def check_out(self):
         self.room.is_occupied = False
+        self.hotel.current_customers_list.remove(self)
         # self.room.cleaning_is_ordered = True
         self.__delattr__('room')
         self.__delattr__('room_id')
@@ -162,6 +178,8 @@ room_201 = Lux(my_hotel)
 room_202 = Lux(my_hotel)
 room_301 = Penthouse(my_hotel)
 
+maid_1 = Maid('Anna', 'Maria', my_hotel)
+
 my_hotel.hotel_status()
 
 customer_1 = Customer('Peter', 'Venkman', my_hotel)
@@ -169,15 +187,16 @@ customer_2 = Customer('Egon', 'Spengler', my_hotel)
 customer_3 = Customer('Raymond', 'Stantz', my_hotel)
 customer_4 = Customer('Winston', 'Zeddemore', my_hotel)
 
-maid_1 = Maid('Anna', 'Maria', my_hotel)
-
 customer_1.make_reservation(room_101)
 customer_1.make_reservation(room_201)
 customer_1.order_cleaning()
+
 customer_2.make_reservation(room_102)
+
 customer_3.make_reservation(room_102)
 customer_3.make_reservation(room_201)
 customer_3.order_cleaning()
+
 customer_4.make_reservation(room_301)
 
 my_hotel.hotel_status()
@@ -187,6 +206,9 @@ maid_1.cleaning()
 customer_2.check_out()
 customer_3.check_out()
 customer_3.make_reservation(room_102)
+
 customer_4.check_out()
 
 my_hotel.hotel_status()
+
+my_hotel.all_customers()
