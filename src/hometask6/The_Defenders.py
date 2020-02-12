@@ -1,8 +1,8 @@
 """It's the solution for task #1. This is the game "The_Warriors"
-that I've started before. All descriptions are taken from checkio.org.
-My RPG corresponds to your requirement for the task so I decided to
-continue my job. Previous parts called "The_Warriors" and
-"Army_Battles" are in Hometask4 and Hometask5 respectively
+that I've been starting before. All descriptions are taken from
+checkio.org. My RPG corresponds to your requirement for the task
+so I decided to continue my job. Previous parts called
+"The_Warriors" and "Army_Battles" are in Hometask4 and Hometask5 respectively.
 """
 
 # In the previous mission - Army battles, you've learned
@@ -31,6 +31,17 @@ health = 40
 attack = 4
 vampirism = 50%"""
 
+"""Version The_Lancers: new class Lancer was added.
+Lancer should be the subclass of the Warrior class and
+should attack in a specific way - when he hits the other
+unit, he also deals a 50% of the deal damage to the enemy
+unit, standing behind the firstly assaulted one
+(enemy defense makes the deal damage value lower - consider this).
+The basic parameters of the Lancer:
+health = 50
+attack = 6
+"""
+
 
 class Warrior(object):
     health = 50
@@ -47,7 +58,7 @@ class Warrior(object):
 
     def fight(self, target: 'Warrior'):
         if self.attack > target.defense:
-            target.health = target.health - (self.attack - target.defense)
+            target.health = target.health - self.damage_to(target)
 
 
 class Knight(Warrior):
@@ -77,6 +88,21 @@ class Vampire(Warrior):
         self.health = self.health + self.damage_to(target) * self.vampirism
 
 
+"""New class Lancer"""
+
+
+class Lancer(Warrior):
+    attack = 6
+
+    def fight(self, first_target, second_target=None):
+        super(Lancer, self).fight(first_target)
+        if second_target:
+            initial_attack, second_attack = self.attack, self.attack * 0.5
+            self.attack = second_attack
+            super(Lancer, self).fight(second_target)
+            self.attack = initial_attack
+
+
 class Army(object):
     """Initially, the army is an empty list."""
 
@@ -97,15 +123,15 @@ class Army(object):
             self.soldiers.append(kind_of_soldier())
 
 
-"""The battle is going on while soldiers in Army are alive."""
+"""The battle is going on while soldiers in Army are alive.
+Class Battle was updated according to class Lancer requirements."""
 
 
 class Battle(object):
     def fight(self, first_army: 'Army', second_army: 'Army') -> bool:
-        while len(first_army) > 0 and len(second_army) > 0:
-            first_soldier_won = fight(first_army.soldiers[0],
-                                      second_army.soldiers[0])
-            if first_soldier_won:
+        while first_army and second_army:
+            if fight(first_army.soldiers[0], second_army.soldiers[0],
+                     first_army, second_army):
                 second_army.soldiers.pop(0)
             else:
                 first_army.soldiers.pop(0)
@@ -115,23 +141,31 @@ class Battle(object):
 
 """Fighting of two soldiers.
 is_alive is a parameter that is set for each individual
-soldier according to the task"""
+soldier according to the task.
+Function fight was updated according to class Lancer requirements.
+Added function hit."""
 
 
-def fight(soldier1: 'Warrior', soldier2: 'Warrior') -> bool:
-    fighter_counter = 0
+def fight(soldier1, soldier2, first_army=None, second_army=None) -> bool:
+    def hit(soldier1, soldier2, second_army=None):
+        if type(soldier1) is Lancer and second_army \
+                and 1 in second_army.soldiers:
+            soldier1.fight(soldier2, second_army.soldiers[1])
+        else:
+            soldier1.fight(soldier2)
 
-    while True:
-        fighter_counter += 1
-        soldier1.fight(soldier2)
+    while soldier1.alive() and soldier2.alive():
+        hit(soldier1, soldier2, second_army)
         if not soldier2.alive():
             soldier2.is_alive = False
-            return True
+            break
 
-        soldier2.fight(soldier1)
+        hit(soldier2, soldier1, first_army)
         if not soldier1.alive():
             soldier1.is_alive = False
-            return False
+            break
+
+    return soldier1.alive()
 
 
 if __name__ == '__main__':
@@ -149,6 +183,8 @@ if __name__ == '__main__':
     adam = Vampire()
     richard = Defender()
     ogre = Warrior()
+    freelancer = Lancer()
+    vampire = Vampire()
 
     assert fight(chuck, bruce), 'True'
     assert chuck.alive(), 'True'
@@ -162,27 +198,33 @@ if __name__ == '__main__':
     assert fight(lancelot, rog), 'True'
     assert not fight(eric, richard), "False"
     assert fight(ogre, adam), 'True'
+    assert fight(freelancer, vampire), 'True'
+    assert freelancer.alive(), 'True'
 
     # battle tests
     my_army = Army()
     my_army.add_units(Defender, 2)
     my_army.add_units(Vampire, 2)
+    my_army.add_units(Lancer, 4)
     my_army.add_units(Warrior, 1)
 
     enemy_army = Army()
     enemy_army.add_units(Warrior, 2)
+    enemy_army.add_units(Lancer, 2)
     enemy_army.add_units(Defender, 2)
     enemy_army.add_units(Vampire, 3)
 
     army_3 = Army()
     army_3.add_units(Warrior, 1)
-    army_3.add_units(Defender, 4)
+    army_3.add_units(Lancer, 1)
+    army_3.add_units(Defender, 2)
 
     army_4 = Army()
     army_4.add_units(Vampire, 3)
-    army_4.add_units(Warrior, 2)
+    army_4.add_units(Warrior, 1)
+    army_4.add_units(Lancer, 2)
 
     battle = Battle()
 
-    assert not battle.fight(my_army, enemy_army), 'False'
-    assert battle.fight(army_3, army_4), 'True'
+    assert battle.fight(my_army, enemy_army), 'True'
+    assert not battle.fight(army_3, army_4), 'False'
