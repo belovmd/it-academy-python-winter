@@ -7,7 +7,7 @@
    взаимодействие объектов и т.д."""
 
 
-class Wizard:
+class Wizard(object):
     def __init__(self, nickname, race='Wizard'):
         self.gold = 0
         self.nickname = nickname
@@ -21,25 +21,25 @@ class Wizard:
         self.small_aid_kit = 1
 
     def __str__(self):
-        """Выводит статус нашего персонажа."""
+        # Выводит статус нашего персонажа.
         return 'Nickname: {}; Race: {}; Level: {}; Health : {}' \
             .format(self.nickname, self.race, self.level, self.health)
 
     def my_gold(self):
-        """Выводит все золото"""
+        # Выводит все золото
         return 'У игрока {} осталось {} золота.' \
             .format(self.nickname, self.gold)
 
     def my_aids_kit(self):
-        """Выводит все наши аптечки"""
+        # Выводит все наши аптечки
         return 'У игрока {} осталось аптечек: Big: {}, Mid: {}, Small: {}' \
             .format(self.nickname,
                     self.big_aid_kit, self.mid_aid_kit, self.small_aid_kit)
 
     def enemies(self, count_enemy, damage=3.0, increase_exp_lvl=5):
-        """"за каждого врага мы получаем 1 exp;
-        с каждым уровнем надо больше получить exp;
-        с каждым уровнем уменьшается damage"""
+        # за каждого врага мы получаем 1 exp;
+        # с каждым уровнем надо больше получить exp;
+        # с каждым уровнем уменьшается damage
         for i in range(count_enemy):
             self.gold += 2  # за одного врага
             self.health -= damage
@@ -49,9 +49,9 @@ class Wizard:
                 damage -= 0.1
                 increase_exp_lvl += 2
                 self.my_exp = 0
-                """смерть персонажа: теряем 1 level,
-                восстанавливается health на 100 %, теряем 10% gold, 
-                врагов рядом нет - enemy = 0"""
+                # смерть персонажа: теряем 1 level,
+                # восстанавливается health на 100 %, теряем 10% gold,
+                # врагов рядом нет - enemy = 0
             elif self.health <= 0:
                 self.health = self.max_health
                 self.level -= 1
@@ -59,8 +59,8 @@ class Wizard:
                 break
 
     def regeneration(self, aid_kit):
-        """Мои аптечки. При использовании увеличевается health
-        и из my_aids_kit исчезает использованная аптечка"""
+        # Мои аптечки. При использовании увеличевается health
+        # и из my_aids_kit исчезает использованная аптечка
         if aid_kit == 'big':
             if self.big_aid_kit - 1 >= 0:
                 self.big_aid_kit -= 1
@@ -83,8 +83,8 @@ class Wizard:
             self.health = self.max_health
 
     def my_shop(self, **kwargs):
-        """Магазин аптечек. В shop_aid_kit указанна какая аптека и цена аптечки.
-        На ввод получаем словарь с названием аптечки и количество которое нам надо"""
+        # Магазин аптечек. В shop_aid_kit указанна какая аптека и цена аптечки.
+        # На ввод получаем словарь с названием аптечки и количество которое нам надо
         shop_aid_kit = {'big': 20, 'mid': 15, 'small': 10}
         for i in kwargs:
             if i in shop_aid_kit:
@@ -105,11 +105,9 @@ class Wizard:
 
 
 class Troll(Wizard):
-    """Расса Troll у которой health больше на 50
-     и получаемый урон меньше чем у Wizard. При этом Troll
-     получает менше exp чем Wizard
-    """
-
+    # Расса Troll у которой health больше на 50
+    #  и получаемый урон меньше чем у Wizard. При этом Troll
+    #  получает менше exp чем Wizard
     def __init__(self, nickname, race='Troll'):
         super().__init__(nickname, race)
         self.health = 150
