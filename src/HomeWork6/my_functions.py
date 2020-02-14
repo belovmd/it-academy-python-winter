@@ -1,3 +1,11 @@
+def dec(func):
+    def wrapper(*args, **kwargs):
+        return 'Result func {} = {}'. \
+            format(func.__name__, func(*args, **kwargs))
+
+    return wrapper
+
+
 """Реализовать функцию get_ranges которая получает
  на вход непустой список неповторяющихся целых чисел,
   отсортированных по возрастанию, которая этот список “сворачивает”
@@ -7,6 +15,7 @@
 """
 
 
+@dec
 def get_ranges(my_list):
     order_list = []
     result = []
@@ -15,7 +24,7 @@ def get_ranges(my_list):
         if len(order_list) == 1:
             result.append(str(order_list[0]))
         else:
-            result.append(' '.join((str(order_list[0]), 
+            result.append(' '.join((str(order_list[0]),
                                     '-', str(order_list[-1]))))
 
     for elem in my_list:
@@ -31,7 +40,16 @@ def get_ranges(my_list):
     return ', '.join(result)
 
 
-print(get_ranges([0, 1, 2, 3, 4, 7, 8, 10, 11, 12]))
-print(get_ranges([1, 2, 3, 4, 5, 1, 2, 3, 4, 1, 3, 4, 5, 9]))
-print(get_ranges([4, 7, 10]))
-print(get_ranges([2, 3, 8, 9]))
+"""Даны два натуральных числа.
+Вычислите их наибольший общий делитель при помощи
+алгоритма Евклида (мы не знаем функции и рекурсию)."""
+
+
+@dec
+def see_back(a, b):
+    while a != 0 and b != 0:
+        if a > b:
+            a = a % b
+        else:
+            b = b % a
+    return a + b
