@@ -83,14 +83,17 @@ class Wizard(object):
             self.health = self.max_health
 
     def my_shop(self, **kwargs):
-        # Магазин аптечек. В shop_aid_kit указанна какая аптека и цена аптечки.
-        # На ввод получаем словарь с названием аптечки и количество которое нам надо
+        # Магазин аптечек. В shop_aid_kit
+        # указанна какая аптека и цена аптечки.
+        # На ввод получаем словарь с названием
+        # аптечки и количество которое нам надо
         shop_aid_kit = {'big': 20, 'mid': 15, 'small': 10}
         for i in kwargs:
             if i in shop_aid_kit:
                 if self.gold - (shop_aid_kit[i] * kwargs[i]) < 0:
                     print('Вам не хватает {} золота на покупку'.
-                          format(abs(self.gold - (shop_aid_kit[i] * kwargs[i]))))
+                          format(abs(self.gold -
+                                     (shop_aid_kit[i] * kwargs[i]))))
                     break
                 else:
                     self.gold -= shop_aid_kit[i] * kwargs[i]
