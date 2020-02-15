@@ -1,0 +1,9 @@
+8
+for 6 Fib num = 8
+for 6 Fibonachchi number = 8
+for 8 Fibonachchi number = 21
+for 10 Fibonachchi number = 55
+for 1 Fibonachchi number = 1
+for N=9 Fibonachchi number = 34
+for N=4 Fibonachchi number = 3
+for N=10 Fibonachchi number = 55
