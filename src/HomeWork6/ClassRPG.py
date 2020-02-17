@@ -92,8 +92,8 @@ class Wizard(object):
             if i in shop_aid_kit:
                 if self.gold - (shop_aid_kit[i] * kwargs[i]) < 0:
                     print('Вам не хватает {} золота на покупку'.
-                          format(abs(self.gold -
-                                     (shop_aid_kit[i] * kwargs[i]))))
+                          format
+                          (abs(self.gold - (shop_aid_kit[i] * kwargs[i]))))
                     break
                 else:
                     self.gold -= shop_aid_kit[i] * kwargs[i]
