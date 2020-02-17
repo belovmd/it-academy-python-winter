@@ -9,7 +9,7 @@
 """
 
 
-class AddressBookEntry:
+class AddressBookEntry(object):
     version = 1.0
 
     def __init__(self, name, phone):
@@ -34,7 +34,7 @@ class CustomerAddressBookEntry(AddressBookEntry):
     def __init__(self, name, phone, order, date):  # Переопределить конструктор
         self.order = order
         self.date = date
-        AddressBookEntry.__init__(self, name, phone)  # Выполнить исходный c ’mgr1
+        AddressBookEntry.__init__(self, name, phone)
 
     def updateOrder(self, order):
         self.order = []
@@ -45,10 +45,10 @@ class CustomerAddressBookEntry(AddressBookEntry):
         self.date = self.date.extend(date)
 
     def __repr__(self):
-        return ' [Customer Address Book Entry: %s, %s, %s, %s ] ' % (self.name,
-                                                                     self.phone,
-                                                                     self.order,
-                                                                     self.date)
+        return ' [Customer Address BookEntry: %s, %s, %s, %s ] ' % (self.name,
+                                                                    self.phone,
+                                                                    self.order,
+                                                                    self.date)
 
 
 robert = AddressBookEntry('Staf', '55-789-54645-55')

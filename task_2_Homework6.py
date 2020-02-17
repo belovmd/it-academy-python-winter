@@ -6,9 +6,9 @@
     должно быть возбуждено исключение типа TooManyErrors
 
 """
-
-import random
 import functools
+import random
+
 
 
 def retry(max_tries):
