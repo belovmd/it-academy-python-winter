@@ -6,6 +6,11 @@
 import my_functions
 
 
+class TooManyErrors(Exception):
+    def __str__(self):
+        return 'TooManyErrors'
+
+
 def max_error(max_count_errors):
     def decorator(function):
         count_errors = 0
@@ -13,24 +18,28 @@ def max_error(max_count_errors):
         def wrapper(*args, **kwargs):
             nonlocal count_errors
             try:
-                function(*args, **kwargs)
+                return function(*args, **kwargs)
             except Exception:
                 count_errors += 1
-                if count_errors > max_count_errors:
-                    return 'TooManyErrors'
-                else:
-                    return "You made {} mistakes". \
-                        format(count_errors)
-            else:
-                return function(*args, **kwargs)
+                return "You made {} mistakes in {}". \
+                    format(count_errors, function.__name__)
+            finally:
+                try:
+                    if count_errors > max_count_errors:
+                        raise TooManyErrors
+                except TooManyErrors:
+                    return '{} in function {}'.\
+                        format(TooManyErrors(), function.__name__)
+
         return wrapper
+
     return decorator
 
 
 see_back = max_error(3)(my_functions.see_back)
 get_ranges = max_error(3)(my_functions.get_ranges)
-print(see_back(1, 'a'))
-print(see_back(10, 15))
+print(see_back(1, 2))
+print(see_back(10, 'a'))
 print(see_back(3, 'a'))
 print(see_back(1, 2, 3))
 print(see_back(15, 'a'))

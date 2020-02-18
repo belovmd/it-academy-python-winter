@@ -1,4 +1,8 @@
+from functools import wraps
+
+
 def dec(func):
+    @wraps(func)
     def wrapper(*args, **kwargs):
         return 'Result func {} = {}'. \
             format(func.__name__, func(*args, **kwargs))
