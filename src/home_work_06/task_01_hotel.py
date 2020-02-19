@@ -169,7 +169,7 @@ class Customer(object):
     def check_out(self):
         self.room.is_occupied = False
         self.hotel.current_customers_list.remove(self)
-        self.__delattr__('room')
+        self.room = None
         print('Thank you mr {}. We hope to see you again.'
               .format(self.second_name))
 
@@ -177,55 +177,57 @@ class Customer(object):
         self.room.cleaning_is_ordered = True
 
 
-my_hotel = Hotel('Ghost Hotel')
+if __name__ == '__main__':
 
-print('Welcome to the {}!'.format(my_hotel.name))
+    my_hotel = Hotel('Ghost Hotel')
 
-room_101 = Room(my_hotel)
-room_102 = Room(my_hotel)
-room_103 = Room(my_hotel)
-room_104 = Room(my_hotel)
-room_105 = Room(my_hotel)
-room_201 = Lux(my_hotel)
-room_202 = Lux(my_hotel)
-room_301 = Penthouse(my_hotel)
+    print('Welcome to the {}!'.format(my_hotel.name))
 
-manager_1 = Manager('Big', 'Boss', my_hotel)
-maid_1 = Maid('Anna', 'Maria', my_hotel)
-maid_2 = Maid('Rosa', 'Gonzalez', my_hotel)
+    room_101 = Room(my_hotel)
+    room_102 = Room(my_hotel)
+    room_103 = Room(my_hotel)
+    room_104 = Room(my_hotel)
+    room_105 = Room(my_hotel)
+    room_201 = Lux(my_hotel)
+    room_202 = Lux(my_hotel)
+    room_301 = Penthouse(my_hotel)
 
-my_hotel.hotel_status()
+    manager_1 = Manager('Big', 'Boss', my_hotel)
+    maid_1 = Maid('Anna', 'Maria', my_hotel)
+    maid_2 = Maid('Rosa', 'Gonzalez', my_hotel)
 
-customer_1 = Customer('Peter', 'Venkman', my_hotel)
-customer_2 = Customer('Egon', 'Spengler', my_hotel)
-customer_3 = Customer('Raymond', 'Stantz', my_hotel)
-customer_4 = Customer('Winston', 'Zeddemore', my_hotel)
+    my_hotel.hotel_status()
 
-customer_1.make_reservation(room_101)
-customer_1.make_reservation(room_201)
-customer_1.order_cleaning()
-maid_1.cleaning()
+    customer_1 = Customer('Peter', 'Venkman', my_hotel)
+    customer_2 = Customer('Egon', 'Spengler', my_hotel)
+    customer_3 = Customer('Raymond', 'Stantz', my_hotel)
+    customer_4 = Customer('Winston', 'Zeddemore', my_hotel)
 
-customer_2.make_reservation(room_102)
+    customer_1.make_reservation(room_101)
+    customer_1.make_reservation(room_201)
+    customer_1.order_cleaning()
+    maid_1.cleaning()
 
-customer_3.make_reservation(room_102)
-customer_3.make_reservation(room_201)
-customer_3.order_cleaning()
+    customer_2.make_reservation(room_102)
 
-customer_4.make_reservation(room_301)
+    customer_3.make_reservation(room_102)
+    customer_3.make_reservation(room_201)
+    customer_3.order_cleaning()
 
-my_hotel.hotel_status()
+    customer_4.make_reservation(room_301)
 
-maid_1.cleaning()
-manager_1.promote_employee(maid_1)
-manager_1.fire_employee(maid_2)
+    my_hotel.hotel_status()
 
-customer_2.check_out()
-customer_3.check_out()
-customer_3.make_reservation(room_102)
+    maid_1.cleaning()
+    manager_1.promote_employee(maid_1)
+    manager_1.fire_employee(maid_2)
 
-customer_4.check_out()
+    customer_2.check_out()
+    customer_3.check_out()
+    customer_3.make_reservation(room_102)
 
-my_hotel.hotel_status()
+    customer_4.check_out()
 
-my_hotel.all_customers()
+    my_hotel.hotel_status()
+
+    my_hotel.all_customers()
