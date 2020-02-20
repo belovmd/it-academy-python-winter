@@ -14,8 +14,8 @@ def power_nums(num):
             sqr += 1
             num //= 2
         else:
-            print("Ближайшее к введенному: " +
-                  str(2 ** sqr) + ", это 2 в степени " + str(sqr))
+            print("Ближайшее к введенному: "
+                  + str(2 ** sqr) + ", это 2 в степени " + str(sqr))
             break
     for i in range(sqr, 0, - 1):
         if temp % 2 ** i == 0:
