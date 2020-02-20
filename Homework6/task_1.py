@@ -6,7 +6,7 @@
 # ситуацию - вызывать методы, взаимодействие объектов и т.д.
 
 
-class Hotel:
+class Hotel(object):
     free_rooms = ['101', '102', '103', '104', '105']
     rented_rooms = []
     booked_rooms = []
@@ -77,10 +77,10 @@ class Person(Hotel):
     def guests(self):
         return print('This class do not have method guests!')
 
-    def __str__(self):
-        return self.name + ' is rented ' + ','.join(self.rentroom) + \
-               ' room(s), and he(she) is book ' + ','.join(self.bookroom) + \
-               ' room(s).'
+    # def __str__(self):
+    #     return self.name + ' is rented ' + ','.join(self.rentroom) + \
+    #            ' room(s), and he(she) is book ' + ','.join(self.bookroom) + \
+    #            ' room(s).'
 
 
 def call_to_hotel():
