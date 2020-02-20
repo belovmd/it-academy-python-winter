@@ -118,7 +118,8 @@ class Employee(object):
 class Manager(Employee):
     salary = 1000
 
-    def promote_employee(self, employee):
+    @staticmethod
+    def promote_employee(employee):
         employee.salary *= 1.2
 
     def fire_employee(self, employee):
