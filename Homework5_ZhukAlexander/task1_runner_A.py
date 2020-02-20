@@ -1,9 +1,10 @@
 """
 Задачи из прошлых домашних работ в функции funner() - вызываются по очереди
 """
-import string
-import random
+
 import copy
+import random
+import string
 
 
 def dct_practice():

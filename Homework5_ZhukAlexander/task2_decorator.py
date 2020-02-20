@@ -7,7 +7,7 @@
 def result_decor(func):
     def wrapper(*args, **kwargs):
         with open('results_of_func.txt', 'a') as f:
-            f.write(func()+'\n')
+            f.write(func() + '\n')
         return func
     return wrapper
 

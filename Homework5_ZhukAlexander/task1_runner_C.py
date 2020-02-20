@@ -26,7 +26,7 @@ def fizzbuzz():
         else:
             print(num)
     print("\n")
-    
+
 
 def uniq_element():
     print("Дан список. Выведите те его элементы, которые встречаются в списке "
