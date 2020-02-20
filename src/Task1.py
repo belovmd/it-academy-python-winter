@@ -12,7 +12,7 @@ import random
 import string
 
 
-class RentRoom:
+class RentRoom(object):
     """Model for rent room"""
 
     def __init__(self,
@@ -128,9 +128,6 @@ class RentRoom:
         print("Your Room number is:", self.num_room)
 
     def save_customer(self):
-        """Creating a dict with customers data
-        before the save make sure that the fields
-        aren't empty!(running prog - Info Customer)"""
         data = {self.num_room: [
             self.name,
             self.address,
@@ -138,6 +135,9 @@ class RentRoom:
             self.in_date,
             self.out_date
         ]}
+        """Creating a dict with customers data
+        before the save make sure that the fields
+        aren't empty!(running prog - Info Customer)"""
 
         """Save a serialized dict to a file"""
         try:

@@ -3,8 +3,8 @@
 (но не более n раз - параметр декоратора).
 Если превышено количество попыток, должно быть
 возбуждено исключение типа TooManyErrors"""
-import random
 from functools import wraps
+import random
 
 
 def more_calls(calls):
