@@ -10,10 +10,10 @@ for i in range(pupils):
     lang = int(input("Введите кол-во языков школьника\n"))
     lang_list = set()
     lang_list1.append(lang_list)
-    for u in range(lang):
-        q = input("Введите язык:\n")
-        lang_list.add(q)
-        all_lang.add(q)
+    for _ in range(lang):
+        language = input("Введите язык школьника:\n")
+        lang_list.add(language)
+        all_lang.add(language)
 
 all_pup = lang_list1[0]
 
