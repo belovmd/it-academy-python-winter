@@ -11,14 +11,16 @@
 country_num = int(input())
 catalog1 = {}
 for i in range(country_num):
-    list1 = [el for el in input().split()]
-    catalog = {a: list1[0] for a in list1[1::]}
-    catalog1.update(catalog)
+    country_name, *cities = input().split()
+    catalog1[country_name] = cities
 
 num_req = int(input())
 list_request = []
 
 for i in range(num_req):
     list_request.append(input())
+
 for element in list_request:
-    print(catalog1.get(element))
+    for country_name, city_name in catalog1.items():
+        if element in city_name:
+            print(country_name)
