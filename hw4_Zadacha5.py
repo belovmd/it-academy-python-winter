@@ -2,16 +2,16 @@
 # Определите, какие языки знают все школьники и языки,
 # которые знает хотя бы один из школьников.
 
-pupils = int(input())
+pupils = int(input("Введите количество школьников: \n"))
 lang_list1 = []
 all_lang = set()
 
 for i in range(pupils):
-    lang = int(input())
+    lang = int(input("Введите кол-во языков школьника\n"))
     lang_list = set()
     lang_list1.append(lang_list)
     for u in range(lang):
-        q = input()
+        q = input("Введите язык:\n")
         lang_list.add(q)
         all_lang.add(q)
 
