@@ -15,13 +15,13 @@ for i in range(pupils):
         lang_list.add(language)
         all_lang.add(language)
 
-all_pup = lang_list1[0]
+everybody_knows = lang_list1[0]
 
 for j in range(len(lang_list1)):
-    all_pup = lang_list1[j] & all_pup
+    everybody_knows = lang_list1[j] & everybody_knows
 
-print(len(all_pup))
-for el in all_pup:
+print(len(everybody_knows))
+for el in everybody_knows:
     print(el)
 
 print(all_lang)
