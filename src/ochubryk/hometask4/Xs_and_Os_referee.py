@@ -18,20 +18,19 @@
 from typing import List
 
 
-def checkio(game_result: List[str]) -> str:
-    for i in range(3):
-        if game_result[i][0] == game_result[i][1] == game_result[i][2]\
-                and game_result[i][0] != ".":
-            return game_result[i][0]
-        elif game_result[0][i] == game_result[1][i] == game_result[2][i]\
-                and game_result[0][i] != ".":
-            return game_result[0][i]
-        elif game_result[0][0] == game_result[1][1] == game_result[2][2]\
-                and game_result[0][0] != ".":
-            return game_result[1][1]
-        elif game_result[0][2] == game_result[1][1] == game_result[2][0]\
-                and game_result[0][2] != ".":
-            return game_result[1][1]
+def checkio(game_result: List[str]):
+    board_size = len(game_result)
+    rows = game_result
+    columns = list(map(''.join, zip(*rows)))
+    diagonals = list(map(''.join, zip(*[(row[i], row[board_size - 1 - i])
+                                        for i, row in enumerate(rows)])))
+
+    for player_char in ['X', 'O']:
+        win_line = player_char * board_size
+        if win_line in rows or win_line in columns or win_line\
+                in diagonals:
+            return player_char
+
     return 'D'
 
 
@@ -40,6 +39,14 @@ if __name__ == '__main__':
     print(checkio(["X.O",
                    "XX.",
                    "XOO"]))
+    assert checkio([
+        "O.X",
+        "XX.",
+        "XO."]) == "X", "Xs wins again"
+    assert checkio([
+        "X.O",
+        "XX.",
+        "OOX"]) == "X", "Xs wins again"
 
     assert checkio([
         "X.O",
@@ -53,7 +60,3 @@ if __name__ == '__main__':
         "OOX",
         "XXO",
         "OXX"]) == "D", "Draw"
-    assert checkio([
-        "O.X",
-        "XX.",
-        "XOO"]) == "X", "Xs wins again"
