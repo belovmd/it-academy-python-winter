@@ -3,11 +3,15 @@
 # Для каждого города укажите, в какой стране он находится.
 
 dct = {}
-for i in range(int(input("Enter the number of lists: "))):
+for the_list in range(int(input("Enter the number of lists: "))):
     country, *cities = input("Enter a list: ").split()
-    for city in cities:
-        dct[city] = country
-
-for i in range(int(input("Enter the number of cities: "))):
-    print(dct.get(input("Enter a city: "),
-                  "There is no such city in the database"))
+    dct[country] = cities
+for city in range(int(input("Enter the number of cities: "))):
+    the_city = input("Enter the city: ")
+    count = 0
+    for country, cities in dct.items():
+        if the_city in cities:
+            print(country)
+            count += 1
+    if count == 0:
+        print("There is no such city in the database")

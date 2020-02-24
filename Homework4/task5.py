@@ -3,8 +3,9 @@
 # Определите, какие языки знают все школьники и языки,
 # которые знает хотя бы один из школьников.
 
-print("Enter the input data, through 'Enter': ", sep='\n')
-pupils = [{input() for j in range(int(input()))} for i in range(int(input()))]
+pupils = [{input('Enter the language: ')
+           for language in range(int(input('Number of languages Mi: ')))}
+          for pupil in range(int(input('Number of pupils N: ')))]
 known_by_everyone = set.intersection(*pupils)
 known_by_someone = set.union(*pupils)
 print(len(known_by_everyone), *known_by_everyone, sep='\n')
