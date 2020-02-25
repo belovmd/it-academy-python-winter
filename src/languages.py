@@ -30,11 +30,11 @@ import copy
 
 count_schoolboys = int(input('Введите количество школьников: '))
 lst_languages = {}
-for i in range(1, count_schoolboys + 1):
+for schoolboy in range(1, count_schoolboys + 1):
     languages = set(input('Введите язык для {} школьника: '
-                    .format(i)) for j in
+                          .format(schoolboy)) for num_schoolboy in
                     range(int(input('Введите количество языков: '))))
-    lst_languages[i] = languages
+    lst_languages[schoolboy] = languages
 copy_lst_languages = copy.deepcopy(lst_languages)
 i = 0
 while i != len(lst_languages):

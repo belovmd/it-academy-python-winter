@@ -26,12 +26,14 @@ Russia
 Russia
 """
 
-list_cities = [input().split() for l in range(int(input()))]
+list_cities = [input('Enter country and city in this country: ').split()
+               for l in range(int(input('Enter count of countries: ')))]
 dct_cities = {}
 for i in list_cities:
     dct_cities[i[0]] = i[1:]
 print(dct_cities)
-my_cities = [input() for l in range(int(input()))]
+my_cities = [input('Enter city: ')
+             for l in range(int(input('Enter count of cities: ')))]
 for country in dct_cities:
     for city in my_cities:
         if city in dct_cities[country]:
