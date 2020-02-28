@@ -1,11 +1,8 @@
 # Даны два натуральных числа.
 # Вычислите их наибольший общий делитель
 # при помощи алгоритма Евклида (мы не знаем функции и рекурсию).
-num1 = int(input('Введите первое число\n'))
-num2 = int(input('Введите второе число\n'))
-while num1 and num2:
-    if num1 > num2:
-        num1 %= num2
-    else:
-        num2 %= num1
-print(num1 + num2)
+number1 = int(input('Введите первое число: '))
+number2 = int(input('Введите второе число: '))
+while number2 > 0:
+    number1, number2 = number2, number1 % number2
+print(number1)
