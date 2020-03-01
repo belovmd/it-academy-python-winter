@@ -10,7 +10,7 @@ from datetime import timedelta
 booked = {}
 
 
-class Hotel():
+class Hotel(object):
 
     def __init__(self, name="Hilton", comfort="5"):
         self.name = name
@@ -79,7 +79,7 @@ class Room(Hotel):
             print("You need to choose class of your hotel")
 
 
-class Customer():
+class Customer(object):
 
     def __init__(self, name=False, surname=False):
         self.name = name
@@ -102,10 +102,10 @@ class Booking(Room, Customer):
         if date1 > date2:
             return ("Error in dates")
         i = 1
-        a = date1
-        b = date2
-        x = date1
-        y = date2
+        date_for_dict_first = date1
+        date_for_dict_second = date2
+        date_loop_1 = date1
+        date_loop_2 = date2
         for i in range(self.roomster(room)):
             while date1 <= date2:
                 if str(date1) + " " + str(self.name) + " №" + str(
@@ -114,15 +114,17 @@ class Booking(Room, Customer):
                     break
                 date1 += timedelta(days=1)
             else:
-                while x <= y:
-                    booked[str(x) + " " + str(self.name) + " №" + str(
-                        i + 1)] = str(guest.name) + " " + str(guest.surname)
-                    x += timedelta(days=1)
+                while date_loop_1 <= date_loop_2:
+                    booked[str(date_loop_1) + " " + str(
+                        self.name) + " №" + str(i + 1)] = str(
+                        guest.name) + " " + str(guest.surname)
+                    date_loop_1 += timedelta(days=1)
                     continue
 
                 return ("Your reservation was accepted \n" + str(
                     self.name) + " " + str(self.comfort) + " " + str(
-                    self.room) + "\nfrom " + str(a) + " to " + str(b))
+                    self.room) + "\nfrom " + str(
+                    date_for_dict_first) + " to " + str(date_for_dict_second))
         else:
             return ("Sorry all room of this type have already reserved")
 
