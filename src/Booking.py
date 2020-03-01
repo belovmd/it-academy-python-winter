@@ -1,3 +1,9 @@
+"""Создайте  модель из жизни. Это может быть бронирование комнаты в отеле,
+покупка билета в транспортной компании, или простая РПГ. Создайте несколько
+объектов классов, которые описывают ситуацию Объекты должны содержать как
+атрибуты так и методы класса для симуляции различных действий. Программа должна
+инстанцировать объекты и эмулировать какую-либо ситуацию - вызывать методы,
+взаимодействие объектов и т.д. """
 from datetime import date
 from datetime import timedelta
 
@@ -73,7 +79,14 @@ class Room(Hotel):
             print("You need to choose class of your hotel")
 
 
-class Booking(Room):
+class Customer():
+
+    def __init__(self, name=False, surname=False):
+        self.name = name
+        self.surname = surname
+
+
+class Booking(Room, Customer):
 
     def booker(self, room="sngl", date1=False, date2=False):
         if not date1:
@@ -94,16 +107,18 @@ class Booking(Room):
         x = date1
         y = date2
         for i in range(self.roomster(room)):
-            while date1 < date2:
-                if str(date1) + " " + str(self.name) + " №" + str(i) in booked:
+            while date1 <= date2:
+                if str(date1) + " " + str(self.name) + " №" + str(
+                        i + 1) in booked:
                     i += 1
                     break
                 date1 += timedelta(days=1)
             else:
-                while x < y:
+                while x <= y:
                     booked[str(x) + " " + str(self.name) + " №" + str(
-                        i)] = "reserved"
+                        i + 1)] = str(guest.name) + " " + str(guest.surname)
                     x += timedelta(days=1)
+                    continue
 
                 return ("Your reservation was accepted \n" + str(
                     self.name) + " " + str(self.comfort) + " " + str(
@@ -112,27 +127,35 @@ class Booking(Room):
             return ("Sorry all room of this type have already reserved")
 
 
+guest = Customer("Jack", "Nicholson")
 w = Booking("Ritz", "3")
-print(w.booker("sngl", "2020-02-29"), "\n\n")
+print(w.booker("sngl", "2020-3-02", "2020-3-09"), "\n\n")
 
+guest = Customer("Orlando", "Bloom")
+w = Booking("Hilton", "5")
+print(w.booker("dbl", "2020-4-10", "2020-4-15"), "\n\n")
+
+guest = Customer("Mila", "Jovovich")
 w = Booking("Hilton", "5")
 print(w.booker("dbl"), "\n\n")
 
+guest = Customer("Angelina", "Jolie")
 w = Booking("Hilton", "5")
 print(w.booker("dbl"), "\n\n")
 
+guest = Customer("Brad", "Pitt")
 w = Booking("Hilton", "5")
 print(w.booker("dbl"), "\n\n")
 
-w = Booking("Hilton", "5")
-print(w.booker("dbl"), "\n\n")
-
+guest = Customer("Tom", "Cruz")
 w = Booking("Ritz", "3")
 print(w.booker("lux"), "\n\n")
 
+guest = Customer("Tom", "Hanks")
 w = Booking("Hilton", "3")
 print(w.booker("dbl"), "\n\n")
 
+guest = Customer("Gal", "Gadot")
 w = Booking("Riz", "3")
 print(w.booker("dbl"), "\n\n")
 
