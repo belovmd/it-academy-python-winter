@@ -26,17 +26,13 @@ list_countries = {}
 list_cities = []
 
 for i in range(1, n + 1):
-    i = str(input('Enter ' + str(i) + ' list of country and cities: '))
-    i = i.split()
-    list_countries[i[0]] = {a for a in i[1:]}
-
-    # print(list_countries)
-
+    string_of_words = str(input('Enter ' + str(i) + ' list of country '
+                                                    'and cities: '))
+    list_of_words = string_of_words.split()
+    list_countries[list_of_words[0]] = {a for a in list_of_words[1:]}
 m = int(input("Enter how many cities do you want find ? "))
 for i in range(1, m + 1):
-    i = str(input('Enter ' + str(i) + '  city: '))
-    list_cities.append(i)
-# print(list_cities)
+    list_cities.append(str(input('Enter ' + str(i) + '  city: ')))
 
 for j in list_cities:
     for i in list_countries:

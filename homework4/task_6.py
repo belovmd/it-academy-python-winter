@@ -5,10 +5,5 @@
 # различных слов содержится в этом тексте.
 # Количество максимальных баллов 9
 
-new_lst = []
-text = input(str(" Type some text: "))
-lst = text.split()
-for word in lst:
-    word.strip()
-    new_lst.append(word)
-print(len(new_lst))
+
+print(len({word.strip() for word in input(str(" Type some text: ")).split()}))

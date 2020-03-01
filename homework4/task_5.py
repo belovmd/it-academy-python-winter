@@ -27,40 +27,28 @@
 # строках - список таких языков.
 
 pupils = {}
-languges = []
-p = set()
-o = set()
-
+languages = set()
 n = int(input("Enter quantity of pupils: "))
 for pupil in range(1, n + 1):
     quantity_languages = int(input('Enter, how much languages '
                                    'knows ' + str(pupil) + ' pupil: '))
     for i in range(1, quantity_languages + 1):
-        i = str(input('His ' + str(i) + ' language is : '))
-        languges.append(i)
-    pupils[pupil] = {a for a in languges}
-    languges.clear()
-# print(pupils)   # general list of pupils
+        language = str(input('His ' + str(i) + ' language is : '))
+        languages.add(language)
+    pupils[pupil] = languages.copy()
+    languages.clear()
+print(pupils)
 
-# count quantity of pupils:
-s = pupils.keys()
-s = len(s)
-
-# lang which all pupils know :
-for i in range(1, s + 1):
-    if i < s:
-        p = pupils[i] & pupils[i + 1]
+for i in pupils:
+    if i < 2:
+        languages = pupils[i] & pupils[i + 1]
     else:
-        p &= pupils[i]
-
-print('All pupils knows ' + str(len(p)) + ' languages: ')
-for i in p:
+        languages &= pupils[i]
+print('All pupils knows ' + str(len(languages)) + ' languages: ')
+for i in languages:
     print(i)
-
-#  all lang which least one pupil know
-for i in range(1, s + 1):
-    o.update(pupils[i])
-
-print(str(len(o)) + ' languages know least one pupil it is: ')
-for i in o:
+for i in pupils:
+    languages.update(pupils[i])
+print(str(len(languages)) + ' languages know least one pupil it is: ')
+for i in languages:
     print(i)
