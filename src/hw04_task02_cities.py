@@ -33,17 +33,17 @@ Russia
 """
 
 
-strani = {}
-count_strani = int(input('Введите количество стран: '))
-for numm in range(count_strani):
-    strana, *goroda = input('страна город город ......:').split()
-    strani[strana] = goroda
-count_goroda = int(input('Введите количество городов: '))
-found_strana = []
-for numm in range(count_goroda):
+countries = {}
+count_countries = int(input('Введите количество стран: '))
+for _ in range(count_countries):
+    country, *cities = input('страна город город ......:').split()
+    countries[country] = cities
+count_cities = int(input('Введите количество искомых городов: '))
+found_country = []
+for _ in range(count_cities):
     city = input('Введите город:')
-    for ctrana, goroda in strani.items():
-        if city in goroda:
-            found_strana.append(ctrana)
-for strana in found_strana:
-    print(strana)
+    for country, cities in countries.items():
+        if city in cities:
+            find_elements = '\n' + 'город ' + city + ' в стране ' + country
+            found_country.append(find_elements)
+print(*found_country)
