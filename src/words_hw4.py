@@ -4,9 +4,7 @@
   или символами конца строки. Определите, сколько различных
   слов содержится в этом тексте.
 """
-import re
 
 
-text = input('Enter sentence: ')
-text = set(re.findall(r'\b(\w+)\b', text))
-print(len(text))
+print(len(set(i.strip('!,?).(<>"')
+              for i in input('Введите предложение').split())))
