@@ -30,37 +30,38 @@ French
 
 
 # Цикл опроса о количестве языков.
-def lang_fnc(dis_qlt):
-    while dis_qlt:
+def how_knows_lang(disciples_quantity):
+    while disciples_quantity:
         lang_count = int(input('Сколько языков знает {} школьник: '
-                               .format(disciples - (dis_qlt - 1))))
-        lang_inp(lang_count)
-        dis_qlt -= 1
+                         .format(disciples - (disciples_quantity - 1)))
+                         )
+        lang_input(lang_count)
+        disciples_quantity -= 1
 
 
 # Цикл ввода языков после получения количества.
-def lang_inp(lang_count):
+def lang_input(lang_count):
     while lang_count:
         lang_type = input('>>> ')
-        lang.setdefault(lang_type, 0)
-        lang[lang_type] += 1
+        languages.setdefault(lang_type, 0)
+        languages[lang_type] += 1
         lang_count -= 1
 
 
 # Цикл печати языков, какие знаю все ученики и какие только единицы.
-def print_lang(max_, min_):
-    for val in max_, min_:
-        print(len(lang_max[val]))
-        for unit in lang_max[val]:
+def print_lang(max_lang, min_lang=1):
+    for value in max_lang, min_lang:
+        print(len(known_languages[value]))
+        for unit in known_languages[value]:
             print(unit)
 
 
 disciples = int(input('Сколько учеников? '))
-lang = {}
-lang_fnc(disciples)
+languages = {}
+how_knows_lang(disciples)
 # Перепаковываем словарь в словарь с вложеными списками
-lang_max = {}
-for lng, qlt in lang.items():
-    lang_max.setdefault(qlt, [])
-    lang_max[qlt].append(lng)
-print_lang(disciples, 1)
+known_languages = {}
+for language, qualtity in languages.items():
+    known_languages.setdefault(qualtity, [])
+    known_languages[qualtity].append(language)
+print_lang(disciples, )

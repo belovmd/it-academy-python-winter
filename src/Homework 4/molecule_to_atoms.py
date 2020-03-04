@@ -25,26 +25,23 @@ https://www.codewars.com/kata/52f831fa9d332c6591000511/train/python
 
 """
 
-import re
+import re, collections
 
 
 def parse_molecule(formula):
-    print(formula)
-    # Меняем все скобки на круглые
-    formula = re.sub(r'([[{])', r'(', formula)
-    formula = re.sub(r'([]}])', r')', formula)
-    # Проставляем * между не цифрами и цифрами
-    formula = re.sub(r'(\D)(\d)', r'\1*\2', formula)
-    # Заворачиваем элементы в кавычкм
-    formula = re.sub(r'([A-Z]{1}[a-z]*)', r'"\1"', formula)
-    # Расставляем плюсы между элементами, цифами и скобками
-    formula = re.sub(r'([\")\d]{1})([\("]{1})', r'\1+\2', formula)
-    formula = eval(formula)
-    # Разбираем строку на элементы
-    formula = re.findall(r'[A-Z]{1}[a-z]?', formula)
-    dct = {}
-    # Считаем кол-во элементов
-    for el in formula:
-        dct.setdefault(el, 0)
-        dct[el] += 1
-    return dct
+
+    while True:
+        pattern = re.search("[\[({](\w+)[\])}](\d+)", formula)
+        if not pattern:
+            break
+        formula = re.sub(re.escape(pattern.group(0)),
+                         pattern.group(1) * int(pattern.group(2)), formula)
+
+    while True:
+        pattern = re.search("([A-Z][a-z]?)(\d+)", formula)
+        if not pattern:
+            break
+        formula = re.sub(pattern.group(0), pattern.group(1) * int(pattern.group(2)),
+                         formula)
+
+    return collections.Counter(re.findall("[A-Z][a-z]?", formula))

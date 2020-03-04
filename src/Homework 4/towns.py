@@ -30,7 +30,11 @@ Russia
 def get_towns(countries_q, ):
     while countries_q:
         input_towns = input('Введи строку: ').split(' ')
-        towns.update({unit: input_towns[0] for unit in input_towns[1:]})
+        for town in input_towns[1:]:
+            if towns.setdefault(town, False):
+                towns[town] += input_towns[0] + '\n'
+            else:
+                towns[town] = input_towns[0] + '\n'
         countries_q -= 1
 
 
@@ -39,7 +43,7 @@ def check_town(towns_q, ):
     countries = ''
     while towns_q:
         countries += towns.get(input('Введи название города: '),
-                               'Такого города нет в списке') + '\n'
+                               'Такого города нет в списке\n')
         towns_q -= 1
     return countries
 

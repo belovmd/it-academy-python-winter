@@ -7,4 +7,4 @@ print(len(set(list1).intersection(set(list2))))
 
 # Даны два списка чисел. Посчитайте, сколько чисел входит только в
 # один из этих списков
-print(len(set(list1).difference(set(list2))))
+print(len(set(list1).symmetric_difference((set(list2)))))

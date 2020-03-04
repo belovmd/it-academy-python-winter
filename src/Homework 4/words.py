@@ -5,8 +5,5 @@
 
 """
 
-import re
-
-# Это регулярное срезает пробельные символы и знаки препинания.
-data = set(re.findall(r"\w+", input("Введи строку: ").lower()))
+data = set(input("Введи строку: ").split())
 print(len(data))
