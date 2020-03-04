@@ -25,23 +25,26 @@ https://www.codewars.com/kata/52f831fa9d332c6591000511/train/python
 
 """
 
-import re, collections
+import re
+import collections
 
 
 def parse_molecule(formula):
 
     while True:
-        pattern = re.search("[\[({](\w+)[\])}](\d+)", formula)
+        pattern = re.search(r"[\[({](\w+)[\])}](\d+)", formula)
         if not pattern:
             break
         formula = re.sub(re.escape(pattern.group(0)),
-                         pattern.group(1) * int(pattern.group(2)), formula)
-
-    while True:
-        pattern = re.search("([A-Z][a-z]?)(\d+)", formula)
-        if not pattern:
-            break
-        formula = re.sub(pattern.group(0), pattern.group(1) * int(pattern.group(2)),
+                         pattern.group(1) * int(pattern.group(2)),
                          formula)
 
-    return collections.Counter(re.findall("[A-Z][a-z]?", formula))
+    while True:
+        pattern = re.search(r"([A-Z][a-z]?)(\d+)", formula)
+        if not pattern:
+            break
+        formula = re.sub(pattern.group(0),
+                         pattern.group(1) * int(pattern.group(2)),
+                         formula)
+
+    return collections.Counter(re.findall(r"[A-Z][a-z]?", formula))
