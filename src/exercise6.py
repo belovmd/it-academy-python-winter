@@ -4,11 +4,5 @@
 # символами конца строки. Определите, сколько различных
 # слов содержится в этом тексте.
 
-import re
-
-txt = re.split(r'\W+', input('Enter the text: '))
-
-for word in set(txt):
-    print(word, txt.count(word))
-
-print('Different words in text: ' + str(len(set(txt))))
+txt = input('Please, enter a text: ')
+print(len(txt.split()))
