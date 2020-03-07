@@ -106,7 +106,7 @@ class Casino(object):
                 self.capital += bet
 
     def blackjack(self, persons_list):
-        # It simulation don't use different ace values.
+        # It simulation does't use different ace values.
         cards = self.blackjack_deck[:] * 4
         random.shuffle(cards)
         players = []
