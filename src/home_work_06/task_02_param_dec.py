@@ -22,24 +22,27 @@ def error_count_dec(max_err_count):
         @wraps(func)
         def wrapper(*args, **kwargs):
             name = func.__name__
-            func_run_count[func] += 1
-            try:
-                if func_err_count[func] >= max_err_count:
-                    raise TooManyErrors
-            except TooManyErrors:
-                return 'Func "{}" reached max errors'.format(name)
-            else:
+            params = [*args, *kwargs]
+            for func_err_count[func] in range(max_err_count):
                 try:
-                    print('Func "{}" trying {} time'
-                          .format(name, func_run_count[func]))
+                    func_run_count[func] += 1
+                    print('Func "{}" params {} trying {} time'
+                          .format(name, params, func_run_count[func]))
                     res = func(*args, **kwargs)
                     return res
                 except Exception:
                     func_err_count[func] += 1
-                    return 'Errors {}'.format(func_err_count[func])
-
+                    print('Errors {}'.format(func_err_count[func]))
+            else:
+                try:
+                    if func_err_count[func] >= max_err_count:
+                        raise TooManyErrors
+                except TooManyErrors:
+                    func_run_count[func] = 0
+                    res = 'Func "{}" params {} max errors'.format(name,
+                                                                  params)
+                    return res
         return wrapper
-
     return result_decorator
 
 
@@ -47,15 +50,9 @@ euklid = error_count_dec(3)(all_func.euklid)
 fibonacci = error_count_dec(3)(all_func.fibonacci)
 
 print(euklid('a', 'b'))
-print(euklid('b', 'c'))
-print(euklid('a', '1'))
-
+print(euklid(1, 'c'))
 print(euklid(30, 18))
-print(euklid(360, 126))
-print(euklid(400, 100))
-print(euklid(56, 35))
 
 print(fibonacci('a'))
 print(fibonacci(5))
-print(fibonacci(7))
-print(fibonacci(10))
+

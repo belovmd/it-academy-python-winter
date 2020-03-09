@@ -19,6 +19,12 @@ class Hotel(object):
         self.current_customers_list = []
         self.total_income = 0
 
+    def add_room(self, some_room):
+        self.rooms.append(some_room)
+
+    def remove_room(self, some_room):
+        self.rooms.remove(some_room)
+
     def all_rooms(self):
         print('All rooms: \t', *[el.id for el in self.rooms])
 
@@ -26,15 +32,19 @@ class Hotel(object):
         print('Vacant rooms: \t',
               *[el.id for el in self.rooms if not el.is_occupied])
 
+    def add_employee(self, employee):
+        self.employee_list.append(employee)
+
+    def remove_employee(self, employee):
+        self.employee_list.remove(employee)
+
     def all_employee(self):
         print('All employee: \t', len(self.employee_list))
         for empl in self.employee_list:
             print(empl.id, empl.name, empl.second_name, empl.salary)
 
-    def service_list(self):
-        s_list = [el.id for el in self.rooms if el.cleaning_is_ordered]
-        if s_list:
-            print('Rooms need cleaning: \t', *s_list)
+    def add_customer(self, customer):
+        self.all_customers_list.append(customer)
 
     def all_customers(self):
         if self.all_customers_list:
@@ -56,6 +66,35 @@ class Hotel(object):
                 print(customer.id, customer.name,
                       customer.second_name, customer.room.id)
 
+    def make_reservation(self, customer, room):
+        if customer.room:
+            print("Mr {} you can't reserve another room. "
+                  "You need to checkout first."
+                  .format(customer.second_name))
+        else:
+            if room.is_occupied:
+                print('Sorry mr {}, room {} is already occupied.'
+                      .format(customer.second_name, room.id))
+            else:
+                self.current_customers_list.append(customer)
+                customer.room = room
+                room.is_occupied = True
+                self.total_income += room.cost
+                print('Room number {} is yours mr {}.'
+                      .format(room.id, customer.second_name))
+
+    def check_out(self, customer):
+        customer.room.is_occupied = False
+        self.current_customers_list.remove(customer)
+        customer.room = None
+        print('Thank you mr {}. We hope to see you again.'
+              .format(customer.second_name))
+
+    def update_service_list(self):
+        s_list = [el.id for el in self.rooms if el.cleaning_is_ordered]
+        if s_list:
+            print('Rooms need cleaning: \t', *s_list)
+
     def hotel_status(self):
         print('=' * 50)
         print('Total income: {}'.format(self.total_income))
@@ -64,7 +103,7 @@ class Hotel(object):
         print('-' * 50)
         self.all_employee()
         print('-' * 50)
-        self.service_list()
+        self.update_service_list()
         self.current_customers()
         print('=' * 50)
 
@@ -79,7 +118,7 @@ class Room(object):
         self.id = self.type_id + 1
         Room.type_id += 1
         self.hotel = some_hotel
-        self.hotel.rooms.append(self)
+        self.hotel.add_room(self)
 
 
 class Lux(Room):
@@ -110,7 +149,7 @@ class Employee(object):
         self.name = name
         self.second_name = second_name
         self.hotel = some_hotel
-        self.hotel.employee_list.append(self)
+        self.hotel.add_employee(self)
         self.id = self.employee_id
         Employee.employee_id += 1
 
@@ -123,13 +162,13 @@ class Manager(Employee):
         employee.salary *= 1.2
 
     def fire_employee(self, employee):
-        self.hotel.employee_list.remove(employee)
+        self.hotel.remove_employee(employee)
 
 
 class Maid(Employee):
     salary = 350
 
-    def cleaning(self):
+    def clean(self):
         for dirty_room in self.hotel.rooms:
             if dirty_room.cleaning_is_ordered:
                 print('Cleaning room', dirty_room.id)
@@ -144,38 +183,15 @@ class Customer(object):
         self.name = name
         self.second_name = second_name
         self.hotel = some_hotel
-        self.hotel.all_customers_list.append(self)
+        self.hotel.add_customer(self)
         self.id = self.customer_id
         Customer.customer_id += 1
         print('Welcome to the {} mr {}!'
               .format(self.hotel.name, self.second_name))
 
-    def make_reservation(self, room):
-        if self.room:
-            print("Mr {} you can't reserve another room. "
-                  "You need to checkout first."
-                  .format(self.second_name))
-        else:
-            if room.is_occupied:
-                print('Sorry mr {}, room {} is already occupied.'
-                      .format(self.second_name, room.id))
-            else:
-                self.hotel.current_customers_list.append(self)
-                self.room = room
-                room.is_occupied = True
-                room.hotel.total_income += room.cost
-                print('Room number {} is yours mr {}.'
-                      .format(room.id, self.second_name))
-
-    def check_out(self):
-        self.room.is_occupied = False
-        self.hotel.current_customers_list.remove(self)
-        self.room = None
-        print('Thank you mr {}. We hope to see you again.'
-              .format(self.second_name))
-
-    def order_cleaning(self):
-        self.room.cleaning_is_ordered = True
+    @staticmethod
+    def order_cleaning(room):
+        room.cleaning_is_ordered = True
 
 
 if __name__ == '__main__':
@@ -204,30 +220,30 @@ if __name__ == '__main__':
     customer_3 = Customer('Raymond', 'Stantz', my_hotel)
     customer_4 = Customer('Winston', 'Zeddemore', my_hotel)
 
-    customer_1.make_reservation(room_101)
-    customer_1.make_reservation(room_201)
-    customer_1.order_cleaning()
-    maid_1.cleaning()
+    my_hotel.make_reservation(customer_1, room_101)
+    my_hotel.make_reservation(customer_1, room_201)
+    customer_1.order_cleaning(room_201)
+    maid_1.clean()
 
-    customer_2.make_reservation(room_102)
+    my_hotel.make_reservation(customer_2, room_102)
 
-    customer_3.make_reservation(room_102)
-    customer_3.make_reservation(room_201)
-    customer_3.order_cleaning()
+    my_hotel.make_reservation(customer_3, room_102)
+    my_hotel.make_reservation(customer_3, room_201)
+    customer_3.order_cleaning(room_102)
 
-    customer_4.make_reservation(room_301)
+    my_hotel.make_reservation(customer_4, room_301)
 
     my_hotel.hotel_status()
 
-    maid_1.cleaning()
+    maid_1.clean()
     manager_1.promote_employee(maid_1)
     manager_1.fire_employee(maid_2)
 
-    customer_2.check_out()
-    customer_3.check_out()
-    customer_3.make_reservation(room_102)
+    my_hotel.check_out(customer_2)
+    my_hotel.check_out(customer_3)
+    my_hotel.make_reservation(customer_3, room_102)
 
-    customer_4.check_out()
+    my_hotel.check_out(customer_4)
 
     my_hotel.hotel_status()
 
