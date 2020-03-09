@@ -8,14 +8,24 @@ import the_functions
 
 def runner(*functions):
     if not functions:
-        functions = [el for el in dir(the_functions) if el[:2]
-                     not in ['re', '__']]
+        functions = [el for el in dir(the_functions)
+                     if not el.startswith(('__', 're'))]
     for function in functions:
-        called_function = getattr(the_functions, function)
-        print('Вызов функции:', function)
-        print('Результат:', called_function())
+        try:
+            called_function = getattr(the_functions, function)
+            if callable(called_function):
+                print('Function call:', function)
+                print('Result:', called_function())
+            else:
+                raise AttributeError("This is something that I can't call")
+        except (TypeError, AttributeError) as err:
+            print('Error: {0}'.format(err))
 
 
-runner('words')
+runner('words2')
+runner(1)
+runner('non existing function')
 runner('words', 'look_back')
+runner(0)
+runner('non existing function')
 runner()
