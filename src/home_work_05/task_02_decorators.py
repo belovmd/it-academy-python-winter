@@ -4,6 +4,7 @@
 """
 
 import all_func
+from datetime import datetime
 from functools import wraps
 
 
@@ -11,8 +12,10 @@ def result_decorator(some_func):
     @wraps(some_func)
     def wrapper(*args, **kwargs):
         res = some_func(*args, **kwargs)
+        current_date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         with open('results.txt', 'a') as res_file:
             res_file.write('Function name: {}\n'.format(some_func.__name__))
+            res_file.write('Time: {}\n'.format(current_date_time))
             res_file.write('Result: {}\n\n'.format(res))
         return res
     return wrapper

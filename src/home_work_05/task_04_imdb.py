@@ -12,10 +12,12 @@ import os
 
 def imdb():
     line_count, source_string = 1, ''
+    top250mov_begin_line = 29
+    top250mov_end_line = 279
     try:
         with open(os.path.join('data5', 'ratings.list'), 'r') as source:
             for line in source:
-                if 29 <= line_count < 279:
+                if top250mov_begin_line <= line_count < top250mov_end_line:
                     source_string += line
                 line_count += 1
     except IOError:
@@ -28,15 +30,19 @@ def imdb():
 
 
 def make_top250_file(source_data):
+    title_begin_pos = 31
     with open(os.path.join('data5', 'top250_movies.txt'), 'w+') as top250:
         for line in source_data.split('\n'):
-            clear_line = line[31:line.find('(') - 1].lstrip(' ')
+            clear_line = line[title_begin_pos:line.find('(') - 1].lstrip(' ')
             top250.write(clear_line + '\n')
     return
 
 
 def make_ratings_file(source_data):
-    line_list = [line[26:31].strip(' ') for line in source_data.split('\n')]
+    rating_begin_pos = 26
+    rating_end_pos = 31
+    line_list = [line[rating_begin_pos:rating_end_pos].strip(' ')
+                 for line in source_data.split('\n')]
     line_list.sort(reverse=True)
     rat_dct = {elem: line_list.count(elem) for elem in line_list}
     with open(os.path.join('data5', 'ratings.txt'), 'w+') as rate:

@@ -1,24 +1,32 @@
 Function name: euklid
+Time: 2020-03-09 02:16:44
 Result: 6
 
 Function name: euklid
+Time: 2020-03-09 02:16:44
 Result: 18
 
 Function name: diff_words
+Time: 2020-03-09 02:16:44
 Result: 5
 
 Function name: diff_words
+Time: 2020-03-09 02:16:44
 Result: 7
 
 Function name: languages
-Result: ({'rus'}, {'jap', 'rus', 'ital', 'eng', 'ger'})
+Time: 2020-03-09 02:16:44
+Result: ({'rus'}, {'rus', 'ital', 'jap', 'ger', 'eng'})
 
 Function name: languages
-Result: ({'rus', 'eng'}, {'jap', 'rus', 'ger', 'eng', 'fra'})
+Time: 2020-03-09 02:16:44
+Result: ({'rus', 'eng'}, {'rus', 'jap', 'fra', 'eng', 'ger'})
 
 Function name: pair_elem
+Time: 2020-03-09 02:16:44
 Result: 9
 
 Function name: pair_elem
+Time: 2020-03-09 02:16:44
 Result: 4
 
