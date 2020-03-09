@@ -55,4 +55,3 @@ print(euklid(30, 18))
 
 print(fibonacci('a'))
 print(fibonacci(5))
-
