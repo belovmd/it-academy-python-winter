@@ -41,10 +41,3 @@ if __name__ == '__main__':
     print(my_func(3, 0))
     print(my_func(3, 0))
     print(my_func(4, 2))
-
-
-
-
-
-
-

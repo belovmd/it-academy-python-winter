@@ -3,7 +3,7 @@
 """
 
 
-class Client:
+class Client(object):
     def __init__(self, first_name, last_name):
         self.first_name = first_name
         self.last_name = last_name
@@ -12,7 +12,7 @@ class Client:
               f"услугами перевозки")
 
 
-class Bus:
+class Bus(object):
     def __init__(self, number, name_driver, seats):
         self.number = number
         self.name_driver = name_driver
@@ -21,7 +21,7 @@ class Bus:
         print(f"Зарегистрирован автобус {number} на {seats} мест")
 
 
-class Route:
+class Route(object):
     key_route = 1
 
     def __init__(self, starting_point, finish_point, bus):
@@ -83,7 +83,7 @@ class Route:
 
 if __name__ == '__main__':
     """
-    регистрация автобусов в парке 
+    регистрация автобусов в парке
     """
     bus01 = Bus('9034kc-7', 'Василий', 8)
     bus02 = Bus('3045ca-4', 'Николай', 4)
