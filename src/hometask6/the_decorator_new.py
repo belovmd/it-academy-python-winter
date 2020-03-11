@@ -25,12 +25,7 @@ def error_decorator(critical_error_count):
         def wrap(*args, **kwargs):
             name = function.__name__
             function.__invocation_count__ += 1
-            try:
-                if function.__errors_count__ > critical_error_count:
-                    raise TooManyErrors(name)
-            except TooManyErrors as result_of_function:
-                return result_of_function
-            else:
+            while function.__errors_count__ <= critical_error_count:
                 try:
                     result = function(*args, **kwargs)
                     return 'Name: {},' \
@@ -43,6 +38,12 @@ def error_decorator(critical_error_count):
                     return 'Name: {},' \
                            ' count function errors: {}' \
                            ''.format(name, function.__errors_count__)
+            else:
+                try:
+                    if function.__errors_count__ > critical_error_count:
+                        raise TooManyErrors(name)
+                except TooManyErrors as result_of_function:
+                    return result_of_function
 
         return wrap
 
