@@ -20,12 +20,19 @@ def read_IMDB():
 
 def top_250_IMDB():
     top_250 = open('top250_movies.txt', 'w')
+<<<<<<< HEAD
     top_250_start = 28
     top_250_end = 278
     with open('ratings.list') as file:
         count_line = 1
         for line in file:
             if top_250_start < count_line <= top_250_end:
+=======
+    with open('ratings.list') as file:
+        count_line = 1
+        for line in file:
+            if 28 < count_line <= 278:
+>>>>>>> 25601a1a117babf773e2c813d33b2d57cee0f252
                 line = line.split()
                 list_250.append(line)
                 top_250.write(' '.join(line[3:-1]) + '\n')

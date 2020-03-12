@@ -9,6 +9,7 @@ import my_functions
 
 def runner(*functions):
     if not functions:
+<<<<<<< HEAD
         functions = [item for item in dir(my_functions)
                      if not item.startswith(('__', 're'))]
     for function in functions:
@@ -24,5 +25,21 @@ def runner(*functions):
 
 runner()
 runner('seeback', 'words')
+=======
+        for i in dir(my_functions):
+            if '__' in i or 're' in i:
+                pass
+            else:
+                functions = list(functions)
+                functions.append(i)
+    for function in functions:
+        if function in dir(my_functions):
+            function = getattr(my_functions, function)
+            print(function())
+
+
+runner()
+runner('see_back', 'words')
+>>>>>>> 25601a1a117babf773e2c813d33b2d57cee0f252
 runner('words')
 runner('order_list')
