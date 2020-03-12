@@ -1,8 +1,8 @@
 """Создайте декоратор, который хранит результаты
 вызовы функции (за все время вызовов,
 не только текущий запуск программы)"""
-import my_functions
 from datetime import datetime
+import my_functions
 
 
 def dec(func):
