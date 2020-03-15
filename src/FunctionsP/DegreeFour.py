@@ -7,22 +7,22 @@
 def DegreeFour(a=None):
     if not a:
         a = int(input())
-    a_1 = 2
-    a_2 = 2
-    while a_1 * 2 < a and a_1 * 2 != a:
-        a_1 *= 2
-    while a_2 < a and a_2 != a:
-        a_2 *= 2
+    lower_degree = 2
+    higher_degree = 2
+    while lower_degree * 2 < a and lower_degree * 2 != a:
+        lower_degree <<= 1
+    while higher_degree < a and higher_degree != a:
+        higher_degree <<= 1
     if a == 1:
         return print(a)
-    elif a - a_1 < a_2 - a:
-        return print(a_1)
-    elif a_2 - a < a - a_1:
-        return print(a_2)
-    elif a_2 - a == a - a_1:
-        return print(a_1, a_2)
+    elif a - lower_degree < higher_degree - a:
+        return print(lower_degree)
+    elif higher_degree - a < a - lower_degree:
+        return print(higher_degree)
+    elif higher_degree - a == a - lower_degree:
+        return print(lower_degree, higher_degree)
     else:
-        return print(a_1)
+        return print(lower_degree)
 
 
 DegreeFour()

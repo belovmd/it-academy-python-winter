@@ -13,12 +13,12 @@ def DegreeFive(number=None):
         number = int(input("Введите число: \n"))
     degree_number = 2
     while degree_number * 2 <= number and degree_number != number:
-        degree_number *= 2
+        degree_number <<= 1
     while degree_number != 1:
         if number % degree_number == 0:
             return print(int(degree_number))
         else:
-            degree_number /= 2
+            degree_number >>= 1
 
 
 DegreeFive()
