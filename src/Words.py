@@ -6,5 +6,5 @@
 содержится в этом тексте.
 """
 
-str_1 = " asd£ 2 2    \n\n\n asd£  erer n\n\n !!232323\n\n    djkfj %%$£R(()) "
+str_1 = " asd£ 2 2   \t \r \n\n\n asd£ erer n\n\n !!232323\n\n dfj %%$£R(())  "
 print(len(set(str_1.split())))
