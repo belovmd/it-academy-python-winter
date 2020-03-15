@@ -25,30 +25,30 @@ French
 """
 
 number_pupils = int(input())
-lst_1 = []
-dct_1 = {}
+lst_of_pupils = []
+dct_of_languages = {}
 for i in range(number_pupils):
     number_lang = int(input())
     for i in range(number_lang):
-        lst_1.append(input())
-for symbol in lst_1:
-    dct_1[symbol] = dct_1.get(symbol, 0) + 1
+        lst_of_pupils.append(input())
+for symbol in lst_of_pupils:
+    dct_of_languages[symbol] = dct_of_languages.get(symbol, 0) + 1
 count_all = 0
 count_one = 0
-for symbol in dct_1:
-    if dct_1.get(symbol) == number_pupils:
+for symbol in dct_of_languages:
+    if dct_of_languages.get(symbol) == number_pupils:
         count_all += 1
     else:
         count_one += 1
 if count_all > 0:
     print(count_all)
-    for symbol in dct_1:
-        if dct_1.get(symbol) == number_pupils:
+    for symbol in dct_of_languages:
+        if dct_of_languages.get(symbol) == number_pupils:
             print(symbol)
 else:
     print("У школьников нет общих языков")
 if count_one > 0:
     print(count_one)
-    for symbol in dct_1:
-        if dct_1.get(symbol) != number_pupils:
+    for symbol in dct_of_languages:
+        if dct_of_languages.get(symbol) != number_pupils:
             print(symbol)
