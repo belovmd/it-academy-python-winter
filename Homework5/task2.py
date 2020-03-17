@@ -1,29 +1,27 @@
 # 2. Создайте декоратор, который хранит результаты вызовов функции
 # (за все время вызовов, не только текущий запуск программы)
 
+from datetime import datetime
+from Homework5 import task1
+
 
 def data_to_file(func):
+    result = func()
+
     def wrapper():
         with open('file.txt', 'a') as f:
-            f.write(func() + '\n')
+            f.write(str(datetime.now()) + '\n')
+            f.write(func.__name__ + '\n')
+            f.write(str(result) + '\n\n')
+        return result
+
     return wrapper
 
 
-# Даны два натуральных числа.
-# Вычислите их наибольший общий делитель при помощи алгоритма Евклида
-@data_to_file
-def gcd():
-    number1 = int(input('Enter 1st natural number: '))
-    number2 = int(input('Enter 2nd natural number: '))
-    data = str(number1) + ' ' + str(number2)   # Для записи в файл
-    while number1 != number2:
-        if number1 > number2:
-            number1 = number1 - number2
-        else:
-            number2 = number2 - number1
-    print('GCD =', number1)  # greatest common divisor
-    data = data + ' GCD = ' + str(number1)
-    return data
-
+gcd = data_to_file(task1.gcd)
+dct = data_to_file(task1.dct)
+list_to_tuple = data_to_file(task1.list_to_tuple)
 
 gcd()
+dct()
+list_to_tuple()
