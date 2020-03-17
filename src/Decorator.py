@@ -5,24 +5,30 @@ TooManyErrors"""
 import random
 
 
-def QQQ(x=1, y=10, z=100):
+def Randomaiser(x=1, y=10, z=100):
     while z:
         z -= 1
         return (print(random.randint(x, y), end=" "))
 
 
-def decor(fn):
+def decor(quantity, fn):
+
+    class TooManyErrors(Exception):
+        pass
+
     def wraper_new(*args, **kwargs):
-        qun_of_call = 50
-        while qun_of_call:
+        qun_of_calls = quantity
+        calls = 0
+        while qun_of_calls:
             fn(*args, **kwargs)
-            qun_of_call -= 1
+            qun_of_calls -= 1
+            calls += 1
         else:
-            raise Exception('TooManyError')
+            raise TooManyErrors(f'{fn.__name__} was called more than {calls} '
+                                f'calls')
 
     return wraper_new
 
 
-QQQ = decor(QQQ)
-QQQ()
-QQQ()
+Randomaiser = decor(50, Randomaiser)
+Randomaiser()
