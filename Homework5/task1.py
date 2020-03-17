@@ -59,11 +59,12 @@ def gcd():
     return data
 
 
-# Для проверки runner:
-def check(a):
-    m = 5 * 5
+# Для проверки task1(runner).py:
+# def check(a):
+#     m = 5 * 5
+#
+# i = 0
 
-i = 0
 
 # Variant №1
 
