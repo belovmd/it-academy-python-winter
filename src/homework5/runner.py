@@ -1,7 +1,15 @@
 import allfunc
 
+"""Оформите решение задач из прошлых домашних работ в функции. Напишите
+функцию runner. (все станет проще когда мы изучим модули,
+getattr и setattr)
+runner() – все фукнции вызываются по очереди
+runner(‘func_name’) – вызывается только функцию func_name.
+runner(‘func’, ‘func1’...) - вызывает все переданные функции
+"""
 
-def run_fnc(*args):
+
+def runner(*args):
     attrs = {attr: getattr(
              allfunc, attr) for attr in dir(allfunc) if
              callable(getattr(allfunc, attr))
@@ -18,4 +26,6 @@ def run_fnc(*args):
             print('\n')
 
 
-run_fnc("set_words", 'evliklid')
+runner()
+runner('pair_elements')
+runner("set_words", 'evliklid')

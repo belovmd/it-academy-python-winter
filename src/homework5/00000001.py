@@ -4,14 +4,18 @@
 
 def fnd_div(i):
     a = i
-    count = 0
-    while a:
-        a = a >> 1
-        count += 1
-    div = 2 << count
-    while i % div:
-        div = div >> 1
-    print(div)
+    b = 2
+    res = 0
+    while not res:
+        res = a & b
+        b *= 2
+    return res
 
 
-fnd_div(12)
+if "__main__" == __name__:
+    print(fnd_div(48))
+    print(fnd_div(15))
+    print(fnd_div(16))
+    print(fnd_div(44))
+    print(fnd_div(32))
+    print(fnd_div(64))
