@@ -11,7 +11,7 @@ import random
 """
 
 
-class Casino():
+class Casino(object):
 
     def __init__(self, name):
         self.list_guests = list_guests[:]
@@ -119,7 +119,7 @@ class Casino():
                 .format(self.capital - self.start_capital))
 
 
-class Bar():
+class Bar(object):
 
     @classmethod
     def bar(self, guests):
@@ -139,7 +139,7 @@ class Bar():
         with_blackjack.bar_visitors.clear()
 
 
-class UsualGuest():
+class UsualGuest(object):
 
     def __init__(self, name):
         self.name = name
