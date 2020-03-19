@@ -11,7 +11,7 @@ import random
 """
 
 
-class Casino(object):
+class Casino():
 
     def __init__(self, name):
         self.list_guests = list_guests[:]
@@ -27,46 +27,15 @@ class Casino(object):
         self.blackjack_players = []
         self.bar_visitors = []
 
-    def cycle(self, times):
-        # It is a main function in this program, it start a interplay
-        # after instanced all objects.
-        # One cycle equal 15 minutes, 3 rounds of roulette,
-        # 4 rounds of blackjack, 5 rounds of
-        # one-hand bandit, 1 glass some drink in a bar.
-        # Persons have parameter - а prefer_place, random.chouce() picks
-        # a current place in it. Person goes to the bar after win.
-
-        for time in range(times):
-            if self.list_guests:
-                for person in self.list_guests:
-                    person.choice_place()
-                    if person.current_place == 'roulette':
-                        self.roulette_players.append(person)
-                    if person.current_place == 'blackjack':
-                        self.blackjack_players.append(person)
-                    if person.current_place == 'one-hand bandit':
-                        self.one_hand_bandit(person)
-                    if person.current_place == 'bar':
-                        self.bar_visitors.append(person)
-                self.roulette()
-                self.blackjack(self.blackjack_players)
-                self.blackjack_players.clear()
-                self.bar()
-                self.bar_visitors.clear()
-                print(self)
-            else:
-                break
-
-    def roulette(self):
+    def roulette(self, players):
         # Here guests place bets.
         for time in range(3):
             bets = {}
-            for person in self.roulette_players:
+            for person in players:
                 if person.do_i_have_cash():
                     bets.setdefault(person.bet_roulette())
             self.all_bets_are_off(bets)
             bets.clear()
-        self.roulette_players.clear()
 
     def all_bets_are_off(self, bets):
         # It is a very simple simulation roulette. Only numbers
@@ -76,7 +45,7 @@ class Casino(object):
         for person in bets:
             if person[1][0] == roulette_round:
                 self.capital -= (person[1][1] * 35)
-                person[0].won(person[1][1] * 36)
+                self.won(person[0], person[1][1] * 36)
             else:
                 self.capital += person[1][1]
 
@@ -101,7 +70,7 @@ class Casino(object):
                 win_ratio += 1
             if win_ratio > 1:
                 self.capital -= bet * (win_ratio - 1)
-                person.won(bet * win_ratio)
+                self.won(person, bet * win_ratio)
             else:
                 self.capital += bet
 
@@ -126,25 +95,15 @@ class Casino(object):
             croupier_hand.append(cards.pop(0))
         for person in players:
             if 22 > sum(person[2]) > sum(croupier_hand):
-                person[0].won(person[1] * 2)
+                self.won(person[0], person[1] * 2)
                 self.capital -= person[1]
             else:
                 self.capital += person[1]
 
-    def bar(self):
-        drinks = {'mojito': (1, 10),
-                  'bud': (1, 5),
-                  'vodka': (2, 10),
-                  'jimbeam': (2, 15),
-                  'chivas': (2, 50)}
-        for person in self.bar_visitors:
-            the_picked_drink = random.choice(person.prefer_drink)
-            print('{} is drinking a glass of {}'
-                  .format(person.name, the_picked_drink))
-            person.drunk += drinks[the_picked_drink][0]
-            person.money -= drinks[the_picked_drink][1]
-            self.capital += drinks[the_picked_drink][1]
-        self.bar_visitors.clear()
+    def won(self, person, pot):
+        person.current_place = 'bar'
+        person.woo_hoo(pot)
+        person.money += pot
 
     def security(self, person):
         if person in self.roulette_players:
@@ -160,7 +119,27 @@ class Casino(object):
                 .format(self.capital - self.start_capital))
 
 
-class UsualGuest(object):
+class Bar():
+
+    @classmethod
+    def bar(self, guests):
+        bar_visitors = guests
+        drinks = {'mojito': (1, 10),
+                  'bud': (1, 5),
+                  'vodka': (2, 10),
+                  'jimbeam': (2, 15),
+                  'chivas': (2, 50)}
+        for person in bar_visitors:
+            the_picked_drink = random.choice(person.prefer_drink)
+            print('{} is drinking a glass of {}'
+                  .format(person.name, the_picked_drink))
+            person.drunk += drinks[the_picked_drink][0]
+            person.money -= drinks[the_picked_drink][1]
+            with_blackjack.capital += drinks[the_picked_drink][1]
+        with_blackjack.bar_visitors.clear()
+
+
+class UsualGuest():
 
     def __init__(self, name):
         self.name = name
@@ -187,15 +166,13 @@ class UsualGuest(object):
         else:
             return True
 
-    def won(self, pot):
-        self.current_place = 'bar'
-        print('WOO-HOO! I win {} dollars!'.format(pot))
-        self.money += pot
+    def woo_hoo(self, pot):
+        print(f'{self.name}: WOO-HOO! I win {pot} dollars!')
 
     def gameover(self):
         if self.drunk > 7:
             print(str.upper('give me back my money!1!!!111'))
-        with_blackjack_and_ledies.security(self)
+        with_blackjack.security(self)
 
     def bet_roulette(self):
         bet = random.choice(range(1, 37))
@@ -253,7 +230,39 @@ class ChinaTourist(UsualGuest):
     def gameover(self):
         if self.drunk > 5:
             print('把钱还给我！ 该死！ 狗儿子')
-        with_blackjack_and_ledies.security(self)
+        with_blackjack.security(self)
+
+
+def cycle(times):
+    # It is a main function in this program, it start a interplay
+    # after instanced all objects.
+    # One cycle equal 15 minutes, 3 rounds of roulette,
+    # 4 rounds of blackjack, 5 rounds of
+    # one-hand bandit, 1 glass some drink in a bar.
+    # Persons have parameter - а prefer_place, random.chouce() picks
+    # a current place in it. Person goes to the bar after win.
+
+    for time in range(times):
+        if with_blackjack.list_guests:
+            for person in with_blackjack.list_guests:
+                person.choice_place()
+                if person.current_place == 'roulette':
+                    with_blackjack.roulette_players.append(person)
+                if person.current_place == 'blackjack':
+                    with_blackjack.blackjack_players.append(person)
+                if person.current_place == 'one-hand bandit':
+                    with_blackjack.one_hand_bandit(person)
+                if person.current_place == 'bar':
+                    with_blackjack.bar_visitors.append(person)
+            with_blackjack.roulette(with_blackjack.roulette_players)
+            with_blackjack.roulette_players.clear()
+            with_blackjack.blackjack(with_blackjack.blackjack_players)
+            with_blackjack.blackjack_players.clear()
+            Bar.bar(with_blackjack.bar_visitors)
+            with_blackjack.bar_visitors.clear()
+            print(with_blackjack)
+        else:
+            break
 
 
 if __name__ == '__main__':
@@ -268,8 +277,10 @@ if __name__ == '__main__':
     guest8 = OldGuest('Granny')
     guest9 = ChinaTourist('Jackie')
     guest10 = ChinaTourist('Senior Vong')
-    with_blackjack_and_ledies = Casino('with_blackjack_and_ledies')
-    with_blackjack_and_ledies.cycle(300)
+    with_blackjack = Casino('with_blackjack')
+
+    cycle(300)
+
     for person in list_guests:
         print(person)
-    print(with_blackjack_and_ledies)
+    print(with_blackjack)

@@ -6,28 +6,32 @@
 """
 
 
-def decorator(errors):
+class TooManyErrors(Exception):
+    def __str__(self):
+        return 'TooManyErrors'
 
+
+def decorator(param):
     def dec(func):
         def wrapper(*args, **kwargs):
-            nonlocal errors
-
-            while errors:
-                try:
-                    result = func(*args, **kwargs)
-                except Exception:
-                    errors -= 1
-                    return 'Something wrong'
+            errors = param
+            try:
+                while errors:
+                    try:
+                        result = func(*args, **kwargs)
+                        return result
+                    except Exception:
+                        errors -= 1
+                        print('Something wrong')
                 else:
-                    return result
-            else:
-                return 'TooManyErrors'
+                    raise TooManyErrors
+            except TooManyErrors:
+                return TooManyErrors
         return wrapper
-
     return dec
 
 
-@decorator(4)
+@decorator(3)
 def division(a, b):
     return a / b
 
