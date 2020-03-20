@@ -1,10 +1,11 @@
 # Вводится число найти его максимальный делитель, являющийся
 # степенью двойки. 10(2) 16(16), 12(4).
 
-n = int(input("Enter a number: "))
-i = 0
-while n % 2 == 0:
-    i += 1
-    n = n / 2
-output = 2 ** i
-print(output)
+
+def max_divider(n):
+    i = 2
+    while True:
+        if n & i == 0:
+            i = i << 1
+        else:
+            return i

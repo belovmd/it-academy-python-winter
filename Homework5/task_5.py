@@ -2,10 +2,11 @@
 # введенному числу. 10(8), 20(16), 1(1)
 
 
-n = int(input("Enter a number: "))
-i = 0
-while n != 1:
-    n = n >> 1
-    i += 1
-output = 2 ** i
-print(output)
+def max_degree(n):
+    i = 1
+    while len(bin(i)) < len(bin(n)):
+        i = i << 1
+    else:
+        return i
+
+

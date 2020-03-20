@@ -21,7 +21,7 @@ try:
                 break
 
         f.seek(0)
-        with open('./data5/top250_movies.txt', 'w') as first_file:
+        with open('top250_movies.txt', 'w') as first_file:
             for index, line in enumerate(f):
                 if line_of_start < index < line_of_end:
                     year = line.find('(')
@@ -29,18 +29,16 @@ try:
                     print(line[title:])
 
         f.seek(0)
-        with open('./data5/ratings.txt', 'w') as second_file:
+        with open('ratings.txt', 'w') as second_file:
             for index, line in enumerate(f):
                 if line_of_start < index < line_of_end:
                     second_file.write(line[rank: rank + 5].lstrip() + '\n')
-                    # print(line[rank:rank + 4])
 
         f.seek(0)
-        with open('./data5/years.txt', 'w') as third_file:
+        with open('.years.txt', 'w') as third_file:
             for index, line in enumerate(f):
                 if line_of_start < index < line_of_end:
                     year = line.find('(')
-                    # print(line[year + 1:year + 5])
                     third_file.write(line[year + 1:year + 5] + '\n')
 
 except FileNotFoundError:

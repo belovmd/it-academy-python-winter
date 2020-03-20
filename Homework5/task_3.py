@@ -6,43 +6,24 @@
 #  get_ranges([2, 3, 8, 9]) // "2-3,8-9"
 
 
-def get_ranges(inp_lst):
-    outp_lst = []
-    for i in range(0, len(inp_lst)):
-        if i != 0 and i != len(inp_lst) - 1:
-            if inp_lst[i] - inp_lst[i - 1] == 1 and \
-                    inp_lst[i + 1] - inp_lst[i] == 1:
-                outp_lst.append('-')
-            elif inp_lst[i] - inp_lst[i - 1] != 1 and \
-                    inp_lst[i + 1] - inp_lst[i] == 1:
-                outp_lst.append(str(inp_lst[i]))
-                outp_lst.append('-')
-            elif inp_lst[i] - inp_lst[i - 1] == 1 and \
-                    inp_lst[i + 1] - inp_lst[i] != 1:
-                outp_lst.append('-')
-                outp_lst.append(str(inp_lst[i]))
-            else:
-                outp_lst.append(str(inp_lst[i]))
+def get_ranges(lst):
+    row = []
+    rows = []
+    for i in range(len(lst)):
+        if i + 1 < len(lst) and lst[i] == lst[i + 1] - 1:
+            row.append(lst[i])
         else:
-            outp_lst.append(str(inp_lst[i]))
-    # print(outp_lst)
+            row.append(lst[i])
+            rows.append(row)
+            row = []
+    result = []
+    for i in rows:
+        if len(i) > 1:
+            result.append("{}-{}".format(i[0], i[-1]))
+        else:
+            result.append(str(i[0]))
 
-    # remove needless '-'
-    finish_lst = []
-
-    for i in range(0, len(outp_lst)):
-        if outp_lst[i] != outp_lst[i - 1]:
-            if outp_lst[i - 1] == '-' and i != len(outp_lst) - 1:
-                finish_lst.append(outp_lst[i])
-                finish_lst.append(',')
-            else:
-                finish_lst.append(outp_lst[i])
-                finish_lst.append(',')
-
-    output_string = ''.join(finish_lst)
-    output_string = output_string.replace(',-,', '-')
-    output_string = output_string.rstrip(',')
-    return output_string
+    return ",".join(result)
 
 
 print(get_ranges([0, 1, 2, 3, 4, 7, 8, 10]))
