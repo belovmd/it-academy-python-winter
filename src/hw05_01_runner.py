@@ -12,13 +12,17 @@ import mymodule
 
 
 def runner(*args):
+    all_func = [elements for elements
+                in dir(mymodule) if elements[:2] != '__']
     if not args:
-        args = [elements for elements in
-                dir(mymodule) if elements[:2] != '__']
+        args = all_func
     for attr in args:
-        run_func = getattr(mymodule, attr)
-        run_func()
-        print('------------------')
+        if attr in all_func:
+            run_func = getattr(mymodule, attr)
+            run_func()
+            print('------------------')
+        else:
+            print(attr, '- нет такой функции')
 
 
 print('-----------------------ВСЕ')
@@ -27,3 +31,4 @@ print('----------------------ОДНА')
 runner('generator')
 print('-----------------------ДВЕ')
 runner('list_sort', 'generator')
+runner('figny')

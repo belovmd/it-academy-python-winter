@@ -54,7 +54,7 @@ def film_names(filename, line_list):
 """
 
 
-def reiting(filename, line_list, kolum):
+def rating(filename, line_list, kolum):
     myfile = open(filename, 'w')
     inner_list = []
     dict_graph = {}
@@ -79,5 +79,5 @@ def reiting(filename, line_list, kolum):
 
 text_from_file = open_file('ratings.list')
 print(film_names('top250_movies.txt', text_from_file))
-print(reiting('ratings.txt', text_from_file, 2))
-print(reiting('years.txt', text_from_file, -1))
+print(rating('ratings.txt', text_from_file, 2))
+print(rating('years.txt', text_from_file, -1))

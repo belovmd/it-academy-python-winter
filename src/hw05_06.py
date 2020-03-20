@@ -10,9 +10,8 @@ def divider(input_number):
         degree += 1
     else:
         degree -= 1
-    return 'Ввели ' + str(input_number) + \
-           ' максимальный делитель являющийся степенью двойки = ' \
-           + str(2**degree)
+    return "Ввели {} максимальный делитель являющийся степенью " \
+           "двойки = {}".format(str(input_number), str(2**degree))
 
 
 print(divider(10))
