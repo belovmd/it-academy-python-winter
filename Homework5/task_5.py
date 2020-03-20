@@ -8,5 +8,3 @@ def max_degree(n):
         i = i << 1
     else:
         return i
-
-
