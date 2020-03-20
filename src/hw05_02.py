@@ -13,7 +13,7 @@ import mymodule
 def log_dec(function):
     def wraper(*args, **kwargs):
         func_result = function(*args, **kwargs)
-        with open('dec_logger.txt', 'a',  encoding='utf-8') as my_file:
+        with open('dec_logger.txt', 'a', encoding='utf-8') as my_file:
             my_file.write('{} / '.format(datetime.now()))
             my_file.write('функция: {} / '.format(function.__name__))
             my_file.write('результат: {}\n'.format(func_result))
