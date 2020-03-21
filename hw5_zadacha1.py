@@ -16,7 +16,10 @@ def runner(*call_func):
         for el in dir(hw5):
             if "_" not in el:
                 a = getattr(hw5, el)
-                a()
+                if callable(a):
+                    a()
+                else:
+                    pass
 
 
 runner()
