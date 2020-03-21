@@ -6,8 +6,8 @@ user = int(input("Введите число, для определения ма�
 
 
 def get_maxdiv(num):
-    a = 1
-    while a <= num:
+    a = 2
+    while num % a == 0:
         a <<= 1
     return a >> 1
 
