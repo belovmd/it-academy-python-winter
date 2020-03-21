@@ -11,15 +11,14 @@ class TooManyErrors(BaseException):
 
 def dec(n):
     def dec_in(func):
-        def wrapper():
-            nonlocal n
+        def wrapper(*args, **kwargs):
             k = 0
             while n:
                 if n <= k:
                     raise TooManyErrors()
                 else:
                     try:
-                        func()
+                        func(*args, **kwargs)
                     except ValueError:
                         print(' Error! ')
                         k += 1

@@ -12,17 +12,17 @@ class Hotel(object):
     booked_rooms = []
     list_of_guests = {}
 
+
+class Person(object):
     def __init__(self, name):
         self.name = name
         self.rentroom = []
         self.bookroom = []
 
-    @staticmethod
-    def guests():
-        list_of_guests = Hotel.list_of_guests
-        print('|    Persons:   |   Rent Rooms: | ')
-        for i in list_of_guests.items():
-            print('|{:^15}|{:^15}|'.format(i[0], (' '.join(i[1]))))
+    def __str__(self):
+        return self.name + ' is rented ' + ','.join(self.rentroom) + \
+               ' room(s), and he(she) is book ' + \
+               ','.join(self.bookroom) + ' room(s).'
 
     def rent_room(self, *numbers_of_room):
         for n in numbers_of_room:
@@ -73,30 +73,34 @@ class Hotel(object):
                 self.bookroom.remove(n)
 
 
-class Person(Hotel):
-    def guests(self):
-        return print('This class do not have method guests!')
+class InfoTable(object):
+    def __str__(self):
+        list_of_guests = Hotel.list_of_guests
+        print('|    Persons:   |   Rent Rooms: | ')
+        for i in list_of_guests.items():
+            return '|{:^15}|{:^15}|'.format(i[0], (' '.join(i[1])))
 
-    # def __str__(self):
-    #     return self.name + ' is rented ' + ','.join(self.rentroom) + \
-    #            ' room(s), and he(she) is book ' + ','.join(self.bookroom) + \
-    #            ' room(s).'
+
+def __str__(self):
+    return self.name + ' is rented ' + ','.join(self.rentroom) + \
+           ' room(s), and he(she) is book ' + ','.join(self.bookroom) + \
+           ' room(s).'
 
 
 def call_to_hotel():
-    long_name = str(input('''
+    name = str(input('''
     Hello, our Hotels greeting you! Please tell
     us your full name ? ''')).title()
-    # short_name = '_'.join(long_name.split()).lower()
 
-    print('We are glade to greet you ' + long_name + '!')
+    print('We are glade to greet you ' + name + '!')
     while True:
         answer = int(input('''\nif you want rent room enter :1
                               \nif you want book room enter :2
                               \nif you want check out room enter :3
                               \nif you want cancel book room enter :4
                               \nplease make a choice.'''))
-        guest = Person(long_name)
+        guest = Person(name)
+
         if answer == 1:
             print('We have this free rooms :')
             for i in Hotel.free_rooms:
@@ -148,6 +152,4 @@ def call_to_hotel():
 
 
 call_to_hotel()
-call_to_hotel()
-
-print(Hotel.guests())
+print(InfoTable())
