@@ -19,11 +19,6 @@ class Person(object):
         self.rentroom = []
         self.bookroom = []
 
-    def __str__(self):
-        return self.name + ' is rented ' + ','.join(self.rentroom) + \
-               ' room(s), and he(she) is book ' + \
-               ','.join(self.bookroom) + ' room(s).'
-
     def rent_room(self, *numbers_of_room):
         for n in numbers_of_room:
             if n not in Hotel.free_rooms:
@@ -79,12 +74,6 @@ class InfoTable(object):
         print('|    Persons:   |   Rent Rooms: | ')
         for i in list_of_guests.items():
             return '|{:^15}|{:^15}|'.format(i[0], (' '.join(i[1])))
-
-
-def __str__(self):
-    return self.name + ' is rented ' + ','.join(self.rentroom) + \
-           ' room(s), and he(she) is book ' + ','.join(self.bookroom) + \
-           ' room(s).'
 
 
 def call_to_hotel():
