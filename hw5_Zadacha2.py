@@ -11,7 +11,6 @@ def dec(a):
             f = open('D:/rez.txt', "r")
             count = int(f.read())
             count += 1
-            print(count)
             f.close()
             save = open('D:/rez.txt', "w")
             save.write(str(count))
