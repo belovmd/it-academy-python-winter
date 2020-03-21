@@ -6,7 +6,7 @@ num = int(input())
 i = 1
 while i <= num:
     i <<= 1
-if abs(i - num) >= abs((i >> 1)-num):
+if abs(i - num) >= abs((i >> 1) - num):
     i = i >> 1
     print(i)
 else:
