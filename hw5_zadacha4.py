@@ -10,11 +10,6 @@ import os
 
 
 def get_250():
-    """
-    Открывает фалй ratings.list и достаёт названия 250 топ фильмов
-    :return: names 'список из названий'
-    """
-
     with open('ratings.list', 'r') as reit:
         lines = list(range(28, 278))  # диапазон строк
         i = 0
@@ -31,11 +26,6 @@ def get_250():
 
 
 def get_years(nam):
-    """
-    достаёт года выпуска фильмов
-    :param nam: список названий фильмов (результат функции get_250)
-    :return: years 'список годов'
-    """
     years = []
     for element in nam:
         index1 = element.index("(")
@@ -45,11 +35,6 @@ def get_years(nam):
 
 
 def gisto(us_list):
-    """
-    считает количетво для гистограммы
-    :param us_list: список (результат работы 1 из ф-ций)
-    :return: gisto_list 'список с кол-вами'
-    """
     gisto_list = []
     temp_list = []
     for el1 in us_list:
@@ -60,10 +45,6 @@ def gisto(us_list):
 
 
 def get_rating():
-    """
-    Достаёт оценку
-    :return: scores 'список оценок'
-    """
     with open('ratings.list', 'r') as reit:
         lines = list(range(28, 278))  # диапазон строк
         i = 0
@@ -80,12 +61,6 @@ def get_rating():
 
 
 def ris_gist(connected_list, data):
-    """
-    создаёт гистограмму
-    :param connected_list: название строк
-    :param data: данные для строк
-    :return: список
-    """
     temp = []
     for el1 in connected_list:
         if el1 not in temp:
