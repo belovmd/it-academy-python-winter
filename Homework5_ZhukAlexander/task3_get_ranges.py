@@ -9,14 +9,17 @@ get_ranges([2, 3, 8, 9]) // "2-3,8-9"
 
 
 def get_ranges(enter_lst):
-    temp_list = []
+    temp_list = [enter_lst[0]]
     new_list = []
-    for element in enter_lst:
-        if element + 1 not in enter_lst or element - 1 not in enter_lst:
+    for index, element in enumerate(enter_lst[1:]):
+        if index < len(enter_lst[1:]) and element == enter_lst[index] + 1:
             temp_list.append(element)
-            if element + 1 not in enter_lst:
-                new_list.append(temp_list.copy())
-                temp_list.clear()
+        else:
+            new_list.append(temp_list.copy())
+            temp_list.clear()
+            temp_list.append(element)
+    new_list.append(temp_list.copy())
+    temp_list.clear()
     for elem in new_list:
         if len(elem) > 1:
             temp_list.append('-'.join(str(el) for el in elem))

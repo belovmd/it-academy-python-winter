@@ -2,13 +2,19 @@
 Создать декоратор, который хранит результат вызова функции
 (за всё время вызовов, не только текущий запуск программы
 """
+from datetime import datetime
 
 
 def result_decor(func):
     def wrapper(*args, **kwargs):
+        start = datetime.now()
+        results = func(*args, **kwargs)
+        finish = datetime.now() - start
         with open('results_of_func.txt', 'a') as f:
+            f.write('Name of function: ' + f'{func.__name__}\n')
             f.write(func() + '\n')
-        return func
+            f.write(f'Lead time: {finish}\n\n')
+        return results
     return wrapper
 
 

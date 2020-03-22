@@ -7,3 +7,30 @@ for 1 Fibonachchi number = 1
 for N=9 Fibonachchi number = 34
 for N=4 Fibonachchi number = 3
 for N=10 Fibonachchi number = 55
+fibon_num
+for N=9 Fibonachchi number = 34
+Name of function:fibon_num
+for N=10 Fibonachchi number = 55
+Name of function:fibon_num
+for N=12 Fibonachchi number = 144
+Lead time: 0:00:02.081388Name of function:fibon_num
+for N=5 Fibonachchi number = 5
+Lead time: 0:00:04.009595Name of function:fibon_num
+for N=10 Fibonachchi number = 55
+Lead time: 0:00:02.143198
+Name of function:fibon_num
+for N=10 Fibonachchi number = 55
+Lead time: 0:00:01.663892
+
+Name of function:fibon_num
+for N=12 Fibonachchi number = 144
+Lead time: 0:00:02.449433
+
+Name of function:fibon_num
+for N=5 Fibonachchi number = 5
+Lead time: 0:00:01.474135
+
+Name of function: fibon_num
+for N=15 Fibonachchi number = 610
+Lead time: 0:00:03.125871
+
