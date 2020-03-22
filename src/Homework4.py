@@ -33,7 +33,7 @@ print(len(set(lst).symmetric_difference(set(random_lst))))
 слов содержится в этом тексте.
 """
 inp_str = input().split()
-print(len(inp_str), inp_str)
+print(len(set(inp_str)))
 
 # -----------------------------------------------------------------------------
 """
