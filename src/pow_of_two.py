@@ -6,9 +6,12 @@
 
 def pow_of_two(number):
     sqr = 1
-    while (sqr < number):
-        sqr *= 2
-    return sqr // 2
+    while sqr < number:
+        sqr = sqr << 1
+    if sqr - number < number - (sqr >> 1):
+        return sqr
+    else:
+        return sqr >> 1
 
 
 print(pow_of_two(10))

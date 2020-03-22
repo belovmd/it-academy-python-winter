@@ -15,7 +15,7 @@ ratings = {}
 years = {}
 
 
-def sahar(name_of_file, attr, name_of_dict):
+def bar_chart(name_of_file, attr, name_of_dict):
     file = open(name_of_file, attr)
     for key in name_of_dict:
         file.write(key + ' ' + name_of_dict[key] + '\n')
@@ -53,5 +53,5 @@ try:
 except FileNotFoundError:
     print('No such file!')
 
-sahar('ratings.txt', 'w', ratings)
-sahar('years.txt', 'w', years)
+bar_chart('ratings.txt', 'w', ratings)
+bar_chart('years.txt', 'w', years)

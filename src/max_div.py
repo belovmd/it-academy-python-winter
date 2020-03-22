@@ -6,11 +6,10 @@
 
 def max_div_of_two(number):
     sqr = 1
-    while (sqr < number):
-        sqr *= 2
-        if number % (sqr // 2) == 0:
-            div = sqr
-    return div
+    if number != 0:
+        while number & sqr == 0:
+            sqr = sqr << 1
+        return sqr
 
 
 print(max_div_of_two(10))

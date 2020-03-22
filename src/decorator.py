@@ -4,12 +4,17 @@
 """
 
 import random
+from datetime import datetime
 
 
 def decorator(func_to_decorate):
+    func_name = func_to_decorate.__name__
+
     def wrapper():
         try:
             file = open('results_of_functions.txt', 'a')
+            file.write(f'Calling function: {func_name}, ')
+            file.write('{} / '.format(datetime.now()))
             file.write(func_to_decorate() + '\n')
             file.close()
         except FileNotFoundError:
