@@ -3,8 +3,8 @@
 (за все время вызовов, не только текущий запуск программы)
 """
 
-import random
 from datetime import datetime
+import random
 
 
 def decorator(func_to_decorate):
