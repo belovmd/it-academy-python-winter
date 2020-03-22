@@ -1,7 +1,7 @@
 # Игра с компьютером
 
-from random import randint
 from random import choice
+from random import randint
 from time import sleep
 
 
