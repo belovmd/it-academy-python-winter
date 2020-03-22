@@ -49,5 +49,3 @@ print(see_back(4, 2))
 print(get_ranges([0, 1, 2, 3, 4, 7, 8, 10, 11, 12]))
 print(get_ranges([1, 2, 3, 'a']))
 print(get_ranges([1, 2, 3, 4, 5, 'a', 7, 8, 9, 10]))
-
-
