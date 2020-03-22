@@ -17,19 +17,24 @@ def max_error(max_count_errors):
 
         def wrapper(*args, **kwargs):
             nonlocal count_errors
-            try:
-                return function(*args, **kwargs)
-            except Exception:
-                count_errors += 1
-                return "You made {} mistakes in {}". \
-                    format(count_errors, function.__name__)
-            finally:
+            count_run = max_count_errors
+            while count_run:
                 try:
-                    if count_errors > max_count_errors:
-                        raise TooManyErrors
-                except TooManyErrors:
-                    return '{} in function {}'.\
-                        format(TooManyErrors(), function.__name__)
+                    return function(*args, **kwargs)
+                except Exception:
+                    count_errors += 1
+                    count_run -= 1
+
+                    print("You made {} mistakes in {}".
+                          format(count_errors, function.__name__))
+                finally:
+                    try:
+                        if count_errors >= max_count_errors:
+                            count_errors = 0
+                            raise TooManyErrors
+                    except TooManyErrors:
+                        return '{} in function {}'. \
+                            format(TooManyErrors(), function.__name__)
 
         return wrapper
 
@@ -40,12 +45,9 @@ see_back = max_error(3)(my_functions.see_back)
 get_ranges = max_error(3)(my_functions.get_ranges)
 print(see_back(1, 2))
 print(see_back(10, 'a'))
-print(see_back(3, 'a'))
-print(see_back(1, 2, 3))
-print(see_back(15, 'a'))
+print(see_back(4, 2))
+print(get_ranges([0, 1, 2, 3, 4, 7, 8, 10, 11, 12]))
 print(get_ranges([1, 2, 3, 'a']))
 print(get_ranges([1, 2, 3, 4, 5, 'a', 7, 8, 9, 10]))
-print(get_ranges([0, 1, 2, 3, 4, 7, 8, 10, 11, 12]))
-print(get_ranges([1, 2, 3, 4, 5, 1, 'a', 2, 3, 4, 1, 3, 4, 5, 9]))
-print(get_ranges([4, 7, 'a', 10]))
-print(get_ranges([2, 3, 8, 'a', 9]))
+
+

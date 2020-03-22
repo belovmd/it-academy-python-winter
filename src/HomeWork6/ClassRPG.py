@@ -7,137 +7,132 @@
    взаимодействие объектов и т.д."""
 
 
-class Wizard(object):
-    def __init__(self, nickname, race='Wizard'):
+# This is a game with 2 character classes.
+# Enemies - regular mobs to damage you.
+# When you kill enemies you get experience, level, gold and lose health.
+# When you die you lose gold and experience
+class Hero(object):
+    def __init__(self, nickname, class_hero):
         self.gold = 0
         self.nickname = nickname
-        self.race = race
-        self.level = 0
+        self.class_hero = class_hero
+        self.level = 1
         self.health = 100
         self.my_exp = 0
         self.max_health = 100
-        self.big_aid_kit = 1
-        self.mid_aid_kit = 1
-        self.small_aid_kit = 1
 
     def __str__(self):
-        # Выводит статус нашего персонажа.
-        return 'Nickname: {}; Race: {}; Level: {}; Health : {}' \
-            .format(self.nickname, self.race, self.level, self.health)
-
-    def my_gold(self):
-        # Выводит все золото
-        return 'У игрока {} осталось {} золота.' \
-            .format(self.nickname, self.gold)
-
-    def my_aids_kit(self):
-        # Выводит все наши аптечки
-        return 'У игрока {} осталось аптечек: Big: {}, Mid: {}, Small: {}' \
+        return 'Nickname: {}; Class: {}; Level: {}; Health : {}: Exp : {}' \
             .format(self.nickname,
-                    self.big_aid_kit, self.mid_aid_kit, self.small_aid_kit)
-
-    def enemies(self, count_enemy, damage=3.0, increase_exp_lvl=5):
-        # за каждого врага мы получаем 1 exp;
-        # с каждым уровнем надо больше получить exp;
-        # с каждым уровнем уменьшается damage
-        for i in range(count_enemy):
-            self.gold += 2  # за одного врага
-            self.health -= damage
-            self.my_exp += 1.1
-            if self.my_exp >= increase_exp_lvl:
-                self.level += 1
-                damage -= 0.1
-                increase_exp_lvl += 2
-                self.my_exp = 0
-                # смерть персонажа: теряем 1 level,
-                # восстанавливается health на 100 %, теряем 10% gold,
-                # врагов рядом нет - enemy = 0
-            elif self.health <= 0:
-                self.health = self.max_health
-                self.level -= 1
-                self.gold *= 0.9
-                break
-
-    def regeneration(self, aid_kit):
-        # Мои аптечки. При использовании увеличевается health
-        # и из my_aids_kit исчезает использованная аптечка
-        if aid_kit == 'big':
-            if self.big_aid_kit - 1 >= 0:
-                self.big_aid_kit -= 1
-                self.health += 20
-            else:
-                print('Большая аптечка отсутствует')
-        elif aid_kit == 'mid':
-            if self.mid_aid_kit - 1 >= 0:
-                self.mid_aid_kit -= 1
-                self.health += 10
-            else:
-                print('Средняя аптечка отсутствует')
-        elif aid_kit == 'small':
-            if self.small_aid_kit - 1 >= 0:
-                self.small_aid_kit -= 1
-                self.health += 5
-            else:
-                print('Малая аптечка отсутствует')
-        if self.health > self.max_health:
-            self.health = self.max_health
-
-    def my_shop(self, **kwargs):
-        # Магазин аптечек. В shop_aid_kit
-        # указанна какая аптека и цена аптечки.
-        # На ввод получаем словарь с названием
-        # аптечки и количество которое нам надо
-        shop_aid_kit = {'big': 20, 'mid': 15, 'small': 10}
-        for i in kwargs:
-            if i in shop_aid_kit:
-                if self.gold - (shop_aid_kit[i] * kwargs[i]) < 0:
-                    print('Вам не хватает {} золота на покупку'.
-                          format
-                          (abs(self.gold - (shop_aid_kit[i] * kwargs[i]))))
-                    break
-                else:
-                    self.gold -= shop_aid_kit[i] * kwargs[i]
-                if i == 'big':
-                    self.big_aid_kit += kwargs[i]
-                elif i == 'mid':
-                    self.mid_aid_kit += kwargs[i]
-                elif i == 'small':
-                    self.small_aid_kit += kwargs[i]
-                else:
-                    print('Такой аптечки нет, попробуйте еще раз.')
+                    self.class_hero,
+                    self.level,
+                    self.health,
+                    self.my_exp)
 
 
-class Troll(Wizard):
-    # Расса Troll у которой health больше на 50
-    #  и получаемый урон меньше чем у Wizard. При этом Troll
-    #  получает менше exp чем Wizard
-    def __init__(self, nickname, race='Troll'):
-        super().__init__(nickname, race)
+class Paladin(Hero):
+
+    def __init__(self, nickname, class_hero):
+        super().__init__(nickname, class_hero)
         self.health = 150
         self.max_health = 150
 
-    def enemies(self, count_enemy, damage=2.6, increase_exp_lvl=8):
-        super().enemies(count_enemy, damage, increase_exp_lvl)
+
+class Wizard(Hero):
+    def __init__(self, nickname, class_hero):
+        super().__init__(nickname, class_hero)
 
 
-blackmamba = Wizard('blackmamba')
-blackmamba.enemies(34)
-blackmamba.my_shop(big=1)
-print(blackmamba)
-blackmamba.regeneration('big')
-blackmamba.my_shop(big=1, mid=1)
-blackmamba.my_shop(mid=1)
-blackmamba.regeneration('small')
-print(blackmamba.my_aids_kit())
-print(blackmamba.my_gold())
-print(blackmamba)
-amour = Troll('amour')
-amour.enemies(35)
-print(amour.my_aids_kit())
-print(amour.my_gold())
-print(amour)
-amour.regeneration('big')
-amour.my_shop(mid=1)
-print(amour)
-print(amour.my_aids_kit())
-print(amour.my_gold())
+class Bag(object):
+    def __init__(self):
+        self.gold = 20
+        self.my_cure = {'big_cure': 1, 'mid_cure': 1, 'small_cure': 1}
+
+    def my_money(self):
+        return 'You have {} gold'.format(self.gold)
+
+    def my_aids_kits(self):
+        return 'You have {} aid kits'.format(self.my_cure)
+
+
+class Shop(object):
+    # It is a price of aid kit and count health that it regenerates
+    shop_cure = {'big_cure': 20, 'mid_cure': 15, 'small_cure': 10}
+
+    def buy(self, my_buy, buyer):
+        if my_buy in self.shop_cure and \
+                buyer[1].gold >= self.shop_cure[my_buy]:
+            buyer[1].my_cure[my_buy] += 1
+            buyer[1].gold -= self.shop_cure[my_buy]
+        elif my_buy not in self.shop_cure:
+            print("{} don't exist".format(my_buy))
+        else:
+            print("Not enough gold!")
+
+
+class Enemy(object):
+    damage = 3
+
+
+def regeneration(cure, hero):
+    if cure in hero[1].my_cure and hero[1].my_cure[cure] != 0:
+        hero[1].my_cure[cure] -= 1
+        hero[0].health += shop.shop_cure[cure]
+        if hero[0].health >= hero[0].max_health:
+            hero[0].health = hero[0].max_health
+    elif cure not in hero[1].my_cure:
+        print("{} don't exist".format(cure))
+    else:
+        print("You don't have {}".format(cure))
+
+
+def fight(enemies, hero):
+    # If you die, you appear on another place with full health,
+    # without enemies
+    # you lose gold and exp
+    exp_for_fight = 4
+    for en in range(enemies):
+        hero[0].health -= enemy.damage
+        hero[0].my_exp += 1
+        hero[1].gold += 1
+        if hero[0].my_exp >= 30:
+            hero[0].level += 1
+            exp_for_fight -= 0.4
+            enemy.damage -= 0.2
+            hero[0].my_exp = 0
+        elif hero[0].health <= 0:
+            hero[0].health = hero[0].max_health
+            hero[0].my_exp = 0
+            hero[0].gold -= 10
+            print('You died!')
+            break
+
+
+# instance[0] == it is a specifications of character
+# instance[1] == it is a Bag with gold and aid kits of character
+alex = Wizard('alex', 'Wizard'), Bag()
+amour = Paladin('amour', 'Paladin'), Bag()
+shop = Shop()
+enemy = Enemy()
+print(alex[0])
+fight(20, alex)
+print(alex[0])
+fight(33, amour)
+print(amour[0])
+regeneration('big_cure', amour)
+print(amour[0])
+fight(20, amour)
+print(amour[0])
+regeneration('mid_cure', amour)
+print(amour[0])
+shop.buy('big_cure', amour)
+regeneration('big_cure', amour)
+fight(20, amour)
+print(amour[0])
+print(amour[1].my_aids_kits())
+print(amour[1].my_money())
+print(alex[1].my_money())
+shop.buy('big_cure', amour)
+fight(20, amour)
+print(amour[1].my_money())
+print(amour[0])
