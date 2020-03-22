@@ -1,10 +1,11 @@
 # Игра с компьютером
 
-from random import randint, choice
+from random import randint
+from random import choice
 from time import sleep
 
 
-class Person:
+class Person(object):
     antagonist = None
     hp = 100
     max_HP = hp
@@ -117,7 +118,6 @@ def choosing():
 
 
 if __name__ == "__main__":
-    
     your_name = input("Ваше имя: ", )
     computer_name = "Computer"
     player = Player(your_name, Person.hp)
