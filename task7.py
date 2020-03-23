@@ -1,21 +1,13 @@
 # 7. Задание: Даны два натуральных числа.
 # Вычислите их наибольший общий делитель
 # при помощи алгоритма Евклида
-a = int(input())
-b = int(input())
-# запускам цикл и меньшее число
-# делим на большее,
-# результат сохраняем в этой же
-# переменной
-while a != 0 and b != 0:
-    if a > b:
-        a %= b
+
+first_num = int(input())
+second_num = int(input())
+while first_num and second_num:
+    if first_num > second_num:
+        first_num %= second_num
     else:
-        b %= a
-# т.к. заранее не известно в какой
-# переменной сохранится результат
-# складываем переменные, так как
-# во второй все равно в конце
-# цилкба будет 0
-most_overall_divider = a + b
-print(most_overall_divider)
+        second_num %= first_num
+print(first_num + second_num)
+

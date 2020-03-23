@@ -2,11 +2,6 @@
 # Посчитайте, сколько различных
 # чисел входит только в один из этих списков
 
-a = set(input().split())
-b = set(input().split())
-count = 0
-d = []
-for i in a:
-    if i not in b:
-        d.append(i)
-print(len(d))
+list_of_numbers_1 = set(input().split())
+list_of_numbers_2 = set(input().split())
+print(len(list_of_numbers_1 & list_of_numbers_2))
