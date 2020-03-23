@@ -7,8 +7,9 @@
 за один проход по списку.
 распечатайте полученный список."""
 scroll = [0, 1, 3, 0, 4, 5, 0]
-for k in range(0, len(scroll)):
-    if scroll[k] == 0:
-        del scroll[k]
-        scroll.append(0)
+for i in range(scroll.count(0)):
+    scroll.remove(0)
+    scroll.append(0)
 print(scroll)
+
+

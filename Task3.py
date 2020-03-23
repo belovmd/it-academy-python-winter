@@ -12,9 +12,9 @@ lst1 = list(tpl1)
 print(lst1)  # ['a', 'b', 'c']
 a, b, c = 'n', 2, 'python'
 print(a, b, c)  # n 2 python
-tpl2 = (123,)
+tpl2 = ((1, 2, 3),)
 print(len(tpl2))  # 1
-for i in str(tpl2)[1:4]:
+for i in tpl2[0]:
     # хотим получить отдельно три элемената
     #  из одного элемента кортежа
     print(i, end=',')  # 1,2,3,

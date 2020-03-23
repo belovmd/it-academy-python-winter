@@ -20,7 +20,7 @@ lst3 = [a + b for a in '1234' for b in ['a']]
 print(lst3)  # ['1a', '2a', '3a', '4a']
 del lst3[1]
 print(lst3)  # ['1a', '3a', '4a']
-lst4 = copy.deepcopy(lst3)
+lst4 = copy.copy(lst3)
 print(lst4)  # ['1a', '3a', '4a']
 lst4.insert(1, '2a')
 print(lst4)  # ['1a', '2a', '3a', '4a']
