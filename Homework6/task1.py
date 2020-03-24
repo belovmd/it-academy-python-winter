@@ -10,7 +10,7 @@ from time import sleep
 
 class Person(object):
     antagonist = None
-    hp = 30
+    hp = 100
     max_HP = hp
     simple_damage = [18, 25]
     special_damage = [10, 35]
@@ -46,12 +46,12 @@ class Person(object):
 
     def simple_kick(self):
         damage = randint(*self.simple_damage)
-        print(f"{self.name} banging simple kick")
+        print(f"{self.name} is doing simple kick")
         self.antagonist.hp_change(-damage)
 
     def special_kick(self):
         damage = randint(*self.special_damage)
-        print(f"{self.name} banging special kick!")
+        print(f"{self.name} is doing special kick!")
         self.antagonist.hp_change(-damage)
 
     def healing(self):
@@ -80,7 +80,7 @@ class Player(Person):
         # но это может сыграть и против игрока)
         elif answer == "666":
             print("The enemy already felt the taste of victory and relaxed,"
-                  "\nbut with the last of your strength you serious banged him"
+                  "\nbut with the last of your strength you serious hit him"
                   "\n and have balanced health!"
                   "\n  May the force be with you!)")
             computer.hp = self.hp
