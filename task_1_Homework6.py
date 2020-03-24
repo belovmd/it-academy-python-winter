@@ -16,7 +16,7 @@ class AddressBookEntry:
         self.name = name
         self.phone = phone
 
-    def __repr__(self):
+    def __str__(self):
         return ' [Address Book Entry: %s, %s ] ' % (self.name, self.phone)
 
     def update_phone(self, phone):
@@ -44,11 +44,11 @@ class CustomerAddressBookEntry(AddressBookEntry):
         self.date = []
         self.date = self.date.extend(date)
 
-    def __repr__(self):
-        return ' [Customer Address Book Entry: %s, %s, %s, %s ] ' % (self.name,
-                                                                     self.phone,
-                                                                     self.order,
-                                                                     self.date)
+    def __str__(self):
+        return '[Customer Address Book Entry: %s, %s, %s, %s ]' % (self.name,
+                                                                   self.phone,
+                                                                   self.order,
+                                                                   self.date)
 
 
 robert = AddressBookEntry('Staf', '55-789-54645-55')
