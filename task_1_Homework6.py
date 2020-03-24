@@ -9,7 +9,7 @@
 """
 
 
-class AddressBookEntry(object):
+class AddressBookEntry:
     version = 1.0
 
     def __init__(self, name, phone):
@@ -19,7 +19,7 @@ class AddressBookEntry(object):
     def __repr__(self):
         return ' [Address Book Entry: %s, %s ] ' % (self.name, self.phone)
 
-    def updatePhone(self, phone):
+    def update_phone(self, phone):
         self.phone = phone
 
 
@@ -31,24 +31,24 @@ class EmployeeAddressBookEntry(AddressBookEntry):
 
 
 class CustomerAddressBookEntry(AddressBookEntry):
-    def __init__(self, name, phone, order, date):  # Переопределить конструктор
+    def __init__(self, name, phone, order, date):
         self.order = order
         self.date = date
         AddressBookEntry.__init__(self, name, phone)
 
-    def updateOrder(self, order):
+    def update_order(self, order):
         self.order = []
         self.order = self.order.extend(order)
 
-    def updateDate(self, date):
+    def update_date(self, date):
         self.date = []
         self.date = self.date.extend(date)
 
     def __repr__(self):
-        return ' [Customer Address BookEntry: %s, %s, %s, %s ] ' % (self.name,
-                                                                    self.phone,
-                                                                    self.order,
-                                                                    self.date)
+        return ' [Customer Address Book Entry: %s, %s, %s, %s ] ' % (self.name,
+                                                                     self.phone,
+                                                                     self.order,
+                                                                     self.date)
 
 
 robert = AddressBookEntry('Staf', '55-789-54645-55')
@@ -61,6 +61,5 @@ mitchel = CustomerAddressBookEntry('Makl Mitchel',
                                    '25.01.2020')
 
 print(mitchel)
-# "Магический" метод __repr__ в данном случае иллюстрирует
-# проявление полиморфизма.
+
 print(robert)
