@@ -7,9 +7,9 @@
 
 """
 
-
-import random
 import functools
+import random
+
 
 def retry(max_tries):
     def decorator(func):
