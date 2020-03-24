@@ -9,7 +9,7 @@
 """
 
 
-class AddressBookEntry:
+class AddressBookEntry(object):
     version = 1.0
 
     def __init__(self, name, phone):

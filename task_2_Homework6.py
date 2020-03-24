@@ -6,9 +6,10 @@
     должно быть возбуждено исключение типа TooManyErrors
 
 """
-import functools
-import random
 
+
+import random
+import functools
 
 def retry(max_tries):
     def decorator(func):
@@ -19,14 +20,14 @@ def retry(max_tries):
                     return func(*args, **kwargs)
                 except Exception:
                     if n == max_tries:
-                        raise
+                        raise IOError("TooManyErrors")
 
         return wrapper
 
     return decorator
 
 
-@retry(max_tries=10)
+@retry(max_tries=2)
 def do_something_unreliable():
     """Do something unreliably."""
     if random.randint(0, 10) > 1:
