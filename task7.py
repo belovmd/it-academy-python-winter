@@ -10,4 +10,3 @@ while first_num and second_num:
     else:
         second_num %= first_num
 print(first_num + second_num)
-

@@ -4,7 +4,7 @@
 #
 # исходные данные:
 # 3
-# Russia Moscow Petersburg Novgorod Kaluga
+# Russia Moscow Petersburg Novgorod
 # Ukraine Kiev Donetsk Odessa
 # Belarus Brest
 # 3
@@ -16,15 +16,19 @@
 # получаем список городов для проверки, пробегаемся по нему,
 # сверяем значение словаря со списком для проверки, если
 # находим печатаем ключ.
+
+
+from typing import List
+
 my_dict = {}
 for i in range(int(input())):
-	country, *city = input().split()
-	my_dict[country] = city  # создаем словарь
-list_check = []
+    country, *city = input().split()
+    my_dict[country] = city  # создаем словарь
+list_check: List[str] = []
 for j in range(int(input())):
-	city = input()
-	list_check.append(city)  # создаем список для проверки
+    city = input()
+    list_check.append(city)  # создаем список для проверки
 for u in list_check:
-	for key, value in my_dict.items():
-		if u in value:
-			print(key)
+    for key, value in my_dict.items():
+        if u in value:
+            print(key)
