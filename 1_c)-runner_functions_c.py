@@ -6,8 +6,9 @@ runner(‘func_name’) – вызывается только функцию fun
 runner(‘func’, ‘func1’...) - вызывает все переданные функции
 """
 
-import myfunctions
+
 import inspect
+import myfunctions
 
 
 def runner(*args):
@@ -25,6 +26,7 @@ def runner(*args):
         except AttributeError:
             print('No such func', func)
     return
+
 
 runner('function3')
 runner('function2')

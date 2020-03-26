@@ -8,7 +8,6 @@
 a = [2, 4, 5, 8, 9]
 
 
-
 def get_ranges(arr):
     old_arr = []
     new_arr = []
@@ -21,5 +20,6 @@ def get_ranges(arr):
                 new_arr.append(old_arr[0] + '-' + old_arr[-1])
             old_arr.clear()
     return print(new_arr)
+
 
 get_ranges(a)
