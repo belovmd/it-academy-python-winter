@@ -13,7 +13,8 @@ def max_divider(num):
 
         max_div = divider
 
-    return 'максимальный делитель, являющийся степенью двойки = {}'.format(max_div)
+    return 'максимальный делитель,' \
+           'являющийся степенью двойки = {}'.format(max_div)
 
 
 print(max_divider(int(input('введите число: '))))

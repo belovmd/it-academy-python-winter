@@ -25,4 +25,4 @@ def get_ranges(int_list):
     return ','.join(final_list)
 
 
-print(get_ranges([0, 2, 3, 4, 6, 7, 9, 11, 36, 37, 40, 41, 42, 42, 56, 99, 100]))
+print(get_ranges([0, 2, 3, 4, 6, 7, 9, 11, 36, 37, 40, 41, 56, 99, 100]))

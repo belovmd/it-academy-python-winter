@@ -5,8 +5,8 @@
 # c. Программа создает 3 файла  top250_movies.txt – названия файлов,
 # ratings.txt – гистограмма рейтингов, years.txt – гистограмма годов.
 
-import re
 import codecs
+import re
 
 
 def top_movies(count):

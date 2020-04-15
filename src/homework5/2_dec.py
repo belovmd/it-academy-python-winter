@@ -2,9 +2,9 @@
 # функции (за все время вызовов, не только текущий запуск программы)
 
 
-import my_func
 from datetime import datetime
 from functools import wraps
+import my_func
 
 
 def result_decorator(some_func):

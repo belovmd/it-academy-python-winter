@@ -11,7 +11,8 @@ def degree_two(num):
             break
         else:
             degree += 1
-    return 'это число {}'.format(1 << degree) + ' и оно является {} степенью двойки'.format(degree)
+    return 'это число {}'.format(1 << degree) +\
+           ' и оно является {} степенью двойки'.format(degree)
 
 
 print(degree_two(int(input('введите число: '))))

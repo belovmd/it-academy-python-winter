@@ -4,8 +4,8 @@
 # runner(‘func_name’) – вызывается только функцию func_name
 # runner(‘func’, ‘func1’...) - вызывает все переданные функции
 
-import my_func
 import inspect
+import my_func
 
 
 def runner(*args):
