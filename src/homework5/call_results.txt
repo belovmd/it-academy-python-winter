@@ -1,0 +1,8 @@
+look_back
+Result: 10
+Was called in: 15-04-2020 19:35
+----------
+words
+Result: Different words: 1
+Was called in: 15-04-2020 19:35
+----------
